@@ -88,6 +88,13 @@
                     <span>Project</span></a>
             </li>
 
+              <!-- Nav Item - Register -->
+              <li class="nav-item">
+                <a class="nav-link" href="index.php?halaman=register">
+                    <i class="fas fa-regular fa-file"></i>
+                    <span>Register</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -352,6 +359,10 @@
                             // Halaman Logout
                             else if ($_GET['halaman'] == 'logout'){
                                 include 'logout.php';
+                            }
+                            // Halaman Register
+                            else if ($_GET['halaman'] == 'register'){
+                                include 'view/register/register.php';
                             }
                             else {
                                 include 'view/404/404.php';

@@ -1,8 +1,31 @@
 <?php 
-$id = $_GET['id'];
-$ambil = $koneksi->query("SELECT * FROM projects WHERE id='$id'");
-$pecah = $ambil->fetch_assoc();
+$id = isset($_GET['id']) ? $_GET['id'] : 0;
+
+// Validasi ID
+if (!is_numeric($id) || $id <= 0) {
+    echo "<div class='alert alert-danger'>ID Proyek tidak valid</div>";
+    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=projects'>";
+    exit();
+}
+
+// Gunakan prepared statement untuk mengambil data proyek
+$stmt = $koneksi->prepare("SELECT * FROM projects WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$stmt->close();
+
+// Periksa apakah proyek ditemukan
+if ($result->num_rows > 0) {
+    $pecah = $result->fetch_assoc();
+    // Lakukan operasi dengan data proyek yang ditemukan
+} else {
+    echo "<div class='alert alert-danger'>Proyek tidak ditemukan</div>";
+    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=projects'>";
+    exit();
+}
 ?>
+
 <div class="card-body">
     <form method="POST" enctype="multipart/form-data">
     <div class="row">
@@ -84,40 +107,80 @@ $pecah = $ambil->fetch_assoc();
     </div>
     </form>
 </div>
-<?php 
-    date_default_timezone_set('Asia/Jakarta');
-    $tanggal = date('Y-m-d');
+<?php
+date_default_timezone_set('Asia/Jakarta');
+$tanggal = date('Y-m-d');
+if (isset($_POST['simpan'])) {
     $status_project = $_POST['status_project'];
-    if(isset($_POST['simpan'])){
-        // check if file is not jpeg or jpg or png
-        $allowed = array('jpeg', 'jpg', 'png');
-        $filename = $_FILES['foto_project']['name'];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (!in_array($ext, $allowed)) {
-            echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
-            exit();
-        }
+    $id_project = $_POST['id_project'];
 
-        if($status_project == "0"){
-            echo "<div class='alert alert-danger'>Status Project tidak boleh kosong</div>";
-            echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=tambah_projects'>";
-            exit();
-        }
+    // Check if file is not jpeg, jpg, or png
+    $allowed = array('jpeg', 'jpg', 'png');
+    $filename = $_FILES['foto_project']['name'];
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
-        if (empty($_FILES['foto_project']['name'])) {
-            echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
-            exit();
+    if (!empty($filename) && !in_array($ext, $allowed)) {
+        echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_projects&id_project=$id_project'>";
+        exit();
+    }
+
+    // Check if status_project is not empty
+    if ($status_project === "0") {
+        echo "<div class='alert alert-danger'>Status Project tidak boleh kosong</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_projects&id_project=$id_project'>";
+        exit();
+    }
+
+    // Handle file upload if a new file is provided
+    if (!empty($filename)) {
+        $nama = $_FILES['foto_project']['name'];
+        $lokasi = $_FILES['foto_project']['tmp_name'];
+        $upload_directory = "view/projects/images/";
+
+        // Move the uploaded file to the destination directory
+        if (move_uploaded_file($lokasi, $upload_directory . $nama)) {
+            // Update project data in the database
+            $nama_client = $_POST['nama_client'];
+            $location_project = $_POST['location_project'];
+            $date_start_project = $_POST['date_start_project'];
+            $date_end_project = $_POST['date_end_project'];
+
+            $stmt = $koneksi->prepare("UPDATE projects SET nama_client=?, lokasi_projects=?, tanggal_projects_start=?, tanggal_projects_end=?, images_projects=?, status_projects=? WHERE id_project=?");
+            $stmt->bind_param("ssssssi", $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project, $id_project);
+
+            if ($stmt->execute()) {
+                echo "<div class='alert alert-info'>Data Tersimpan</div>";
+                echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=projects'>";
+            } else {
+                echo "<div class='alert alert-danger'>Gagal menyimpan data proyek</div>";
+                echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_projects&id_project=$id_project'>";
+            }
+
+            $stmt->close();
         } else {
-            $nama = $_FILES['foto_project']['name'];
-            $lokasi = $_FILES['foto_project']['tmp_name'];
-            move_uploaded_file($lokasi, "view/projects/images/".$nama);
-    
-            $koneksi->query("INSERT INTO projects (nama_client, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects) VALUES ('$_POST[nama_client]', '$_POST[location_project]', '$_POST[date_start_project]','$_POST[date_end_project]', '$nama', '$_POST[status_project]')");
-            
+            echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
+            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_projects&id_project=$id_project'>";
+        }
+    } else {
+        // If no new file is provided, update other project data without changing the image
+        $nama_client = $_POST['nama_client'];
+        $location_project = $_POST['location_project'];
+        $date_start_project = $_POST['date_start_project'];
+        $date_end_project = $_POST['date_end_project'];
+
+        $stmt = $koneksi->prepare("UPDATE projects SET nama_client=?, lokasi_projects=?, tanggal_projects_start=?, tanggal_projects_end=?, status_projects=? WHERE id_project=?");
+        $stmt->bind_param("sssssi", $nama_client, $location_project, $date_start_project, $date_end_project, $status_project, $id_project);
+
+        if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";
             echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=projects'>";
+        } else {
+            echo "<div class='alert alert-danger'>Gagal menyimpan data proyek</div>";
+            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_projects&id_project=$id_project'>";
         }
+
+        $stmt->close();
     }
+}
 ?>
