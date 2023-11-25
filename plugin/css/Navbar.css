@@ -1,0 +1,58 @@
+/* Navbar Start */
+.navbars {
+    position: fixed;
+    width: 100%;
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: var(--secondary);
+}
+
+.navbars .navbars-sosmed {
+    padding: .8rem 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--tridary);
+}
+
+.navbars .navbars-sosmed .sosmed-kiri a,
+.navbars-sosmed .sosmed-kanan a {
+    padding: 0 .5rem;
+    font-size: .9rem;
+    color: #ffffff;
+}
+
+.navbars .navbars-sosmed .sosmed-kanan a {
+    font-size: 1.11rem;
+}
+
+.navbars .navbars-konten {
+    padding: 2rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbars .navbars-konten .navbars-logo a {
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.navbars .navbars-konten .navbars-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbars .navbars-konten .navbars-nav a {
+    margin: 0 .5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.navbars .navbars-konten .navbars-nav a:hover {
+    color: var(--primary);
+}
+
+/* Navbar End */
