@@ -68,7 +68,11 @@ if (isset($_POST['simpan'])) {
     }
 
     // Handle file upload
-    $nama = $_FILES['foto_category']['name'];
+    $original_name = $_FILES['foto_category']['name'];
+    $ext = pathinfo($original_name, PATHINFO_EXTENSION);
+    $timestamp = time();
+    $nama = $timestamp . '_' . uniqid() . '.' . $ext;
+
     $lokasi = $_FILES['foto_category']['tmp_name'];
     $upload_directory = "view/category/images/";
 
