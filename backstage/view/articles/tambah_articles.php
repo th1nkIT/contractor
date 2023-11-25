@@ -45,32 +45,55 @@
     </div>
     </form>
 </div>
-<?php 
-    date_default_timezone_set('Asia/Jakarta');
-    if(isset($_POST['simpan'])){
-        // check if file is not jpeg or jpg or png
-        $allowed = array('jpeg', 'jpg', 'png');
-        $filename = $_FILES['foto_article']['name'];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (!in_array($ext, $allowed)) {
-            echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
-            exit();
-        }
+<?php
+date_default_timezone_set('Asia/Jakarta');
 
-        if (empty($_FILES['foto_article']['name'])) {
-            echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
-            exit();
-        } else {
-            $nama = $_FILES['foto_article']['name'];
-            $lokasi = $_FILES['foto_article']['tmp_name'];
-            move_uploaded_file($lokasi, "view/articles/images/".$nama);
-    
-            $koneksi->query("INSERT INTO articles (title_article, deskripsi_article, isi_article, images_article) VALUES ('$_POST[title_article]', '$_POST[deskripsi_article]', '$_POST[isi_article]', '$nama' )");
-            
+if (isset($_POST['simpan'])) {
+    // Check if file is not jpeg, jpg, or png
+    $allowed = array('jpeg', 'jpg', 'png');
+    $filename = $_FILES['foto_article']['name'];
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+    if (!in_array($ext, $allowed)) {
+        echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
+        exit();
+    }
+
+    // Check if the file is uploaded
+    if (empty($_FILES['foto_article']['name'])) {
+        echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
+        exit();
+    }
+
+    // Handle file upload
+    $nama = $_FILES['foto_article']['name'];
+    $lokasi = $_FILES['foto_article']['tmp_name'];
+    $upload_directory = "view/articles/images/";
+
+    // Move the uploaded file to the destination directory
+    if (move_uploaded_file($lokasi, $upload_directory . $nama)) {
+        // Insert article data into the database
+        $title_article = $_POST['title_article'];
+        $deskripsi_article = $_POST['deskripsi_article'];
+        $isi_article = $_POST['isi_article'];
+
+        $stmt = $koneksi->prepare("INSERT INTO articles (title_article, deskripsi_article, isi_article, images_article) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $title_article, $deskripsi_article, $isi_article, $nama);
+
+        if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";
             echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=articles'>";
+        } else {
+            echo "<div class='alert alert-danger'>Gagal menyimpan data artikel</div>";
+            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
         }
+
+        $stmt->close();
+    } else {
+        echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
     }
+}
 ?>

@@ -1,3 +1,40 @@
+<?php
+    session_start();
+    require 'koneksi/koneksi.php';
+
+    if (isset($_SESSION['administrator'])) {
+        header('location:index.php');
+    }
+
+    if(isset($_POST['login'])){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $ambil = $koneksi->prepare("SELECT * FROM user WHERE email=?");
+        $ambil->bind_param("s", $email);
+        $ambil->execute();
+        $result = $ambil->get_result();
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            $storedHashedPassword = $user['password'];
+            $passwordMatches = password_verify($password, $storedHashedPassword);
+
+            if ($passwordMatches) {
+                $_SESSION['administrator'] = $user;
+                echo "<div class='alert alert-info'>Login Berhasil</div>";
+                echo "<meta http-equiv='refresh' content='1;url=index.php'>";
+            } else {
+                echo "<div class='alert alert-danger'>Login Gagal: Password tidak sesuai</div>";
+            }
+        } else {
+            echo "<div class='alert alert-danger'>Login Gagal: Email tidak ditemukan</div>";
+        }
+
+        $ambil->close();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +46,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Nanti titlenya di sini ya</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -41,14 +78,14 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="POST">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input type="email" name="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" name="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
@@ -58,16 +95,10 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" name="login" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
+                                        </button>
                                         <hr>
-                                        <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">

@@ -62,40 +62,65 @@
     </div>
     </form>
 </div>
-<?php 
-    date_default_timezone_set('Asia/Jakarta');
-    $tanggal = date('Y-m-d');
+<?php
+date_default_timezone_set('Asia/Jakarta');
+$tanggal = date('Y-m-d');
+if (isset($_POST['simpan'])) {
     $status_project = $_POST['status_project'];
-    if(isset($_POST['simpan'])){
-        // check if file is not jpeg or jpg or png
-        $allowed = array('jpeg', 'jpg', 'png');
-        $filename = $_FILES['foto_project']['name'];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (!in_array($ext, $allowed)) {
-            echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
-            exit();
-        }
-
-        if($status_project == "0"){
-            echo "<div class='alert alert-danger'>Status Project tidak boleh kosong</div>";
-            echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=tambah_projects'>";
-            exit();
-        }
-
-        if (empty($_FILES['foto_project']['name'])) {
-            echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
-            exit();
-        } else {
-            $nama = $_FILES['foto_project']['name'];
-            $lokasi = $_FILES['foto_project']['tmp_name'];
-            move_uploaded_file($lokasi, "view/projects/images/".$nama);
     
-            $koneksi->query("INSERT INTO projects (nama_client, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects) VALUES ('$_POST[nama_client]', '$_POST[location_project]', '$_POST[date_start_project]','$_POST[date_end_project]', '$nama', '$_POST[status_project]')");
-            
+    // Check if file is not jpeg, jpg, or png
+    $allowed = array('jpeg', 'jpg', 'png');
+    $filename = $_FILES['foto_project']['name'];
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+    if (!in_array($ext, $allowed)) {
+        echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
+        exit();
+    }
+
+    // Check if status_project is not empty
+    if ($status_project === "0") {
+        echo "<div class='alert alert-danger'>Status Project tidak boleh kosong</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
+        exit();
+    }
+
+    // Check if the file is uploaded
+    if (empty($_FILES['foto_project']['name'])) {
+        echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
+        exit();
+    }
+
+    // Handle file upload
+    $nama = $_FILES['foto_project']['name'];
+    $lokasi = $_FILES['foto_project']['tmp_name'];
+    $upload_directory = "view/projects/images/";
+
+    // Move the uploaded file to the destination directory
+    if (move_uploaded_file($lokasi, $upload_directory . $nama)) {
+        // Insert project data into the database
+        $nama_client = $_POST['nama_client'];
+        $location_project = $_POST['location_project'];
+        $date_start_project = $_POST['date_start_project'];
+        $date_end_project = $_POST['date_end_project'];
+
+        $stmt = $koneksi->prepare("INSERT INTO projects (nama_client, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project);
+
+        if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";
             echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=projects'>";
+        } else {
+            echo "<div class='alert alert-danger'>Gagal menyimpan data proyek</div>";
+            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
         }
+
+        $stmt->close();
+    } else {
+        echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
     }
+}
 ?>
