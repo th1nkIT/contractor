@@ -45,33 +45,55 @@
     </div>
     </form>
 </div>
-<?php 
-    date_default_timezone_set('Asia/Jakarta');
-    $tanggal = date('Y-m-d');
-    if(isset($_POST['simpan'])){
-        // check if file is not jpeg or jpg or png
-        $allowed = array('jpeg', 'jpg', 'png');
-        $filename = $_FILES['foto_category']['name'];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (!in_array($ext, $allowed)) {
-            echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
-            exit();
-        }
+<?php
+date_default_timezone_set('Asia/Jakarta');
 
-        if (empty($_FILES['foto_category']['name'])) {
-            echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
-            exit();
-        } else {
-            $nama = $_FILES['foto_category']['name'];
-            $lokasi = $_FILES['foto_category']['tmp_name'];
-            move_uploaded_file($lokasi, "assets/images/category/".$nama);
-    
-            $koneksi->query("INSERT INTO category (nama_category, deskripsi_category, summary_category, images_category) VALUES ('$_POST[nama_category]', '$_POST[deskripsi_category]', '$_POST[summary_category]', '$nama')");
-            
+if (isset($_POST['simpan'])) {
+    // Check if file is not jpeg, jpg, or png
+    $allowed = array('jpeg', 'jpg', 'png');
+    $filename = $_FILES['foto_category']['name'];
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+    if (!in_array($ext, $allowed)) {
+        echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
+        exit();
+    }
+
+    // Check if the file is uploaded
+    if (empty($_FILES['foto_category']['name'])) {
+        echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
+        exit();
+    }
+
+    // Handle file upload
+    $nama = $_FILES['foto_category']['name'];
+    $lokasi = $_FILES['foto_category']['tmp_name'];
+    $upload_directory = "view/category/images/";
+
+    // Move the uploaded file to the destination directory
+    if (move_uploaded_file($lokasi, $upload_directory . $nama)) {
+        // Insert category data into the database
+        $nama_category = $_POST['nama_category'];
+        $deskripsi_category = $_POST['deskripsi_category'];
+        $summary_category = $_POST['summary_category'];
+
+        $stmt = $koneksi->prepare("INSERT INTO category (nama_category, deskripsi_category, summary_category, images_category) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $nama_category, $deskripsi_category, $summary_category, $nama);
+
+        if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";
             echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
+        } else {
+            echo "<div class='alert alert-danger'>Gagal menyimpan data kategori</div>";
+            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
         }
+
+        $stmt->close();
+    } else {
+        echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
     }
+}
 ?>
