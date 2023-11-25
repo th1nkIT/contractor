@@ -1,8 +1,31 @@
 <?php 
-$id = $_GET['id'];
-$ambil = $koneksi->query("SELECT * FROM category WHERE id='$id'");
-$pecah = $ambil->fetch_assoc();
+$id = isset($_GET['id']) ? $_GET['id'] : 0;
+
+// Validasi ID
+if (!is_numeric($id) || $id <= 0) {
+    echo "<div class='alert alert-danger'>ID Kategori tidak valid</div>";
+    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
+    exit();
+}
+
+// Gunakan prepared statement untuk mengambil data kategori
+$stmt = $koneksi->prepare("SELECT * FROM category WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$stmt->close();
+
+// Periksa apakah kategori ditemukan
+if ($result->num_rows > 0) {
+    $pecah = $result->fetch_assoc();
+    // Lakukan operasi dengan data kategori yang ditemukan
+} else {
+    echo "<div class='alert alert-danger'>Kategori tidak ditemukan</div>";
+    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
+    exit();
+}
 ?>
+
 <div class="card-body">
     <form method="POST" enctype="multipart/form-data">
     <div class="row">
@@ -41,7 +64,7 @@ $pecah = $ambil->fetch_assoc();
                         <div class="form-group">
                             <label for="example-text-input" class="form-control-label">Foto Category</label>
                             <input class="form-control" type="file" name="foto_category">
-                            <img src="assets/images/category/<?php echo $pecah['images_category']; ?>" alt="<?php echo $pecah['nama_category'] ?>">
+                            <img src="view/category/images/<?php echo $pecah['images_category']; ?>" alt="<?php echo $pecah['nama_category'] ?>">
                         </div>
                     </div>
                 </div>
@@ -51,22 +74,58 @@ $pecah = $ambil->fetch_assoc();
     </div>
     </form>
 </div>
-<?php 
-if(isset($_POST['simpan'])){
-    $nama = $_FILES['foto_category']['name'];
-    $lokasi = $_FILES['foto_category']['tmp_name'];
+<?php
+if (isset($_POST['simpan'])) {
+    $id_category = $_POST['id'];
+    $nama_category = $_POST['nama_category'];
+    $deskripsi_category = $_POST['deskripsi_category'];
+    $summary_category = $_POST['summary_category'];
+    $foto_category = $_FILES['foto_category']['name'];
+    $lokasi_category = $_FILES['foto_category']['tmp_name'];
 
     // Jika foto diubah
-    if(!empty($lokasi)){
-        $foto = $pecah['images_category'];
-        unlink("assets/images/category/$foto");
-        move_uploaded_file($lokasi, "assets/images/category/$nama");
-        $koneksi->query("UPDATE category SET nama_category='$_POST[nama_category]', deskripsi_category='$_POST[deskripsi_category]', summary_category='$_POST[summary_category]', images_category='$nama' WHERE id='$id'");
-    } else {
-        $koneksi->query("UPDATE category SET nama_category='$_POST[nama_category]', deskripsi_category='$_POST[deskripsi_category]', summary_category='$_POST[summary_category]' WHERE id='$id'");
-    }
-    echo "<div class='alert alert-info'>Data Tersimpan</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
-}
+    if (!empty($lokasi_category)) {
+        $allowed = array('jpeg', 'jpg', 'png');
+        $ext = pathinfo($foto_category, PATHINFO_EXTENSION);
 
+        if (!in_array($ext, $allowed)) {
+            echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
+            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_category&id=$id_category'>";
+            exit();
+        }
+
+        // Hapus foto lama
+        $stmt = $koneksi->prepare("SELECT images_category FROM category WHERE id = ?");
+        $stmt->bind_param("i", $id_category);
+        $stmt->execute();
+        $stmt->bind_result($foto_lama);
+        $stmt->fetch();
+        $stmt->close();
+
+        if ($foto_lama && file_exists("view/category/images/$foto_lama")) {
+            unlink("view/category/images/$foto_lama");
+        }
+
+        // Pindahkan foto baru
+        move_uploaded_file($lokasi_category, "view/category/images/$foto_category");
+
+        // Update data kategori dengan foto baru
+        $stmt = $koneksi->prepare("UPDATE category SET nama_category=?, deskripsi_category=?, summary_category=?, images_category=? WHERE id=?");
+        $stmt->bind_param("ssssi", $nama_category, $deskripsi_category, $summary_category, $foto_category, $id_category);
+    } else {
+        // Update data kategori tanpa mengubah foto
+        $stmt = $koneksi->prepare("UPDATE category SET nama_category=?, deskripsi_category=?, summary_category=? WHERE id=?");
+        $stmt->bind_param("sssi", $nama_category, $deskripsi_category, $summary_category, $id_category);
+    }
+
+    if ($stmt->execute()) {
+        echo "<div class='alert alert-info'>Data Tersimpan</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
+    } else {
+        echo "<div class='alert alert-danger'>Gagal menyimpan data kategori</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_category&id=$id_category'>";
+    }
+
+    $stmt->close();
+}
 ?>
