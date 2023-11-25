@@ -106,7 +106,9 @@ if (isset($_POST['simpan'])) {
             unlink("view/category/images/$foto_lama");
         }
 
-        // Pindahkan foto baru
+        // Pindahkan foto baru dengan nama unik
+        $timestamp = time();
+        $foto_category = $timestamp . '_' . uniqid() . '.' . $ext;
         move_uploaded_file($lokasi_category, "view/category/images/$foto_category");
 
         // Update data kategori dengan foto baru

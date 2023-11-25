@@ -65,6 +65,7 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
 $tanggal = date('Y-m-d');
+
 if (isset($_POST['simpan'])) {
     $status_project = $_POST['status_project'];
     
@@ -94,7 +95,11 @@ if (isset($_POST['simpan'])) {
     }
 
     // Handle file upload
-    $nama = $_FILES['foto_project']['name'];
+    $original_name = $_FILES['foto_project']['name'];
+    $ext = pathinfo($original_name, PATHINFO_EXTENSION);
+    $timestamp = time();
+    $nama = $timestamp . '_' . uniqid() . '.' . $ext;
+
     $lokasi = $_FILES['foto_project']['tmp_name'];
     $upload_directory = "view/projects/images/";
 
@@ -124,3 +129,4 @@ if (isset($_POST['simpan'])) {
     }
 }
 ?>
+
