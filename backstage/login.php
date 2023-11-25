@@ -4,22 +4,37 @@
 
     if (isset($_SESSION['administrator'])) {
         header('location:index.php');
-      }
+    }
 
     if(isset($_POST['login'])){
-        $ambil = $koneksi->query("SELECT * FROM user WHERE email='$_POST[email]' AND password='$_POST[password]'");
-        $check_user = $ambil->num_rows;
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-        if($check_user == 1) {
-            $_SESSION['administrator'] = $ambil->fetch_assoc();
-            echo "<div class='alert alert-info'>Login Berhasil</div>";
-            echo "<meta http-equiv='refresh' content='1;url=index.php'>";
+        $ambil = $koneksi->prepare("SELECT * FROM user WHERE email=?");
+        $ambil->bind_param("s", $email);
+        $ambil->execute();
+        $result = $ambil->get_result();
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            $storedHashedPassword = $user['password'];
+            $passwordMatches = password_verify($password, $storedHashedPassword);
+
+            if ($passwordMatches) {
+                $_SESSION['administrator'] = $user;
+                echo "<div class='alert alert-info'>Login Berhasil</div>";
+                echo "<meta http-equiv='refresh' content='1;url=index.php'>";
+            } else {
+                echo "<div class='alert alert-danger'>Login Gagal: Password tidak sesuai</div>";
+            }
         } else {
-            echo "<div class='alert alert-danger'>Login Gagal</div>";
-            echo "<meta http-equiv='refresh' content='1;url=login.php'>";
+            echo "<div class='alert alert-danger'>Login Gagal: Email tidak ditemukan</div>";
         }
+
+        $ambil->close();
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
