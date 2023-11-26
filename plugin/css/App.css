@@ -1,8 +1,12 @@
 :root {
-    --primary: aqua;
-    --secondary: blue;
-    --tridary: darkblue;
-    --bg: rgb(100, 100, 100);
+    --primary: #03C988;
+    --secondary: #00337C;
+    --tridary: #13005A;
+    --fourth: #1C82AD;
+    --fifth: #FC9918;
+    --hover-fifth: #F14A16;
+    --bg: #DAF5FF;
+    --font-color: black;
 }
 
 * {
@@ -15,4 +19,5 @@
 html {
     scroll-behavior: smooth;
     font-family: 'Rubik', sans-serif;
+    background-color: var(--bg);
 }

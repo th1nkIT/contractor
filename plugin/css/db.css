@@ -4,7 +4,10 @@
     display: flex;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--bg);
+    background-image: url('../img/danau.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .jb .jb-konten {
@@ -27,6 +30,7 @@
 .jb-kanan a {
     font-size: 2rem;
     color: #ffffff;
+    text-shadow: 0 0 6px var(--tridary);
 }
 
 .jb .jb-konten .jb-kiri a:hover,
@@ -44,11 +48,13 @@
     padding: 0 0 1.4rem;
     font-size: 2.5rem;
     font-weight: 600;
+    text-shadow: 0 0 6px var(--tridary);
 }
 
 .jb .jb-konten .jb-main p {
     font-size: 1rem;
     font-weight: 100;
+    text-shadow: 0 0 6px var(--tridary);
 }
 
 .jb .jb-konten .jb-main .jb-main-btn {
@@ -60,16 +66,18 @@
     margin: 6rem 1.3rem 0;
     padding: .8rem 1.3rem;
     font-weight: 600;
-    background-color: green;
+    background-color: var(--secondary);
+    border-radius: .3rem;
     color: #ffffff;
 }
 
 .jb .jb-konten .jb-main .jb-main-btn a:hover {
-    background-color: darkgreen;
+    background-color: var(--tridary);
 }
 
 .jb .jb-konten .jb-main .jb-main-btn .tentang-kami-btn {
     background-color: yellow;
+    border-radius: .3rem;
     color: black;
 }
 
@@ -86,6 +94,7 @@
 .client .judul {
     padding: 2rem 5%;
     text-align: center;
+    background-color: var(--bg);
 }
 
 .alasan .judul h1,
@@ -95,14 +104,17 @@
 }
 
 .alasan .konten-alasan {
-    background-color: var(--bg);
+    background-image: url('../img/danau.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     display: flex;
     align-items: center;
     min-height: auto;
 }
 
 .alasan .konten-alasan .main-konten {
-    background-color: var(--secondary);
+    background-color: rgba(0, 51, 122, .75);
     max-width: 50%;
     min-height: auto;
     color: #ffffff;
@@ -189,6 +201,7 @@
 
 .client .konten-client .img-client img {
     width: 100%;
+    box-shadow: 0 0 10px 3px var(--tridary);
 }
 
 /* Client End */
