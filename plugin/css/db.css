@@ -172,7 +172,7 @@
 }
 
 .pertanyaan .tanya .pertanyaan-konten .question {
-    box-shadow: 0 0 10px 3px var(--primary);
+    box-shadow: 0 0 10px 1px black;
     border-radius: .3rem;
 }
 
@@ -226,7 +226,7 @@
 
 .client .konten-client .img-client img {
     width: 100%;
-    box-shadow: 0 0 10px 3px var(--primary);
+    box-shadow: 0 0 10px 1px black;
     border-radius: .3rem;
 }
 /* Client End */

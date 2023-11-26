@@ -14,7 +14,7 @@
     min-height: 26rem;
     height: auto;
     background-color: none;
-    box-shadow: 0 0 10px 3px var(--primary);
+    box-shadow: 0 0 10px 1px black;
 }
 
 .bisnis-kami .cards-bisnis .cards .cards-foto {
@@ -48,7 +48,7 @@
 
 .bisnis-kami .cards-bisnis .cards .cards-konten p {
     padding: .5rem 0 0;
-    border-top: 3px solid black;
+    border-top: 2px solid black;
     text-align: justify;
 }
 
@@ -60,9 +60,9 @@
 
 .bisnis-kami .cards-bisnis .cards .cards-konten .cards-btn a {
     padding: .4rem 1rem;
-    background-color: aqua;
+    background-color: var(--fourth);
     border-radius: .3rem;
-    color: black;
+    color: white;
     font-size: .9rem;
     font-weight: 600;
     text-transform: uppercase;

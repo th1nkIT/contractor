@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="plugin/css/app.css">
     <link rel="stylesheet" href="plugin/css/artikel.css">
     <link rel="stylesheet" href="plugin/css/bisnis.css">
-    <link rel="stylesheet" href="plugin/css/db.css">
+    <link rel="stylesheet" href="plugin/css/Db.css">
     <link rel="stylesheet" href="plugin/css/footer.css">
     <link rel="stylesheet" href="plugin/css/navbar.css">
     

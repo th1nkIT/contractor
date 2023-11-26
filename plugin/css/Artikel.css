@@ -14,7 +14,7 @@
     min-height: 26rem;
     height: auto;
     background-color: none;
-    box-shadow: 0 0 10px 3px var(--primary);
+    box-shadow: 0 0 10px 1px black;
 }
 
 .artikel .artikel-konten .cards-artikel .cards-foto {
@@ -61,7 +61,7 @@
 
 .artikel .artikel-konten .cards-artikel .cards-konten .isi-artikel {
     padding: .5rem 0 0;
-    border-top: 3px solid black;
+    border-top: 2px solid black;
     text-align: justify;
 }
 
@@ -73,9 +73,9 @@
 
 .artikel .artikel-konten .cards-artikel .cards-konten .cards-btn a {
     padding: .4rem 1rem;
-    background-color: aqua;
+    background-color: var(--fourth);
     border-radius: .3rem;
-    color: black;
+    color: white;
     font-size: .9rem;
     font-weight: 600;
     text-transform: uppercase;

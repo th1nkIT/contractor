@@ -4,7 +4,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--bg);
+    background: url('../img/rumah.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     min-height: 70vh;
 }
 
@@ -15,6 +18,7 @@
 .jb-proyek .jb-konten-proyek h1 {
     font-size: 2.4rem;
     color: #ffffff;
+    text-shadow: 0 0 6px var(--tridary);
 }
 /* Jumbotron End */
 
@@ -30,14 +34,26 @@
     align-items: center;
 }
 
+.page .status .aktif {
+    background-color: aqua;
+    color: white;
+    text-shadow: 0 0 5px black;
+}
+
 .page .status button {
     padding: .8rem 1rem;
     border: none;
     background: none;
-    background-color: var(--primary);
+    background-color: var(--secondary);
     color: white;
     font-size: 1rem;
     font-weight: 600;
+}
+
+.page .status button:hover {
+    background-color: var(--primary);
+    color: white;
+    text-shadow: 0 0 5px black;
 }
 
 .page .konten-proyek {
@@ -49,15 +65,18 @@
 
 .page .konten-proyek .cards-proyek {
     margin: 1rem;
-    padding: .3rem;
-    max-width: 17rem;
+    padding: 0 0 1rem;
+    max-width: 23rem;
+    min-height: 26rem;
+    height: auto;
     background: none;
-    box-shadow: 0 0 10px 2px var(--primary);
+    box-shadow: 0 0 10px 1px black;
     border-radius: .3rem;
 }
 
 .page .konten-proyek .cards-proyek .img-cards {
-    flex: 1 1 15rem;
+    padding: .5rem;
+    width: 22rem;
 }
 
 .page .konten-proyek .cards-proyek .img-cards img {
@@ -66,7 +85,7 @@
 }
 
 .page .konten-proyek .cards-proyek .cards-main {
-    padding: .2rem;
+    padding: .5rem 1rem 0;
 }
 
 .page .konten-proyek .cards-proyek .cards-main h1 {
@@ -74,16 +93,17 @@
     padding: 0 0 .5rem;
     text-align: end;
     font-size: 1.4rem;
-    border-bottom: 2px solid var(--secondary);
+    border-bottom: 2px solid black;
 }
 
 .page .konten-proyek .cards-proyek .cards-main .sts {
+    padding: 0;
     display: flex;
     justify-content: start;
 }
 
 .page .konten-proyek .cards-proyek .cards-main .sts span {
-    padding: .3rem 1rem .5rem;
+    padding: .4rem 1rem;
     background-color: var(--secondary);
     color: #ffffff;
     font-size: .9rem;
@@ -103,8 +123,12 @@
 
 .page .konten-proyek .cards-proyek .cards-main .btn-cards a {
     padding: .4rem 1rem;
-    background-color: var(--tridary);
-    color: #ffffff;
+    background-color: var(--fourth);
+    border-radius: .3rem;
+    color: white;
+    font-size: .9rem;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 /* Konten CSS */
 /* Proyek End */
