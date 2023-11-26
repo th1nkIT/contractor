@@ -13,7 +13,8 @@
     max-width: 23rem;
     min-height: 26rem;
     height: auto;
-    background-color: var(--primary);
+    background-color: none;
+    box-shadow: 0 0 10px 3px var(--primary);
 }
 
 .artikel .artikel-konten .cards-artikel .cards-foto {
@@ -72,14 +73,16 @@
 
 .artikel .artikel-konten .cards-artikel .cards-konten .cards-btn a {
     padding: .4rem 1rem;
-    background-color: yellow;
+    background-color: aqua;
+    border-radius: .3rem;
     color: black;
-    font-size: 1.1rem;
+    font-size: .9rem;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
 .artikel .artikel-konten .cards-artikel .cards-konten .cards-btn a:hover {
-    background-color: darkorange;
+    background-color: var(--primary);
 }
 
 /* Artikel End */

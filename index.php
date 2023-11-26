@@ -17,8 +17,8 @@
 
     <!-- My CSS -->
     <link rel="stylesheet" href="plugin/css/app.css">
-    <link rel="stylesheet" href="plugin/css/Artikel.css">
-    <link rel="stylesheet" href="plugin/css/Bisnis.css">
+    <link rel="stylesheet" href="plugin/css/artikel.css">
+    <link rel="stylesheet" href="plugin/css/bisnis.css">
     <link rel="stylesheet" href="plugin/css/db.css">
     <link rel="stylesheet" href="plugin/css/footer.css">
     <link rel="stylesheet" href="plugin/css/navbar.css">
@@ -180,42 +180,6 @@
                             </div>
                         <!-- Card Konten End -->
                     </div>
-                    
-                    <div class="cards">
-                        <!-- Card Foto -->
-                            <div class="cards-foto">
-                                <img src="plugin/img/danau.jpeg" alt="" />
-                            </div>
-                        <!-- Card Foto End -->
-
-                        <!-- Card Konten Start -->
-                            <div class="cards-konten">
-                                <h1>Judul</h1>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, possimus. Nemo nihil quas minima exercitationem!</p>
-                                <div class="cards-btn">
-                                    <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        <!-- Card Konten End -->
-                    </div>
-                    
-                    <div class="cards">
-                        <!-- Card Foto -->
-                            <div class="cards-foto">
-                                <img src="plugin/img/danau.jpeg" alt="" />
-                            </div>
-                        <!-- Card Foto End -->
-
-                        <!-- Card Konten Start -->
-                            <div class="cards-konten">
-                                <h1>Judul</h1>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, possimus. Nemo nihil quas minima exercitationem!</p>
-                                <div class="cards-btn">
-                                    <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        <!-- Card Konten End -->
-                    </div>
                 </div>
             <!-- Card End -->
         </div>
@@ -231,41 +195,81 @@
             <!-- Title Pertanyaan End -->
 
             <!-- Konten Pertanyaan Start -->
-                <div class="pertanyaan-konten">
-                    <!-- Pertanyaan -->
-                        <div class="pertanyaannya">
-                            <h1>Apa itu PT. Naviri Multi Konstruksi?</h1>
-                            <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                <div class="tanya">
+                    <!-- Image Pertanyaan Start -->
+                        <div class="pertanyaan-img">
+                            <img src="plugin/img/bingung.jpg" alt="">
                         </div>
-                    <!-- Pertanyaan -->
+                    <!-- Image Pertanyaan End -->
+            
+                    <!-- Pertanyaan Start -->
+                        <div class="pertanyaan-konten">
+                            <!-- Pertanyaan -->
+                                <div class="question">
+                                    <div class="pertanyaannya">
+                                        <h1>Apa itu PT. Naviri Multi Konstruksi?</h1>
+                                        <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                                    </div>
 
-                    <!-- Pertanyaan -->
-                        <div class="pertanyaannya">
-                            <h1>Berpengalaman dan mencapai keberhasilan bidang apa?</h1>
-                            <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
-                        </div>
-                    <!-- Pertanyaan -->
+                                    <div class="jawaban">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste architecto eaque tempore voluptatibus exercitationem esse doloremque! Molestias alias at sapiente nobis maxime sed sequi cumque.</p>
+                                    </div>
+                                </div>
+                            <!-- Pertanyaan -->
 
-                    <!-- Pertanyaan -->
-                        <div class="pertanyaannya">
-                            <h1>Sudah berapa banyak konstruksi yang dibangun?</h1>
-                            <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
-                        </div>
-                    <!-- Pertanyaan -->
+                            <!-- Pertanyaan -->
+                                <div class="question">
+                                    <div class="pertanyaannya">
+                                        <h1>Berpengalaman dan mencapai keberhasilan bidang apa?</h1>
+                                        <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                                    </div>
 
-                    <!-- Pertanyaan -->
-                        <div class="pertanyaannya">
-                            <h1>Peralatan apa yang digunakan?</h1>
-                            <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
-                        </div>
-                    <!-- Pertanyaan -->
+                                    <div class="jawaban">
+                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi optio iste quidem quis quaerat. Laudantium ullam voluptatum vero ut! Perspiciatis ipsam voluptatibus repellendus nemo voluptate.</p>
+                                    </div>
+                                </div>
+                            <!-- Pertanyaan -->
 
-                    <!-- Pertanyaan -->
-                        <div class="pertanyaannya">
-                            <h1>Apakah PT. Naviri Multi Konstruksi sudah bersertifikat internasional?</h1>
-                            <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                            <!-- Pertanyaan -->
+                                <div class="question">
+                                    <div class="pertanyaannya">
+                                        <h1>Sudah berapa banyak konstruksi yang dibangun?</h1>
+                                        <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                                    </div>
+
+                                    <div class="jawaban">
+                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci soluta incidunt eaque, rerum odio porro accusamus quod! Temporibus, deserunt accusamus possimus mollitia ea eligendi quod?</p>
+                                    </div>
+                                </div>
+                            <!-- Pertanyaan -->
+
+                            <!-- Pertanyaan -->
+                                <div class="question">
+                                    <div class="pertanyaannya">
+                                        <h1>Peralatan apa yang digunakan?</h1>
+                                        <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                                    </div>
+
+                                    <div class="jawaban">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque minima, similique esse animi atque exercitationem ea delectus ipsa a, incidunt consectetur molestiae provident maiores.</p>
+                                    </div>
+                                </div>
+                            <!-- Pertanyaan -->
+
+                            <!-- Pertanyaan -->
+                                <div class="question">
+                                    <div class="pertanyaannya">
+                                        <h1>Apakah PT. Naviri Multi Konstruksi sudah bersertifikat internasional?</h1>
+                                        <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                                    </div>
+
+                                    <div class="jawaban">
+                                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita perferendis ex modi omnis. Numquam saepe vero adipisci exercitationem excepturi accusantium error dolores, suscipit placeat! Dolores.</p>
+                                    </div>
+                                </div>
+                            <!-- Pertanyaan -->
                         </div>
-                    <!-- Pertanyaan -->
+                    <!-- Pertanyaan End -->
                 </div>
             <!-- Konten Pertanyaan End -->
         </section>

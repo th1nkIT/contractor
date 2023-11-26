@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     min-height: 100vh;
-    background-image: url('../img/danau.jpeg');
+    background-image: url('../img/perumahan.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -35,7 +35,7 @@
 
 .jb .jb-konten .jb-kiri a:hover,
 .jb-kanan a:hover {
-    color: var(--primary);
+    color: var(--fourth);
 }
 
 .jb .jb-konten .jb-main {
@@ -66,23 +66,23 @@
     margin: 6rem 1.3rem 0;
     padding: .8rem 1.3rem;
     font-weight: 600;
-    background-color: var(--secondary);
+    background-color: rgba(0, 51, 122, .8);
     border-radius: .3rem;
     color: #ffffff;
 }
 
 .jb .jb-konten .jb-main .jb-main-btn a:hover {
-    background-color: var(--tridary);
+    background-color: rgba(20, 0, 92, .8);
 }
 
 .jb .jb-konten .jb-main .jb-main-btn .tentang-kami-btn {
-    background-color: yellow;
+    background-color: rgba(255, 255, 0, .8);
     border-radius: .3rem;
     color: black;
 }
 
 .jb .jb-konten .jb-main .jb-main-btn .tentang-kami-btn:hover {
-    background-color: darkorange;
+    background-color: rgba(255, 140, 0, .8);
 }
 
 /* Jumbotron End */
@@ -104,7 +104,7 @@
 }
 
 .alasan .konten-alasan {
-    background-image: url('../img/danau.jpeg');
+    background-image: url('../img/gedung.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -151,12 +151,33 @@
     padding: 2rem 5%;
 }
 
-.pertanyaan .pertanyaan-konten {
+.pertanyaan .tanya {
+    padding: 0 0 0 5%;
+    display: flex;
+}
+
+.pertanyaan .tanya .pertanyaan-img {
+    flex: 1 1 50rem;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.pertanyaan .tanya .pertanyaan-img img {
+    width: 100%;
+    border-radius: .3rem;
+}
+
+.pertanyaan .tanya .pertanyaan-konten {
     padding: 0 5%;
 }
 
-.pertanyaan .pertanyaan-konten .pertanyaannya {
-    margin: .5rem 0;
+.pertanyaan .tanya .pertanyaan-konten .question {
+    box-shadow: 0 0 10px 3px var(--primary);
+    border-radius: .3rem;
+}
+
+.pertanyaan .tanya .pertanyaan-konten .question .pertanyaannya {
+    margin: .5rem 0 0;
     padding: .5rem 1.5rem;
     display: flex;
     justify-content: space-between;
@@ -165,12 +186,12 @@
     color: #ffffff;
 }
 
-.pertanyaan .pertanyaan-konten .pertanyaannya h1 {
+.pertanyaan .tanya .pertanyaan-konten .question .pertanyaannya h1 {
     font-size: 1.2rem;
     font-weight: 400;
 }
 
-.pertanyaan .pertanyaan-konten .pertanyaannya button {
+.pertanyaan .tanya .pertanyaan-konten .question .pertanyaannya button {
     border: none;
     background: none;
     color: #ffffff;
@@ -178,10 +199,14 @@
     font-weight: 800;
 }
 
-.pertanyaan .pertanyaan-konten .pertanyaannya button:hover {
+.pertanyaan .tanya .pertanyaan-konten .question .pertanyaannya button:hover {
     cursor: pointer;
 }
 
+.pertanyaan .tanya .pertanyaan-konten .question .jawaban {
+    margin: 0 0 1rem;
+    padding: 1rem;
+}
 /* Pertanyaan End */
 
 /* Client Start */
@@ -201,7 +226,7 @@
 
 .client .konten-client .img-client img {
     width: 100%;
-    box-shadow: 0 0 10px 3px var(--tridary);
+    box-shadow: 0 0 10px 3px var(--primary);
+    border-radius: .3rem;
 }
-
 /* Client End */
