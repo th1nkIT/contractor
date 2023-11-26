@@ -3,7 +3,7 @@
     padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
-    background-color: yellow;
+    background-color: var(--primary);
     text-align: center;
 }
 
@@ -27,7 +27,7 @@
     padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
-    background-color: rgb(7, 7, 151);
+    background-color: var(--secondary);
     color: #ffffff;
 }
 
