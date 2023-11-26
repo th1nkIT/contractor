@@ -134,7 +134,11 @@ if (isset($_POST['simpan'])) {
 
     // Handle file upload if a new file is provided
     if (!empty($filename)) {
-        $nama = $_FILES['foto_project']['name'];
+        $original_name = $_FILES['foto_project']['name'];
+        $ext = pathinfo($original_name, PATHINFO_EXTENSION);
+        $timestamp = time();
+        $nama = $timestamp . '_' . uniqid() . '.' . $ext;
+        
         $lokasi = $_FILES['foto_project']['tmp_name'];
         $upload_directory = "view/projects/images/";
 

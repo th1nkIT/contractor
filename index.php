@@ -1,8 +1,13 @@
 <?php
     require 'backstage/koneksi/koneksi.php';
+
     // Settings
-    $settings = $koneksi->query("SELECT * FROM settings");
+    $stmt_settings = $koneksi->prepare("SELECT * FROM settings");
+    $stmt_settings->execute();
+    $settings = $stmt_settings->get_result();
+    $stmt_settings->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -342,7 +347,7 @@
         </section>
     <!-- Client Kami End -->
 
-    <!-- Info Start -->
+        <!-- Info Start -->
         <section class="info">
             <?php while ($pecah_settings = $settings->fetch_assoc()) : ?>
                 <div class="konten-info">
@@ -350,9 +355,10 @@
                     <p><b><?php echo $pecah_settings['title']; ?></b></p>
                     <p><?php echo $pecah_settings['keterangan']; ?></p>
                 </div>
-                <?php endwhile; ?>
+            <?php endwhile; ?>
         </section>
-    <!-- Info End -->
+        <!-- Info End -->
+
 
     <!-- Footer Start -->
         <footer class="footer">

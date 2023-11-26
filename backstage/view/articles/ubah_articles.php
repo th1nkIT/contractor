@@ -82,6 +82,15 @@ if (isset($_POST['simpan'])) {
 
     // Jika foto diubah
     if (!empty($lokasi_article)) {
+        $allowed = array('jpeg', 'jpg', 'png');
+        $ext = pathinfo($nama_article, PATHINFO_EXTENSION);
+
+        if (!in_array($ext, $allowed)) {
+            echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
+            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_article&id=$id_article'>";
+            exit();
+        }
+
         // Hapus foto lama
         $stmt = $koneksi->prepare("SELECT images_article FROM articles WHERE id = ?");
         $stmt->bind_param("i", $id_article);
@@ -94,7 +103,9 @@ if (isset($_POST['simpan'])) {
             unlink("view/articles/images/$foto_lama");
         }
 
-        // Pindahkan foto baru
+        // Pindahkan foto baru dengan nama unik
+        $timestamp = time();
+        $nama_article = $timestamp . '_' . uniqid() . '.' . $ext;
         move_uploaded_file($lokasi_article, "view/articles/images/$nama_article");
 
         // Update data artikel dengan foto baru
