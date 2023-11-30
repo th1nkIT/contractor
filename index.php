@@ -153,7 +153,7 @@
     <!-- Alasan End -->
 
     <!-- Bisnis Kami Start -->
-        <div class="bisnis-kami">
+        <div class="page">
             <!-- Title Bisnis Start -->
                 <div class="judul">
                     <h1>BISNIS KAMI</h1>

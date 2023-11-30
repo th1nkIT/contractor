@@ -89,7 +89,7 @@
 
 /* Alasan Start */
 .alasan .judul,
-.bisnis-kami .judul,
+.page .judul,
 .artikel .judul,
 .client .judul {
     padding: 2rem 5%;
@@ -98,7 +98,7 @@
 }
 
 .alasan .judul h1,
-.bisnis-kami .judul h1,
+.page .judul h1,
 .pertanyaan .judul h1 {
     font-weight: 600;
 }
