@@ -90,7 +90,7 @@
                             <!-- Card Konten Start -->
                                 <div class="cards-konten">
                                     <h1>Judul</h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, possimus. Nemo nihil quas minima exercitationem!</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perferendis provident odit, nihil illo eligendi possimus, dolorum minima pariatur nesciunt, obcaecati numquam rerum mollitia maxime deserunt necessitatibus quia harum officiis.</p>
                                     <div class="cards-btn">
                                         <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
                                     </div>
