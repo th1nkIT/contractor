@@ -96,19 +96,56 @@
     border-bottom: 2px solid black;
 }
 
-.page .konten-proyek .cards-proyek .cards-main .sts {
+/* Span Proyek Sudah Dikerjakan CSS */
+.page .konten-proyek .cards-proyek .cards-main .sts-done {
     padding: 0;
     display: flex;
     justify-content: start;
 }
 
-.page .konten-proyek .cards-proyek .cards-main .sts span {
+.page .konten-proyek .cards-proyek .cards-main .sts-done span {
     padding: .4rem 1rem;
     background-color: var(--secondary);
+    color: #ffffff;
+    text-shadow: 0 0 5px black;
+    font-size: .9rem;
+    font-weight: 500;
+}
+/* Span Proyek Sudah Dikerjakan CSS */
+
+/* Span Proyek Sedang Dikerjakan CSS */
+.page .konten-proyek .cards-proyek .cards-main .sts-now {
+    padding: 0;
+    display: flex;
+    justify-content: start;
+}
+
+.page .konten-proyek .cards-proyek .cards-main .sts-now span {
+    padding: .4rem 1rem;
+    background-color: var(--fifth);
+    text-shadow: 0 0 5px black;
     color: #ffffff;
     font-size: .9rem;
     font-weight: 500;
 }
+/* Span Proyek Sedang Dikerjakan CSS */
+
+/* Span Proyek Akan Dikerjakan CSS */
+.page .konten-proyek .cards-proyek .cards-main .sts-will {
+    padding: 0;
+    display: flex;
+    justify-content: start;
+}
+
+.page .konten-proyek .cards-proyek .cards-main .sts-will span {
+    padding: .4rem 1rem;
+    background-color: var(--primary);
+    color: #ffffff;
+    text-shadow: 0 0 5px black;
+    font-size: .9rem;
+    font-weight: 500;
+}
+/* Span Proyek Akan Dikerjakan CSS */
 
 .page .konten-proyek .cards-proyek .cards-main p {
     padding: .5rem 0 2rem;

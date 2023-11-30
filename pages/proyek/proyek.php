@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../plugin/css/db.css">
     <link rel="stylesheet" href="../../plugin/css/footer.css">
     <link rel="stylesheet" href="../../plugin/css/navbar.css">
-    <link rel="stylesheet" href="../../plugin/css/proyek.css">
+    <link rel="stylesheet" href="../../plugin/css/pry.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -98,7 +98,7 @@
                         <!-- Konten Cards Start -->
                             <div class="cards-main">
                                 <h1>Judul</h1>
-                                <p class="sts"><span>Selesai!</span></p>
+                                <p class="sts-done"><span>Selesai!</span></p>
                                 <p>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, itaque.</p>
                                 <div class="btn-cards">
                                     <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
