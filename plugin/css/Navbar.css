@@ -5,7 +5,7 @@
     right: 0;
     left: 0;
     top: 0;
-    background-color: var(--secondary);
+    background-color: rgba(0, 51, 122, .8)
 }
 
 .navbars .navbars-sosmed {
@@ -44,6 +44,11 @@
     align-items: center;
 }
 
+.navbars .navbars-konten .navbars-nav .aktif {
+    color: aqua;
+    text-shadow: 0 0 3px var(--tridary);
+}
+
 .navbars .navbars-konten .navbars-nav a {
     margin: 0 .5rem;
     font-size: 1.1rem;
@@ -53,6 +58,7 @@
 
 .navbars .navbars-konten .navbars-nav a:hover {
     color: var(--primary);
+    text-shadow: 0 0 3px var(--tridary);
 }
 
 /* Navbar End */

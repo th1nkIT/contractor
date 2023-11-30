@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- My CSS -->
-    <link rel="stylesheet" href="../../plugin/css/App.css">
-    <link rel="stylesheet" href="../../plugin/css/Artikel.css">
-    <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
-    <link rel="stylesheet" href="../../plugin/css/Footer.css">
-    <link rel="stylesheet" href="../../plugin/css/Navbar.css">
-    <link rel="stylesheet" href="../../plugin/css/proyek.css">
+    <link rel="stylesheet" href="../../plugin/css/app.css">
+    <link rel="stylesheet" href="../../plugin/css/artikel.css">
+    <link rel="stylesheet" href="../../plugin/css/bis.css">
+    <link rel="stylesheet" href="../../plugin/css/db.css">
+    <link rel="stylesheet" href="../../plugin/css/footer.css">
+    <link rel="stylesheet" href="../../plugin/css/navbar.css">
+    <link rel="stylesheet" href="../../plugin/css/pry.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -57,7 +57,7 @@
                     <div class="navbars-nav">
                         <a href="../../index.php">BERANDA</a>
                         <a href="#">TENTANG KAMI</a>
-                        <a href="proyek.php">PROYEK</a>
+                        <a class="aktif" href="proyek.php">PROYEK</a>
                         <a href="../bisnis/bisnis.php">BISNIS KAMI</a>
                         <a href="../artikel/artikel.php">ARTIKEL</a>
                         <a href="../kontak/kontak.php">KONTAK</a>
@@ -79,8 +79,9 @@
         <section class="page">
             <!-- Button Proyek Start -->
                 <div class="status">
-                    <button type="button" onclick="semua()">SEMUA</button>
+                    <button class="aktif" type="button" onclick="semua()">SEMUA</button>
                     <button type="button" onclick="sudah()">SUDAH DIKERJAKAN</button>
+                    <button type="button" onclick="sedang()">SEDANG DIKERJAKAN</button>
                     <button type="button" onclick="akan()">AKAN DIKERJAKAN</button>
                 </div>
             <!-- Button Proyek End -->
@@ -97,7 +98,7 @@
                         <!-- Konten Cards Start -->
                             <div class="cards-main">
                                 <h1>Judul</h1>
-                                <p class="sts"><span>Selesai!</span></p>
+                                <p class="sts-done"><span>Selesai!</span></p>
                                 <p>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, itaque.</p>
                                 <div class="btn-cards">
                                     <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>

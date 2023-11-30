@@ -1,36 +1,37 @@
 /* Bisnis Start */
-.bisnis-kami .cards-bisnis {
+.page .cards-bisnis {
     padding: 0 5%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.bisnis-kami .cards-bisnis .cards {
+.page .cards-bisnis .cards {
     margin: 1rem;
     padding: 0 0 .5rem;
     border-radius: 1rem;
     max-width: 23rem;
     min-height: 26rem;
     height: auto;
-    background-color: var(--primary);
+    background-color: none;
+    box-shadow: 0 0 10px 1px black;
 }
 
-.bisnis-kami .cards-bisnis .cards .cards-foto {
+.page .cards-bisnis .cards .cards-foto {
     padding: .5rem;
     width: 22rem;
 }
 
-.bisnis-kami .cards-bisnis .cards .cards-foto img {
+.page .cards-bisnis .cards .cards-foto img {
     width: 100%;
     border-radius: .5rem;
 }
 
-.bisnis-kami .cards-bisnis .cards .cards-konten {
+.page .cards-bisnis .cards .cards-konten {
     padding: .5rem 1rem 0;
 }
 
-.bisnis-kami .cards-bisnis .cards .cards-konten h1 {
+.page .cards-bisnis .cards .cards-konten h1 {
     padding: 0 0 .5rem;
     text-align: right;
     font-size: 1.8rem;
@@ -45,28 +46,29 @@
     -webkit-box-orient: vertical;
 }
 
-.bisnis-kami .cards-bisnis .cards .cards-konten p {
+.page .cards-bisnis .cards .cards-konten p {
     padding: .5rem 0 0;
-    border-top: 3px solid black;
+    border-top: 2px solid black;
     text-align: justify;
 }
 
-.bisnis-kami .cards-bisnis .cards .cards-konten .cards-btn {
+.page .cards-bisnis .cards .cards-konten .cards-btn {
     display: flex;
     align-items: end;
     min-height: 10vh;
 }
 
-.bisnis-kami .cards-bisnis .cards .cards-konten .cards-btn a {
+.page .cards-bisnis .cards .cards-konten .cards-btn a {
     padding: .4rem 1rem;
-    background-color: yellow;
-    color: black;
-    font-size: 1.1rem;
+    background-color: var(--fourth);
+    border-radius: .3rem;
+    color: white;
+    font-size: .9rem;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
-.bisnis-kami .cards-bisnis .cards .cards-konten .cards-btn a:hover {
-    background-color: darkorange;
+.page .cards-bisnis .cards .cards-konten .cards-btn a:hover {
+    background-color: var(--primary);
 }
-
 /* Bisnis End */

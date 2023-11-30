@@ -1,0 +1,171 @@
+/* Proyek Start */
+/* Jumbotron Start */
+.jb-proyek {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('../img/rumah.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 70vh;
+}
+
+.jb-proyek .jb-konten-proyek {
+    padding: 7rem 0 0;
+}
+
+.jb-proyek .jb-konten-proyek h1 {
+    font-size: 2.4rem;
+    color: #ffffff;
+    text-shadow: 0 0 6px var(--tridary);
+}
+/* Jumbotron End */
+
+/* Konten CSS */
+.page {
+    padding: 1rem 5%;
+}
+
+.page .status {
+    padding: .5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page .status .aktif {
+    background-color: aqua;
+    color: white;
+    text-shadow: 0 0 5px black;
+}
+
+.page .status button {
+    padding: .8rem 1rem;
+    border: none;
+    background: none;
+    background-color: var(--secondary);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.page .status button:hover {
+    background-color: var(--primary);
+    color: white;
+    text-shadow: 0 0 5px black;
+}
+
+.page .konten-proyek {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.page .konten-proyek .cards-proyek {
+    margin: 1rem;
+    padding: 0 0 1rem;
+    max-width: 23rem;
+    min-height: 26rem;
+    height: auto;
+    background: none;
+    box-shadow: 0 0 10px 1px black;
+    border-radius: .3rem;
+}
+
+.page .konten-proyek .cards-proyek .img-cards {
+    padding: .5rem;
+    width: 22rem;
+}
+
+.page .konten-proyek .cards-proyek .img-cards img {
+    width: 100%;
+    border-radius: .3rem;
+}
+
+.page .konten-proyek .cards-proyek .cards-main {
+    padding: .5rem 1rem 0;
+}
+
+.page .konten-proyek .cards-proyek .cards-main h1 {
+    margin: 0 0 .5rem;
+    padding: 0 0 .5rem;
+    text-align: end;
+    font-size: 1.4rem;
+    border-bottom: 2px solid black;
+}
+
+/* Span Proyek Sudah Dikerjakan CSS */
+.page .konten-proyek .cards-proyek .cards-main .sts-done {
+    padding: 0;
+    display: flex;
+    justify-content: start;
+}
+
+.page .konten-proyek .cards-proyek .cards-main .sts-done span {
+    padding: .4rem 1rem;
+    background-color: var(--secondary);
+    color: #ffffff;
+    text-shadow: 0 0 5px black;
+    font-size: .9rem;
+    font-weight: 500;
+}
+/* Span Proyek Sudah Dikerjakan CSS */
+
+/* Span Proyek Sedang Dikerjakan CSS */
+.page .konten-proyek .cards-proyek .cards-main .sts-now {
+    padding: 0;
+    display: flex;
+    justify-content: start;
+}
+
+.page .konten-proyek .cards-proyek .cards-main .sts-now span {
+    padding: .4rem 1rem;
+    background-color: var(--fifth);
+    text-shadow: 0 0 5px black;
+    color: #ffffff;
+    font-size: .9rem;
+    font-weight: 500;
+}
+/* Span Proyek Sedang Dikerjakan CSS */
+
+/* Span Proyek Akan Dikerjakan CSS */
+.page .konten-proyek .cards-proyek .cards-main .sts-will {
+    padding: 0;
+    display: flex;
+    justify-content: start;
+}
+
+.page .konten-proyek .cards-proyek .cards-main .sts-will span {
+    padding: .4rem 1rem;
+    background-color: var(--primary);
+    color: #ffffff;
+    text-shadow: 0 0 5px black;
+    font-size: .9rem;
+    font-weight: 500;
+}
+/* Span Proyek Akan Dikerjakan CSS */
+
+.page .konten-proyek .cards-proyek .cards-main p {
+    padding: .5rem 0 2rem;
+    text-align: justify;
+}
+
+.page .konten-proyek .cards-proyek .cards-main .btn-cards {
+    display: flex;
+    align-items: end;
+    height: 2rem;
+}
+
+.page .konten-proyek .cards-proyek .cards-main .btn-cards a {
+    padding: .4rem 1rem;
+    background-color: var(--fourth);
+    border-radius: .3rem;
+    color: white;
+    font-size: .9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+/* Konten CSS */
+/* Proyek End */

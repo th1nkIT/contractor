@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- My CSS -->
-    <link rel="stylesheet" href="../../plugin/css/App.css">
-    <link rel="stylesheet" href="../../plugin/css/Artikel.css">
-    <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
-    <link rel="stylesheet" href="../../plugin/css/Footer.css">
-    <link rel="stylesheet" href="../../plugin/css/Navbar.css">
-    <link rel="stylesheet" href="../../plugin/css/Proyek.css">
+    <link rel="stylesheet" href="../../plugin/css/app.css">
+    <link rel="stylesheet" href="../../plugin/css/artikel.css">
+    <link rel="stylesheet" href="../../plugin/css/bisnis.css">
+    <link rel="stylesheet" href="../../plugin/css/Db.css">
+    <link rel="stylesheet" href="../../plugin/css/footer.css">
+    <link rel="stylesheet" href="../../plugin/css/navbar.css">
+    <link rel="stylesheet" href="../../plugin/css/pry.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -58,7 +58,7 @@
                         <a href="../../index.php">BERANDA</a>
                         <a href="#">TENTANG KAMI</a>
                         <a href="../proyek/proyek.php">PROYEK</a>
-                        <a href="bisnis.php">BISNIS KAMI</a>
+                        <a class="aktif" href="bisnis.php">BISNIS KAMI</a>
                         <a href="../artikel/artikel.php">ARTIKEL</a>
                         <a href="../kontak/kontak.php">KONTAK</a>
                     </div>
@@ -78,25 +78,27 @@
     <!-- Konten Bisnis Start -->
         <section class="page">
             <!-- Konten Bisnis Start -->
-                <div class="konten-proyek">
-                    <div class="cards-proyek">
-                        <!-- Img Cards Start -->
-                            <div class="img-cards">
-                                <img src="../../plugin/img/danau.jpeg" alt="">
-                            </div>
-                        <!-- Img Cards End -->
-
-                        <!-- Konten Cards Start -->
-                            <div class="cards-main">
-                                <h1>Judul</h1>
-                                <p>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, itaque.</p>
-                                <div class="btn-cards">
-                                    <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                <!-- Card Start -->
+                    <div class="cards-bisnis">
+                        <div class="cards">
+                            <!-- Card Foto -->
+                                <div class="cards-foto">
+                                    <img src="../../plugin/img/danau.jpeg" alt="" />
                                 </div>
-                            </div>
-                        <!-- Konten Cards End -->
+                            <!-- Card Foto End -->
+
+                            <!-- Card Konten Start -->
+                                <div class="cards-konten">
+                                    <h1>Judul</h1>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perferendis provident odit, nihil illo eligendi possimus, dolorum minima pariatur nesciunt, obcaecati numquam rerum mollitia maxime deserunt necessitatibus quia harum officiis.</p>
+                                    <div class="cards-btn">
+                                        <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            <!-- Card Konten End -->
+                        </div>
                     </div>
-                </div>
+                <!-- Card End -->
             <!-- Konten Bisnis End -->
         </section>
     <!-- Konten Bisnis End -->
