@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="../../plugin/css/App.css">
     <link rel="stylesheet" href="../../plugin/css/Artikel.css">
     <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
+    <link rel="stylesheet" href="../../plugin/css/db.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
     <link rel="stylesheet" href="../../plugin/css/Navbar.css">
-    <link rel="stylesheet" href="../../plugin/css/Proyek.css">
+    <link rel="stylesheet" href="../../plugin/css/pry.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -59,7 +59,7 @@
                         <a href="#">TENTANG KAMI</a>
                         <a href="../proyek/proyek.php">PROYEK</a>
                         <a href="../bisnis/bisnis.php">BISNIS KAMI</a>
-                        <a href="artikel.php">ARTIKEL</a>
+                        <a class="aktif" href="artikel.php">ARTIKEL</a>
                         <a href="../kontak/kontak.php">KONTAK</a>
                     </div>
                 <!-- Nav End -->
@@ -74,6 +74,38 @@
             </section>
         <!-- Jumbotron End -->
     <!-- Header End -->
+
+    <!-- Konten Artikel Start -->
+        <div class="page">
+            <div class="artikel-konten">
+                <!-- Card Artikel Start -->
+                    <div class="cards-artikel">
+                        <!-- Cards Foto Start -->
+                            <div class="cards-foto">
+                                <img src="../../plugin/img/danau.jpeg" alt="" />
+                            </div>
+                        <!-- Cards Foto End -->
+    
+                        <!-- Cards Konten Start -->
+                            <div class="cards-konten">
+                                <div class="cards-konten-title">
+                                    <div class="info-title">
+                                        <h1>Admin</h1>
+                                        <p>20-10-2023</p>
+                                    </div>
+                                    <h1>Judul</h1>
+                                </div>
+                                <p class='isi-artikel'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, possimus. Nemo nihil quas minima exercitationem!</p>
+                                <div class="cards-btn">
+                                    <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        <!-- Cards Konten End -->
+                    </div>
+                <!-- Card Artikel End -->
+            </div>
+        </div>
+    <!-- Konten Artikel End -->
 
     <!-- Info Start -->
         <section class="info">

@@ -17,7 +17,7 @@
 
     <!-- My CSS -->
     <link rel="stylesheet" href="plugin/css/app.css">
-    <link rel="stylesheet" href="plugin/css/artikel.css">
+    <link rel="stylesheet" href="plugin/css/Artikel.css">
     <link rel="stylesheet" href="plugin/css/bisnis.css">
     <link rel="stylesheet" href="plugin/css/Db.css">
     <link rel="stylesheet" href="plugin/css/footer.css">
@@ -276,7 +276,7 @@
     <!-- Pertanyaan End -->
 
     <!-- Artikel Start -->
-        <section class="artikel">
+        <section class="page">
             <!-- Title Artikel Start -->
                 <div class="judul">
                     <h1>ARTIKEL TERBARU</h1>
