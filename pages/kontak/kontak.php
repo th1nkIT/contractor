@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="../../plugin/css/App.css">
     <link rel="stylesheet" href="../../plugin/css/Artikel.css">
     <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
+    <link rel="stylesheet" href="../../plugin/css/Db.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
+    <link rel="stylesheet" href="../../plugin/css/Kontak.css">
     <link rel="stylesheet" href="../../plugin/css/Navbar.css">
-    <link rel="stylesheet" href="../../plugin/css/Proyek.css">
+    <link rel="stylesheet" href="../../plugin/css/pry.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -60,7 +61,7 @@
                         <a href="../proyek/proyek.php">PROYEK</a>
                         <a href="../bisnis/bisnis.php">BISNIS KAMI</a>
                         <a href="../artikel/artikel.php">ARTIKEL</a>
-                        <a href="kontak.php">KONTAK</a>
+                        <a class="aktif" href="kontak.php">KONTAK</a>
                     </div>
                 <!-- Nav End -->
             </div>
@@ -79,24 +80,26 @@
         <section class="kontak">
             <!-- Title Proyek Start -->
                 <div class="judul">
-                    <h1>KONTAK</h1>
+                    <h1>HUBUNGI KAMI</h1>
                 </div>
             <!-- Title Proyek End -->
 
             <!-- Kontak Start -->
                 <div class="icon">
-                    <a href="#">IKON IKLAN 1</a>
-                    <a href="#">IKON IKLAN 2</a>
-                    <a href="#">IKON IKLAN 3</a>
-                    <a href="#">IKON IKLAN 4</a>
-                    <a href="#">IKON IKLAN 5</a>
+                    <a href="#"><i class="bi-whatsapp"></i></a>
+                    <a href="#"><i class="bi-instagram"></i></a>
+                    <a href="#"><i class="bi-envelope"></i></a>
+                    <a href="#"><i class="bi-facebook"></i></a>
+                    <a href="#"><i class="bi-twitter-x"></i></a>
                 </div>
 
                 <div class="judul">
-                    <h1>JUDUL</h1>
+                    <h1>MAPS LOKASI</h1>
                 </div>
 
-                <iframe src="" frameborder="0"></iframe>
+                <div class="kontak-maps">
+                    <iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=bandung%20kota&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                </div>
             <!-- Kontak End -->
         </section>
     <!-- Content Kontak End -->

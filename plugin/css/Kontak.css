@@ -1,0 +1,37 @@
+/* Kontak CSS */
+.kontak {
+    padding: 1rem 5%;
+}
+
+.kontak .icon {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.kontak .icon a {
+    font-size: 3rem;
+    font-weight: 800;
+    color: black;
+}
+
+.kontak .icon a:hover {
+    color: var(--fourth);
+    /* text-shadow: 0 0 5px black; */
+}
+
+.kontak .kontak-maps {
+    margin: 0 0 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .3rem;
+    box-shadow: 0 0 10px 1px black;
+}
+
+.kontak .kontak-maps iframe {
+    width: 100%;
+    height: 30rem;
+    border-radius: .3rem;
+}
+/* Kontak CSS */

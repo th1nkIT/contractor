@@ -91,7 +91,8 @@
 .alasan .judul,
 .page .judul,
 .artikel .judul,
-.client .judul {
+.client .judul,
+.kontak .judul {
     padding: 2rem 5%;
     text-align: center;
     background-color: var(--bg);
@@ -99,7 +100,8 @@
 
 .alasan .judul h1,
 .page .judul h1,
-.pertanyaan .judul h1 {
+.pertanyaan .judul h1,
+.kontak .judul h1 {
     font-weight: 600;
 }
 
