@@ -10,9 +10,10 @@ $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
     $passwordHashSeed = password_hash($passwordSeed, PASSWORD_DEFAULT);
+    $guid = generateUuid();
 
-    $stmt = $koneksi->prepare("INSERT INTO user (email, password, nama_lengkap) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $emailSeed, $passwordHashSeed, $namaLengkapSeed);
+    $stmt = $koneksi->prepare("INSERT INTO user (uuid, email, password, nama_lengkap) VALUES (?, ?, ?)");
+    $stmt->bind_param("ssss", $guid, $emailSeed, $passwordHashSeed, $namaLengkapSeed);
     $stmt->execute();
 
     // echo "Seeding user berhasil.";

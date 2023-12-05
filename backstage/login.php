@@ -1,7 +1,7 @@
 <?php
 session_start();
-require 'koneksi/koneksi.php';
-include 'koneksi/seeding.php';
+require 'config/koneksi.php';
+include 'config/seeding.php';
 
 if (isset($_SESSION['administrator'])) {
     header('location:index.php');

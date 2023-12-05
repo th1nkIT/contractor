@@ -34,14 +34,14 @@
                     </tfoot>
                     <tbody>
                     <?php
-                    $stmt = $koneksi->prepare("SELECT id, nama_category, deskripsi_category, summary_category, images_category FROM category");
+                    $stmt = $koneksi->prepare("SELECT id, uuid, nama_category, deskripsi_category, summary_category, images_category FROM category");
                     $stmt->execute();
                     $stmt->store_result();
 
                     if ($stmt->num_rows == 0) {
                         echo "<tr><td colspan='4' align='center'>Data Kosong</td></tr>";
                     } else {
-                        $stmt->bind_result($id, $nama_category, $deskripsi_category, $summary_category, $images_category);
+                        $stmt->bind_result($id, $uuid, $nama_category, $deskripsi_category, $summary_category, $images_category);
                         
                         while ($stmt->fetch()) {
                     ?>
@@ -49,16 +49,16 @@
                                     <td><?php echo $nama_category ?></td>
                                     <td><?php echo $deskripsi_category ?></td>
                                     <td><?php echo $summary_category ?></td>
-                                    <td><img src="assets/images/category/<?php echo $images_category ?>" alt="<?php echo $nama_category ?>" width="100px" height="100px"></td>
+                                    <td><img src="view/category/images/<?php echo $images_category ?>" alt="<?php echo $nama_category ?>" width="100px" height="100px"></td>
                                     <td>
-                                        <a href="index.php?halaman=update_category&id=<?php echo $id ?>" class="btn btn-info btn-icon-split">
+                                        <a href="index.php?halaman=update_category&id=<?php echo $uuid ?>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>
                                             <span class="text">Update</span>
                                         </a>
                                         |
-                                        <a href="index.php?halaman=delete_category&id=<?php echo $id ?>" class="btn btn-danger btn-icon-split">
+                                        <a href="index.php?halaman=delete_category&id=<?php echo $uuid ?>" class="btn btn-danger btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>

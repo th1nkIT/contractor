@@ -36,7 +36,7 @@
                     </tfoot>
                     <tbody>
                         <?php
-                        $stmt = $koneksi->prepare("SELECT id, nama_client, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects FROM projects");
+                        $stmt = $koneksi->prepare("SELECT id, uuid, nama_client, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects FROM projects");
                         $stmt->execute();
                         $result = $stmt->get_result();
 
@@ -52,14 +52,14 @@
                                     <td><img src="view/projects/images/<?php echo htmlspecialchars($pecah['images_projects']) ?>" alt="<?php echo htmlspecialchars($pecah['nama_client']) ?>" width="100px" height="100px"></td>
                                     <td><?php echo htmlspecialchars($pecah['status_projects']) ?></td>
                                     <td>
-                                        <a href="index.php?halaman=update_projects&id=<?php echo $pecah['id'] ?>" class="btn btn-info btn-icon-split">
+                                        <a href="index.php?halaman=update_projects&id=<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-edit"></i>
                                             </span>
                                             <span class="text">Update</span>
                                         </a>
                                         |
-                                        <a href="index.php?halaman=delete_projects&id=<?php echo $pecah['id'] ?>" class="btn btn-danger btn-icon-split">
+                                        <a href="index.php?halaman=delete_projects&id=<?php echo $pecah['uuid'] ?>" class="btn btn-danger btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>

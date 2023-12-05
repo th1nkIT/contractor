@@ -110,9 +110,10 @@ if (isset($_POST['simpan'])) {
         $location_project = $_POST['location_project'];
         $date_start_project = $_POST['date_start_project'];
         $date_end_project = $_POST['date_end_project'];
+        $guid = generateUuid();
 
-        $stmt = $koneksi->prepare("INSERT INTO projects (nama_client, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project);
+        $stmt = $koneksi->prepare("INSERT INTO projects (uuid, nama_client, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $guid, $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project);
 
         if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";
