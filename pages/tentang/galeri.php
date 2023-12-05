@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="../../plugin/css/App.css">
     <link rel="stylesheet" href="../../plugin/css/Artikel.css">
     <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
+    <link rel="stylesheet" href="../../plugin/css/db.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
     <link rel="stylesheet" href="../../plugin/css/Navbar.css">
-    <link rel="stylesheet" href="../../plugin/css/Proyek.css">
+    <link rel="stylesheet" href="../../plugin/css/pry.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -56,7 +56,7 @@
                 <!-- Nav Start -->
                     <div class="navbars-nav">
                         <a href="../../index.php">BERANDA</a>
-                        <a href="#">TENTANG KAMI</a>
+                        <a class="aktif" href="#">TENTANG KAMI</a>
                         <a href="../proyek/proyek.php">PROYEK</a>
                         <a href="../bisnis/bisnis.php">BISNIS KAMI</a>
                         <a href="../artikel/artikel.php">ARTIKEL</a>
@@ -74,6 +74,31 @@
             </section>
         <!-- Jumbotron End -->
     <!-- Header End -->
+
+    <!-- Konten Bisnis Start -->
+        <section class="page">
+            <!-- Konten Bisnis Start -->
+                <!-- Card Start -->
+                    <div class="cards-bisnis">
+                        <div class="cards">
+                            <!-- Card Foto -->
+                                <div class="cards-foto">
+                                    <img src="../../plugin/img/danau.jpeg" alt="" />
+                                </div>
+                            <!-- Card Foto End -->
+
+                            <!-- Card Konten Start -->
+                                <div class="cards-konten">
+                                    <h1>Judul</h1>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perferendis provident odit, nihil illo eligendi possimus, dolorum minima pariatur nesciunt, obcaecati numquam rerum mollitia maxime deserunt necessitatibus quia harum officiis.</p>
+                                </div>
+                            <!-- Card Konten End -->
+                        </div>
+                    </div>
+                <!-- Card End -->
+            <!-- Konten Bisnis End -->
+        </section>
+    <!-- Konten Bisnis End -->
 
     <!-- Info Start -->
         <section class="info">
