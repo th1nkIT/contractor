@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
     <link rel="stylesheet" href="../../plugin/css/Db.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
-    <link rel="stylesheet" href="../../plugin/css/Kontak.css">
+    <link rel="stylesheet" href="../../plugin/css/kontak.css">
     <link rel="stylesheet" href="../../plugin/css/Navbar.css">
     <link rel="stylesheet" href="../../plugin/css/pry.css">
     
