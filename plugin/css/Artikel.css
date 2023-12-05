@@ -1,43 +1,44 @@
 /* Artikel Start */
-.artikel .artikel-konten {
+.page .artikel-konten {
     padding: 0 5%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.artikel .artikel-konten .cards-artikel {
+.page .artikel-konten .cards-artikel {
     margin: 1rem;
     padding: 0 0 1rem;
     border-radius: 1rem;
     max-width: 23rem;
     min-height: 26rem;
     height: auto;
-    background-color: var(--primary);
+    background-color: none;
+    box-shadow: 0 0 10px 1px black;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-foto {
+.page .artikel-konten .cards-artikel .cards-foto {
     padding: .5rem;
     width: 22rem;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-foto img {
+.page .artikel-konten .cards-artikel .cards-foto img {
     width: 100%;
     border-radius: .5rem;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-konten {
+.page .artikel-konten .cards-artikel .cards-konten {
     padding: .5rem 1rem 0;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-konten .cards-konten-title {
+.page .artikel-konten .cards-artikel .cards-konten .cards-konten-title {
     padding: 0 0 .5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-konten .cards-konten-title .info-title h1 {
+.page .artikel-konten .cards-artikel .cards-konten .cards-konten-title .info-title h1 {
     padding: .2rem 1rem;
     font-size: 1rem;
     font-weight: 500;
@@ -46,40 +47,42 @@
     text-align: center;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-konten .cards-konten-title .info-title p {
+.page .artikel-konten .cards-artikel .cards-konten .cards-konten-title .info-title p {
     padding: .5rem 0 0;
     font-size: 1rem;
     font-weight: 500;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-konten .cards-konten-title h1 {
+.page .artikel-konten .cards-artikel .cards-konten .cards-konten-title h1 {
     font-size: 1.2rem;
     text-align: right;
     max-width: 15rem;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-konten .isi-artikel {
+.page .artikel-konten .cards-artikel .cards-konten .isi-artikel {
     padding: .5rem 0 0;
-    border-top: 3px solid black;
+    border-top: 2px solid black;
     text-align: justify;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-konten .cards-btn {
+.page .artikel-konten .cards-artikel .cards-konten .cards-btn {
     display: flex;
     align-items: end;
     min-height: 10vh;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-konten .cards-btn a {
+.page .artikel-konten .cards-artikel .cards-konten .cards-btn a {
     padding: .4rem 1rem;
-    background-color: yellow;
-    color: black;
-    font-size: 1.1rem;
+    background-color: var(--fourth);
+    border-radius: .3rem;
+    color: white;
+    font-size: .9rem;
     font-weight: 600;
+    text-transform: uppercase;
 }
 
-.artikel .artikel-konten .cards-artikel .cards-konten .cards-btn a:hover {
-    background-color: darkorange;
+.page .artikel-konten .cards-artikel .cards-konten .cards-btn a:hover {
+    background-color: var(--primary);
 }
 
 /* Artikel End */

@@ -65,6 +65,7 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
 $tanggal = date('Y-m-d');
+
 if (isset($_POST['simpan'])) {
     $status_project = $_POST['status_project'];
     
@@ -94,7 +95,11 @@ if (isset($_POST['simpan'])) {
     }
 
     // Handle file upload
-    $nama = $_FILES['foto_project']['name'];
+    $original_name = $_FILES['foto_project']['name'];
+    $ext = pathinfo($original_name, PATHINFO_EXTENSION);
+    $timestamp = time();
+    $nama = $timestamp . '_' . uniqid() . '.' . $ext;
+
     $lokasi = $_FILES['foto_project']['tmp_name'];
     $upload_directory = "view/projects/images/";
 
@@ -105,9 +110,10 @@ if (isset($_POST['simpan'])) {
         $location_project = $_POST['location_project'];
         $date_start_project = $_POST['date_start_project'];
         $date_end_project = $_POST['date_end_project'];
+        $guid = generateUuid();
 
-        $stmt = $koneksi->prepare("INSERT INTO projects (nama_client, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project);
+        $stmt = $koneksi->prepare("INSERT INTO projects (uuid, nama_client, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $guid, $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project);
 
         if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";
@@ -124,3 +130,4 @@ if (isset($_POST['simpan'])) {
     }
 }
 ?>
+

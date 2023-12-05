@@ -9,9 +9,9 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Article Page</h6>
-            <a href="index.php?halaman=tambah_articles"><button type="button" class="btn btn-primary">Tambah Data</button></a>
+            <a href="index.php?halaman=tambah_articles" class="btn btn-primary">Tambah Data</a>
         </div>
-        <div class="card-body"> 
+        <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -33,41 +33,46 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                    <?php
-                    $ambil = $koneksi->query("SELECT * FROM articles");
-                    if ($ambil->num_rows == 0) {
-                        echo "<tr><td colspan='5' align='center'>Data Kosong</td></tr>";
-                    } else {
-                        while ($pecah = $ambil->fetch_assoc()) {
-                    ?>
+                        <?php
+                        $stmt = $koneksi->prepare("SELECT id, uuid, title_article, deskripsi_article, isi_article, images_article FROM articles");
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        if ($result->num_rows === 0) {
+                            echo "<tr><td colspan='5' align='center'>Data Kosong</td></tr>";
+                        } else {
+                            while ($pecah = $result->fetch_assoc()) {
+                        ?>
                                 <tr>
-                                    <td><?php echo $pecah['title_article'] ?></td>
-                                    <td><?php echo $pecah['deskripsi_article'] ?></td>
-                                    <td><?php echo $pecah['isi_article'] ?></td>
-                                    <td><img src="view/articles/images/<?php echo $pecah['images_article'] ?>" alt="<?php echo $pecah['title_article'] ?>" width="100px" height="100px"></td>
+                                    <td><?php echo htmlspecialchars($pecah['title_article']) ?></td>
+                                    <td><?php echo htmlspecialchars($pecah['deskripsi_article']) ?></td>
+                                    <td><?php echo htmlspecialchars($pecah['isi_article']) ?></td>
+                                    <td><img src="view/articles/images/<?php echo htmlspecialchars($pecah['images_article']) ?>" alt="<?php echo htmlspecialchars($pecah['title_article']) ?>" width="100px" height="100px"></td>
                                     <td>
-                                            <a href="index.php?halaman=update_articles&id=<?php echo $pecah['id'] ?>" class="btn btn-info btn-icon-split">
+                                        <a href="index.php?halaman=update_articles&id=<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
-                                                <i class="fas fa-trash"></i>
+                                                <i class="fas fa-edit"></i>
                                             </span>
                                             <span class="text">Update</span>
-                                            </a> | <a href="index.php?halaman=delete_articles&id=<?php echo $pecah['id'] ?>" class="btn btn-danger btn-icon-split">
+                                        </a>
+                                        |
+                                        <a href="index.php?halaman=delete_articles&id=<?php echo $pecah['uuid'] ?>" class="btn btn-danger btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>
                                             <span class="text">Delete</span>
-                                            </a> 
+                                        </a>
                                     </td>
                                 </tr>
-                                <?php
-                                }
+                        <?php
                             }
+                        }
+                        $stmt->close();
                         ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
 </div>
 <!-- /.container-fluid -->

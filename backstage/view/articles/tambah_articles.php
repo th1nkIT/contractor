@@ -25,12 +25,10 @@
                         <input class="form-control" type="text" name="deskripsi_article" required>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Isi Article</label>
-                        <input class="form-control" type="text" name="isi_article" required>
-                    </div>
-                </div>
+                <label for="example-text-input" class="form-control-label">Isi Article</label>
+                <textarea name="isi_article" id="isi_article" rows="10" cols="80">
+                    Isi Artikel Anda di sini....
+                </textarea>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -68,7 +66,11 @@ if (isset($_POST['simpan'])) {
     }
 
     // Handle file upload
-    $nama = $_FILES['foto_article']['name'];
+    $original_name = $_FILES['foto_article']['name'];
+    $ext = pathinfo($original_name, PATHINFO_EXTENSION);
+    $timestamp = time();
+    $nama = $timestamp . '_' . uniqid() . '.' . $ext;
+
     $lokasi = $_FILES['foto_article']['tmp_name'];
     $upload_directory = "view/articles/images/";
 
@@ -79,8 +81,13 @@ if (isset($_POST['simpan'])) {
         $deskripsi_article = $_POST['deskripsi_article'];
         $isi_article = $_POST['isi_article'];
 
-        $stmt = $koneksi->prepare("INSERT INTO articles (title_article, deskripsi_article, isi_article, images_article) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $title_article, $deskripsi_article, $isi_article, $nama);
+        if(!empty($isi_article)) {
+
+        // make guid from config/uuid.php
+        $guid = generateUuid();
+            
+        $stmt = $koneksi->prepare("INSERT INTO articles (uuid, title_article, deskripsi_article, isi_article, images_article) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $guid, $title_article, $deskripsi_article, $isi_article, $nama);
 
         if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";
@@ -91,6 +98,9 @@ if (isset($_POST['simpan'])) {
         }
 
         $stmt->close();
+        } else {
+            echo "<div class='alert alert-danger'>Artikel tidak boleh kosong</div>";
+        }
     } else {
         echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
         echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";

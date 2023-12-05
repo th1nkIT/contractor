@@ -25,12 +25,14 @@
                         <input class="form-control" type="text" name="deskripsi_category" required>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Summary Category</label>
-                        <input class="form-control" type="text" name="summary_category" required>
-                    </div>
-                </div>
+                <label for="example-text-input" class="form-control-label">Deskripsi Category</label>
+                <textarea name="deskripsi_category" id="deskripsi_category">
+                    Isi Deskripsi Category Anda di sini....
+                </textarea>
+                <label for="example-text-input" class="form-control-label">Summary Category</label>
+                <textarea name="summary_category" id="summary_category">
+                    Isi Summary Category Anda di sini....
+                </textarea>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -68,7 +70,11 @@ if (isset($_POST['simpan'])) {
     }
 
     // Handle file upload
-    $nama = $_FILES['foto_category']['name'];
+    $original_name = $_FILES['foto_category']['name'];
+    $ext = pathinfo($original_name, PATHINFO_EXTENSION);
+    $timestamp = time();
+    $nama = $timestamp . '_' . uniqid() . '.' . $ext;
+
     $lokasi = $_FILES['foto_category']['tmp_name'];
     $upload_directory = "view/category/images/";
 
@@ -78,10 +84,11 @@ if (isset($_POST['simpan'])) {
         $nama_category = $_POST['nama_category'];
         $deskripsi_category = $_POST['deskripsi_category'];
         $summary_category = $_POST['summary_category'];
+        $guid = generateUuid();
 
-        $stmt = $koneksi->prepare("INSERT INTO category (nama_category, deskripsi_category, summary_category, images_category) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $nama_category, $deskripsi_category, $summary_category, $nama);
-
+        $stmt = $koneksi->prepare("INSERT INTO category (uuid, nama_category, deskripsi_category, summary_category, images_category) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $guid, $nama_category, $deskripsi_category, $summary_category, $nama);
+        
         if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";
             echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
@@ -89,7 +96,7 @@ if (isset($_POST['simpan'])) {
             echo "<div class='alert alert-danger'>Gagal menyimpan data kategori</div>";
             echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
         }
-
+        
         $stmt->close();
     } else {
         echo "<div class='alert alert-danger'>Gagal mengupload file</div>";

@@ -2,14 +2,14 @@
 $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
-if (!is_numeric($id) || $id <= 0) {
-    echo "<div class='alert alert-danger'>ID Proyek tidak valid</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=projects'>";
+if (!isValidUuid($id)) {
+    echo "<div class='alert alert-danger'>ID Category tidak valid</div>";
+    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
     exit();
 }
 
 // Gunakan prepared statement untuk mengambil data proyek
-$stmt = $koneksi->prepare("SELECT * FROM projects WHERE id = ?");
+$stmt = $koneksi->prepare("SELECT * FROM projects WHERE uuid = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -112,7 +112,7 @@ date_default_timezone_set('Asia/Jakarta');
 $tanggal = date('Y-m-d');
 if (isset($_POST['simpan'])) {
     $status_project = $_POST['status_project'];
-    $id_project = $_POST['id_project'];
+    $id_project = $_GET['id'];
 
     // Check if file is not jpeg, jpg, or png
     $allowed = array('jpeg', 'jpg', 'png');
@@ -134,7 +134,11 @@ if (isset($_POST['simpan'])) {
 
     // Handle file upload if a new file is provided
     if (!empty($filename)) {
-        $nama = $_FILES['foto_project']['name'];
+        $original_name = $_FILES['foto_project']['name'];
+        $ext = pathinfo($original_name, PATHINFO_EXTENSION);
+        $timestamp = time();
+        $nama = $timestamp . '_' . uniqid() . '.' . $ext;
+        
         $lokasi = $_FILES['foto_project']['tmp_name'];
         $upload_directory = "view/projects/images/";
 
@@ -146,8 +150,8 @@ if (isset($_POST['simpan'])) {
             $date_start_project = $_POST['date_start_project'];
             $date_end_project = $_POST['date_end_project'];
 
-            $stmt = $koneksi->prepare("UPDATE projects SET nama_client=?, lokasi_projects=?, tanggal_projects_start=?, tanggal_projects_end=?, images_projects=?, status_projects=? WHERE id_project=?");
-            $stmt->bind_param("ssssssi", $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project, $id_project);
+            $stmt = $koneksi->prepare("UPDATE projects SET nama_client=?, lokasi_projects=?, tanggal_projects_start=?, tanggal_projects_end=?, images_projects=?, status_projects=? WHERE uuid=?");
+            $stmt->bind_param("sssssss", $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project, $id_project);
 
             if ($stmt->execute()) {
                 echo "<div class='alert alert-info'>Data Tersimpan</div>";
@@ -169,8 +173,8 @@ if (isset($_POST['simpan'])) {
         $date_start_project = $_POST['date_start_project'];
         $date_end_project = $_POST['date_end_project'];
 
-        $stmt = $koneksi->prepare("UPDATE projects SET nama_client=?, lokasi_projects=?, tanggal_projects_start=?, tanggal_projects_end=?, status_projects=? WHERE id_project=?");
-        $stmt->bind_param("sssssi", $nama_client, $location_project, $date_start_project, $date_end_project, $status_project, $id_project);
+        $stmt = $koneksi->prepare("UPDATE projects SET nama_client=?, lokasi_projects=?, tanggal_projects_start=?, tanggal_projects_end=?, status_projects=? WHERE uuid=?");
+        $stmt->bind_param("ssssss", $nama_client, $location_project, $date_start_project, $date_end_project, $status_project, $id_project);
 
         if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";

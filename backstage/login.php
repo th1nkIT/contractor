@@ -1,38 +1,43 @@
 <?php
-    session_start();
-    require 'koneksi/koneksi.php';
+session_start();
+require 'config/koneksi.php';
+include 'config/seeding.php';
 
-    if (isset($_SESSION['administrator'])) {
-        header('location:index.php');
+if (isset($_SESSION['administrator'])) {
+    header('location:index.php');
+}
+
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $ambil = $koneksi->prepare("SELECT * FROM user WHERE email=?");
+    if (!$ambil) {
+        die("Prepare failed: (" . $koneksi->errno . ") " . $koneksi->error);
     }
 
-    if(isset($_POST['login'])){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+    $ambil->bind_param("s", $email);
+    $ambil->execute();
+    $result = $ambil->get_result();
 
-        $ambil = $koneksi->prepare("SELECT * FROM user WHERE email=?");
-        $ambil->bind_param("s", $email);
-        $ambil->execute();
-        $result = $ambil->get_result();
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+        $storedHashedPassword = $user['password'];
+        $passwordMatches = password_verify($password, $storedHashedPassword);
 
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-            $storedHashedPassword = $user['password'];
-            $passwordMatches = password_verify($password, $storedHashedPassword);
-
-            if ($passwordMatches) {
-                $_SESSION['administrator'] = $user;
-                echo "<div class='alert alert-info'>Login Berhasil</div>";
-                echo "<meta http-equiv='refresh' content='1;url=index.php'>";
-            } else {
-                echo "<div class='alert alert-danger'>Login Gagal: Password tidak sesuai</div>";
-            }
+        if ($passwordMatches) {
+            $_SESSION['administrator'] = $user;
+            echo "<div class='alert alert-info'>Login Berhasil</div>";
+            echo "<meta http-equiv='refresh' content='1;url=index.php'>";
         } else {
-            echo "<div class='alert alert-danger'>Login Gagal: Email tidak ditemukan</div>";
+            echo "<div class='alert alert-danger'>Login Gagal: Password tidak sesuai</div>";
         }
-
-        $ambil->close();
+    } else {
+        echo "<div class='alert alert-danger'>Login Gagal: Email tidak ditemukan</div>";
     }
+
+    $ambil->close();
+}
 ?>
 
 <!DOCTYPE html>

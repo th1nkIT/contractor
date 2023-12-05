@@ -2,14 +2,14 @@
 $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
-if (!is_numeric($id) || $id <= 0) {
-    echo "<div class='alert alert-danger'>ID Kategori tidak valid</div>";
+if (!isValidUuid($id)) {
+    echo "<div class='alert alert-danger'>ID Category tidak valid</div>";
     echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
     exit();
 }
 
 // Gunakan prepared statement untuk mengambil data kategori
-$stmt = $koneksi->prepare("SELECT * FROM category WHERE id = ?");
+$stmt = $koneksi->prepare("SELECT * FROM category WHERE uuid = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -47,18 +47,14 @@ if ($result->num_rows > 0) {
                         <input class="form-control" type="text" name="nama_category" value="<?php echo $pecah['nama_category']; ?>" required>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Deskripsi Category</label>
-                        <input class="form-control" type="text" name="deskripsi_category" value="<?php echo $pecah['deskripsi_category']; ?>" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Summary Category</label>
-                        <input class="form-control" type="text" name="summary_category" value="<?php echo $pecah['summary_category']; ?>" required>
-                    </div>
-                </div>
+                <label for="example-text-input" class="form-control-label">Deskripsi Category</label>
+                <textarea name="deskripsi_category" id="deskripsi_category">
+                    <?php echo $pecah['deskripsi_category']; ?>
+                </textarea>
+                <label for="example-text-input" class="form-control-label">Summary Category</label>
+                <textarea name="summary_category" id="summary_category">
+                    <?php echo $pecah['summary_category']; ?>
+                </textarea>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -76,7 +72,7 @@ if ($result->num_rows > 0) {
 </div>
 <?php
 if (isset($_POST['simpan'])) {
-    $id_category = $_POST['id'];
+    $id_category = $_GET['id'];
     $nama_category = $_POST['nama_category'];
     $deskripsi_category = $_POST['deskripsi_category'];
     $summary_category = $_POST['summary_category'];
@@ -95,7 +91,7 @@ if (isset($_POST['simpan'])) {
         }
 
         // Hapus foto lama
-        $stmt = $koneksi->prepare("SELECT images_category FROM category WHERE id = ?");
+        $stmt = $koneksi->prepare("SELECT images_category FROM category WHERE uuid = ?");
         $stmt->bind_param("i", $id_category);
         $stmt->execute();
         $stmt->bind_result($foto_lama);
@@ -106,16 +102,18 @@ if (isset($_POST['simpan'])) {
             unlink("view/category/images/$foto_lama");
         }
 
-        // Pindahkan foto baru
+        // Pindahkan foto baru dengan nama unik
+        $timestamp = time();
+        $foto_category = $timestamp . '_' . uniqid() . '.' . $ext;
         move_uploaded_file($lokasi_category, "view/category/images/$foto_category");
 
         // Update data kategori dengan foto baru
-        $stmt = $koneksi->prepare("UPDATE category SET nama_category=?, deskripsi_category=?, summary_category=?, images_category=? WHERE id=?");
-        $stmt->bind_param("ssssi", $nama_category, $deskripsi_category, $summary_category, $foto_category, $id_category);
+        $stmt = $koneksi->prepare("UPDATE category SET nama_category=?, deskripsi_category=?, summary_category=?, images_category=? WHERE uuid=?");
+        $stmt->bind_param("sssss", $nama_category, $deskripsi_category, $summary_category, $foto_category, $id_category);
     } else {
         // Update data kategori tanpa mengubah foto
-        $stmt = $koneksi->prepare("UPDATE category SET nama_category=?, deskripsi_category=?, summary_category=? WHERE id=?");
-        $stmt->bind_param("sssi", $nama_category, $deskripsi_category, $summary_category, $id_category);
+        $stmt = $koneksi->prepare("UPDATE category SET nama_category=?, deskripsi_category=?, summary_category=? WHERE uuid=?");
+        $stmt->bind_param("ssss", $nama_category, $deskripsi_category, $summary_category, $id_category);
     }
 
     if ($stmt->execute()) {
