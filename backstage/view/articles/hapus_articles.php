@@ -2,8 +2,15 @@
 if (isset($_GET['id'])) {
     $id_article = $_GET['id'];
 
+    // Validasi ID
+    if (!isValidUuid($id_article)) {
+        echo "<div class='alert alert-danger'>ID Article tidak valid</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=articles'>";
+        exit();
+    }
+
     // Ambil nama file gambar sebelum menghapus artikel
-    $stmt = $koneksi->prepare("SELECT images_article FROM articles WHERE id = ?");
+    $stmt = $koneksi->prepare("SELECT images_article FROM articles WHERE uuid = ?");
     $stmt->bind_param("i", $id_article);
     $stmt->execute();
     $stmt->bind_result($foto);
@@ -16,7 +23,7 @@ if (isset($_GET['id'])) {
     }
 
     // Hapus artikel dari database
-    $stmt = $koneksi->prepare("DELETE FROM articles WHERE id = ?");
+    $stmt = $koneksi->prepare("DELETE FROM articles WHERE uuid = ?");
     $stmt->bind_param("i", $id_article);
 
     if ($stmt->execute()) {

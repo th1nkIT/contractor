@@ -66,9 +66,10 @@
 
                             // Enkripsi Password dengan password_hash
                             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                            $guid = generateUuid();
 
-                            $stmt = $koneksi->prepare("INSERT INTO user (nama_lengkap, email, password) VALUES (?, ?, ?)");
-                            $stmt->bind_param("sss", $nama, $email, $hashedPassword);
+                            $stmt = $koneksi->prepare("INSERT INTO user (uuid, nama_lengkap, email, password) VALUES (?, ?, ?, ?)");
+                            $stmt->bind_param("ssss", $guid, $nama, $email, $hashedPassword);
 
                             if($stmt->execute()){
                                 echo "<div class='alert alert-info'>Register Berhasil</div>";
