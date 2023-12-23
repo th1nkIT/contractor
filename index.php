@@ -1,11 +1,17 @@
 <?php
-    require 'backstage/koneksi/koneksi.php';
+    require 'backstage/config/koneksi.php';
 
     // Settings
     $stmt_settings = $koneksi->prepare("SELECT * FROM settings");
     $stmt_settings->execute();
     $settings = $stmt_settings->get_result();
     $stmt_settings->close();
+
+    // Article Terbaru
+    $stmt_articles = $koneksi->prepare("SELECT * FROM articles ORDER BY id DESC LIMIT 4");
+    $stmt_articles->execute();
+    $articles = $stmt_articles->get_result();
+    $stmt_articles->close();
 ?>
 
 
@@ -283,35 +289,44 @@
                     <p>Berisi berita informasi dan event yang ada di perusahaan kami</p>
                 </div>
             <!-- Title Artikel End -->
-
+        
             <!-- Konten Artikel Start -->
-                <div class="artikel-konten">
-                    <!-- Card Artikel Start -->
-                        <div class="cards-artikel">
-                            <!-- Cards Foto Start -->
-                                <div class="cards-foto">
-                                    <img src="plugin/img/danau.jpeg" alt="" />
-                                </div>
-                            <!-- Cards Foto End -->
-
-                            <!-- Cards Konten Start -->
-                                <div class="cards-konten">
-                                    <div class="cards-konten-title">
-                                        <div class="info-title">
-                                            <h1>Admin</h1>
-                                            <p>20-10-2023</p>
-                                        </div>
-                                        <h1>Judul</h1>
-                                    </div>
-                                    <p class='isi-artikel'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, possimus. Nemo nihil quas minima exercitationem!</p>
-                                    <div class="cards-btn">
-                                        <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            <!-- Cards Konten End -->
+            <div class="artikel-konten">
+                <!-- Card Artikel Start -->
+                <?php while ($article = $articles->fetch_assoc()) : ?>
+                    <div class="cards-artikel">
+                        <!-- Cards Foto Start -->
+                        <div class="cards-foto">
+                            <img height="350px" src="backstage/view/articles/images/<?php echo $article['images_article']; ?>" alt="<?php echo $article['title_article']; ?>" />
                         </div>
-                    <!-- Card Artikel End -->
-                </div>
+                        <!-- Cards Foto End -->
+                        <!-- Cards Konten Start -->
+                        <div class="cards-konten">
+                            <div class="cards-konten-title">
+                                <div class="info-title">
+                                    <h1>Admin</h1>
+                                    <p><?php echo date('d-m-Y', strtotime($article['created_at'])); ?></p>
+                                </div>
+                                <h1><?php echo $article['title_article']; ?></h1>
+                            </div>
+                            <p class='isi-artikel'>
+                                <?php
+                                // Memotong isi_article menjadi maksimal 100 kata
+                                $isi_article = $article['isi_article'];
+                                $words = explode(" ", $isi_article);
+                                $trimmed_content = implode(" ", array_slice($words, 0, 5));
+                                echo $trimmed_content . (count($words) > 5 ? "..." : "");
+                                ?>
+                            </p>
+                            <div class="cards-btn">
+                                <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        <!-- Cards Konten End -->
+                    </div>
+                <?php endwhile; ?>
+                <!-- Card Artikel End -->
+            </div>
             <!-- Konten Artikel End -->
         </section>
     <!-- Artikel End -->
