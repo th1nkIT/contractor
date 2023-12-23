@@ -1,0 +1,81 @@
+/* Start */
+/* Button Gallery CSS */
+.btn-gallery {
+    padding: 1.5rem 1rem .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-gallery a {
+    padding: .5rem 2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background-color: var(--secondary);
+    color: white;
+    border-radius: .3rem;
+}
+
+.btn-gallery a:hover {
+    background-color: var(--primary);
+}
+/* Button Gallery CSS */
+
+/* About CSS */
+.about {
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.about .about-img {
+    flex: 1 1 1100rem;
+}
+
+.about .about-img img {
+    width: 100%;
+    border-radius: .3rem;
+}
+
+.about .about-main {
+    margin: 0 0 0 2rem;
+}
+
+.about .about-main p {
+    text-align: justify;
+}
+/* About CSS */
+
+/* Visi Misi CSS */
+.vm {
+    margin: 1.2rem 0 0;
+    padding: 2rem 5%;
+    background-color: var(--fourth);
+    color: white;
+}
+
+.vm .ct {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vm .ct .main {
+    margin: 0 .5rem;
+}
+
+.vm .ct .main .visi {
+    margin: 0 0 1rem;
+    padding: 0 0 1rem;
+    text-align: right;
+    border-bottom: 3px solid white;
+}
+
+.vm .ct .logo {
+    display: flex;
+    justify-content: center;
+    background-color: red;
+}
+/* Visi Misi CSS */
