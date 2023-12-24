@@ -219,7 +219,7 @@
                 <div class="tanya">
                     <!-- Image Pertanyaan Start -->
                         <div class="pertanyaan-img">
-                            <img src="plugin/img/bingung.jpg" alt="">
+                            <img src="plugin/img/bingung.png" alt="">
                         </div>
                     <!-- Image Pertanyaan End -->
             
@@ -229,10 +229,10 @@
                                 <div class="question">
                                     <div class="pertanyaannya">
                                         <h1>Apa itu PT. Naviri Multi Konstruksi?</h1>
-                                        <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                                        <button id="jawab" type='button'><i class="bi-three-dots"></i></button>
                                     </div>
 
-                                    <div class="jawaban">
+                                    <div class="jawaban none">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste architecto eaque tempore voluptatibus exercitationem esse doloremque! Molestias alias at sapiente nobis maxime sed sequi cumque.</p>
                                     </div>
                                 </div>
@@ -242,10 +242,10 @@
                                 <div class="question">
                                     <div class="pertanyaannya">
                                         <h1>Berpengalaman dan mencapai keberhasilan bidang apa?</h1>
-                                        <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                                        <button id="jawab2" type='button'><i class="bi-three-dots"></i></button>
                                     </div>
 
-                                    <div class="jawaban">
+                                    <div class="jawaban2 none">
                                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi optio iste quidem quis quaerat. Laudantium ullam voluptatum vero ut! Perspiciatis ipsam voluptatibus repellendus nemo voluptate.</p>
                                     </div>
                                 </div>
@@ -255,10 +255,10 @@
                                 <div class="question">
                                     <div class="pertanyaannya">
                                         <h1>Sudah berapa banyak konstruksi yang dibangun?</h1>
-                                        <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                                        <button id="jawab3" type='button'><i class="bi-three-dots"></i></button>
                                     </div>
 
-                                    <div class="jawaban">
+                                    <div class="jawaban3 none">
                                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci soluta incidunt eaque, rerum odio porro accusamus quod! Temporibus, deserunt accusamus possimus mollitia ea eligendi quod?</p>
                                     </div>
                                 </div>
@@ -268,10 +268,10 @@
                                 <div class="question">
                                     <div class="pertanyaannya">
                                         <h1>Peralatan apa yang digunakan?</h1>
-                                        <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                                        <button id="jawab4" type='button'><i class="bi-three-dots"></i></button>
                                     </div>
 
-                                    <div class="jawaban">
+                                    <div class="jawaban4 none">
                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cumque minima, similique esse animi atque exercitationem ea delectus ipsa a, incidunt consectetur molestiae provident maiores.</p>
                                     </div>
                                 </div>
@@ -281,10 +281,10 @@
                                 <div class="question">
                                     <div class="pertanyaannya">
                                         <h1>Apakah PT. Naviri Multi Konstruksi sudah bersertifikat internasional?</h1>
-                                        <button type='button'><i class="bi-dot"></i><i class="bi-dot"></i><i class="bi-dot"></i></button>
+                                        <button id="jawab5" type='button'><i class="bi-three-dots"></i></button>
                                     </div>
 
-                                    <div class="jawaban">
+                                    <div class="jawaban5 none">
                                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Expedita perferendis ex modi omnis. Numquam saepe vero adipisci exercitationem excepturi accusantium error dolores, suscipit placeat! Dolores.</p>
                                     </div>
                                 </div>
@@ -429,5 +429,7 @@
             </div>
         <!-- Copyright End -->
     <!-- Footer End -->
+
+    <script src="plugin/js/script.js"></script>
 </body>
 </html>
