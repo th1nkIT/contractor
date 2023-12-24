@@ -87,3 +87,22 @@ document.addEventListener("click", function (e) {
         jawaban5.classList.remove("active-jawab");
     }
 });
+
+// Jumbotron JS
+function kiri() {
+    const jumbotron = document.querySelector(".jb");
+
+    document.querySelector("#kiri").onclick = () => {
+        jumbotron.classList.toggle("jb2");
+        jumbotron.classList.remove("jb3");
+    }
+}
+
+function kanan() {
+    const jumbotron = document.querySelector(".jb");
+
+    document.querySelector("#kanan").onclick = () => {
+        jumbotron.classList.toggle("jb3");
+        jumbotron.classList.remove("jb2");
+    }
+}

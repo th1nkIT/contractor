@@ -92,7 +92,7 @@
             <section class="jb">
                 <div class="jb-konten">
                     <div class="jb-kiri">
-                        <a href="#"><i class="bi-arrow-left-circle"></i></a>
+                        <button type="button" id="kiri" onclick="kiri()"><i class="bi-arrow-left-circle"></i></button>
                     </div>
 
                     <!-- Jumbotron Main Start -->
@@ -108,7 +108,7 @@
                     <!-- Jumbotron Main End -->
                     
                     <div class="jb-kanan">
-                        <a href="#"><i class="bi-arrow-right-circle"></i></a>
+                        <button type="button" id="kanan" onclick="kanan()"><i class="bi-arrow-right-circle"></i></button>
                     </div>
                 </div>
             </section>

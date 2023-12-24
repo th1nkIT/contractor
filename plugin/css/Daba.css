@@ -10,6 +10,28 @@
     background-position: center;
 }
 
+.jb2 {
+    padding: 0 2%;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../img/perumahan2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.jb3 {
+    padding: 0 2%;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../img/konstruksi.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .jb .jb-konten {
     padding: 12rem 0 0;
     display: flex;
@@ -26,16 +48,19 @@
     text-align: right;
 }
 
-.jb .jb-konten .jb-kiri a,
-.jb-kanan a {
+.jb .jb-konten .jb-kiri button,
+.jb-kanan button {
     font-size: 2rem;
     color: #ffffff;
     text-shadow: 0 0 6px var(--tridary);
+    background: none;
+    border: none;
 }
 
-.jb .jb-konten .jb-kiri a:hover,
-.jb-kanan a:hover {
+.jb .jb-konten .jb-kiri button:hover,
+.jb-kanan button:hover {
     color: var(--fourth);
+    cursor: pointer;
 }
 
 .jb .jb-konten .jb-main {
