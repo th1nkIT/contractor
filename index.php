@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="plugin/css/app.css">
     <link rel="stylesheet" href="plugin/css/Artikel.css">
     <link rel="stylesheet" href="plugin/css/bisnis.css">
-    <link rel="stylesheet" href="plugin/css/Db.css">
+    <link rel="stylesheet" href="plugin/css/Daba.css">
     <link rel="stylesheet" href="plugin/css/footer.css">
     <link rel="stylesheet" href="plugin/css/Nav.css">
     
@@ -174,23 +174,32 @@
             <!-- Title Bisnis End -->
 
             <!-- Card Start -->
-                <div class="cards-bisnis">
-                    <div class="cards">
-                        <!-- Card Foto -->
-                            <div class="cards-foto">
-                                <img src="plugin/img/danau.jpeg" alt="" />
-                            </div>
-                        <!-- Card Foto End -->
-
-                        <!-- Card Konten Start -->
-                            <div class="cards-konten">
-                                <h1>Judul</h1>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, possimus. Nemo nihil quas minima exercitationem!</p>
-                                <div class="cards-btn">
-                                    <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                <div class="artikel-konten">
+                    <div class="wraps">
+                        <!-- Title Page Start -->
+                            <div class="title-page">
+                                <div>
+                                    <h1>Bisnis</h1>
+                                    <a href="pages/bisnis/bisnis.php">Arsip <i class="bi-chevron-right"></i></a>
                                 </div>
                             </div>
-                        <!-- Card Konten End -->
+                        <!-- Title Page End -->
+        
+                        <!-- Content Start -->
+                            <div class="content">
+                                <div class="cards-img">
+                                    <img height="350px" src="plugin/img/danau.jpeg" alt="" />
+                                </div>
+        
+                                <div class="cards-content">
+                                    <h1 class="ttl">Judul Bisnis</h1>
+                                    <p class='isi-artikel'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim odio nobis ab magnam nesciunt, consequuntur illum commodi quis ipsa soluta!</p>
+                                    <div class="cards-button">
+                                        <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- Content End -->
                     </div>
                 </div>
             <!-- Card End -->
@@ -297,42 +306,48 @@
             <!-- Title Artikel End -->
         
             <!-- Konten Artikel Start -->
-            <div class="artikel-konten">
-                <!-- Card Artikel Start -->
-                <?php while ($article = $articles->fetch_assoc()) : ?>
-                    <div class="cards-artikel">
-                        <!-- Cards Foto Start -->
-                        <div class="cards-foto">
-                            <img height="350px" src="backstage/view/articles/images/<?php echo $article['images_article']; ?>" alt="<?php echo $article['title_article']; ?>" />
-                        </div>
-                        <!-- Cards Foto End -->
-                        <!-- Cards Konten Start -->
-                        <div class="cards-konten">
-                            <div class="cards-konten-title">
-                                <div class="info-title">
-                                    <h1>Admin</h1>
-                                    <p><?php echo date('d-m-Y', strtotime($article['created_at'])); ?></p>
+                <div class="artikel-konten">
+                    <div class="wraps">
+                        <!-- Title Page Start -->
+                            <div class="title-page">
+                                <div>
+                                    <h1>Artikel</h1>
+                                    <a href="pages/artikel/artikel.php">Arsip <i class="bi-chevron-right"></i></a>
                                 </div>
-                                <h1><?php echo $article['title_article']; ?></h1>
                             </div>
-                            <p class='isi-artikel'>
-                                <?php
-                                // Memotong isi_article menjadi maksimal 100 kata
-                                $isi_article = $article['isi_article'];
-                                $words = explode(" ", $isi_article);
-                                $trimmed_content = implode(" ", array_slice($words, 0, 5));
-                                echo $trimmed_content . (count($words) > 5 ? "..." : "");
-                                ?>
-                            </p>
-                            <div class="cards-btn">
-                                <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                        <!-- Title Page End -->
+        
+                        <!-- Content Start -->
+                        <?php while ($article = $articles->fetch_assoc()) : ?>
+                            <div class="content">
+                                <div class="cards-img">
+                                    <img height="350px" src="backstage/view/articles/images/<?php echo $article['images_article']; ?>" alt="<?php echo $article['title_article']; ?>" />
+                                </div>
+        
+                                <div class="cards-content">
+                                    <div class="cards-title">
+                                        <h1>Admin</h1>
+                                        <p class="date"><?php echo date('d-m-Y', strtotime($article['created_at'])); ?></p>
+                                    </div>
+                                    <h1 class="ttl"><?php echo $article['title_article']; ?></h1>
+                                    <p class='isi-artikel'>
+                                        <?php
+                                        // Memotong isi_article menjadi maksimal 100 kata
+                                        $isi_article = $article['isi_article'];
+                                        $words = explode(" ", $isi_article);
+                                        $trimmed_content = implode(" ", array_slice($words, 0, 5));
+                                        echo $trimmed_content . (count($words) > 5 ? "..." : "");
+                                        ?>
+                                    </p>
+                                    <div class="cards-button">
+                                        <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <!-- Cards Konten End -->
+                        <?php endwhile; ?>
+                        <!-- Content End -->
                     </div>
-                <?php endwhile; ?>
-                <!-- Card Artikel End -->
-            </div>
+                </div>
             <!-- Konten Artikel End -->
         </section>
     <!-- Artikel End -->

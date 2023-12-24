@@ -232,3 +232,117 @@
     border-radius: .3rem;
 }
 /* Client End */
+
+/* Artikel CSS */
+.artikel-konten .wraps {
+    display: flex;
+    box-shadow: 0 0 10px 1px black;
+    border-radius: .3rem;
+}
+
+.artikel-konten .wraps .title-page {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    background-color: var(--secondary);
+    border-radius: .3rem 0 0 .3rem;
+    text-align: center;
+}
+
+.artikel-konten .wraps .title-page div h1 {
+    padding: 0 0 1.4rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 0 2px black;
+}
+
+.artikel-konten .wraps .title-page div a {
+    padding: .5rem 1rem;
+    color: white;
+    border-radius: .3rem;
+    border: 1px solid white;
+}
+
+.artikel-konten .wraps .title-page div a:hover {
+    color: var(--primary);
+    border: 3px solid var(--primary);
+    text-shadow: 0 0 2px black;
+    box-shadow: 0 0 10 1px black;
+}
+
+.artikel-konten .wraps .content {
+    padding: .2rem;
+    max-width: 15rem;
+    border-left: 1px solid black;
+}
+
+.artikel-konten .wraps .content .cards-img {
+    display: flex;
+    align-items: center;
+    width: 15rem;
+    height: 15rem;
+    overflow: hidden;
+    border-radius: .3rem;
+}
+
+.artikel-konten .wraps .content .cards-img img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.artikel-konten .wraps .content .cards-content {
+    padding: .5rem;
+}
+
+.artikel-konten .wraps .content .cards-content .cards-title {
+    padding: 0 0 .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.artikel-konten .wraps .content .cards-content .cards-title h1 {
+    padding: .2rem .8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--secondary);
+    color: white;
+    border-radius: .3rem;
+}
+
+.artikel-konten .wraps .content .cards-content .cards-title .date {
+    font-size: 1rem;
+}
+
+.artikel-konten .wraps .content .cards-content .ttl {
+    padding: 0 0 .5rem;
+    height: 2.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.artikel-konten .wraps .content .cards-content p {
+    padding: 0 0 .3rem;
+    font-size: .9rem;
+}
+
+.artikel-konten .wraps .content .cards-content .cards-button {
+    padding: 0 .5rem 0 0;
+    height: 2rem;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.artikel-konten .wraps .content .cards-content .cards-button a {
+    color: var(--tridary);
+}
+
+.artikel-konten .wraps .content .cards-content .cards-button a:hover {
+    color: var(--fourth);
+}
+/* Artikel CSS */
