@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
     <link rel="stylesheet" href="../../plugin/css/db.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
-    <link rel="stylesheet" href="../../plugin/css/Navbar.css">
+    <link rel="stylesheet" href="../../plugin/css/Nav.css">
     <link rel="stylesheet" href="../../plugin/css/pry.css">
-    <link rel="stylesheet" href="../../plugin/css/tentang.css">
+    <link rel="stylesheet" href="../../plugin/css/ttg.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -57,7 +57,13 @@
                 <!-- Nav Start -->
                     <div class="navbars-nav">
                         <a href="../../index.php">BERANDA</a>
-                        <a class="aktif" href="#">TENTANG KAMI</a>
+                        <div class="drop">
+                            <a class="aktif" href="#">TENTANG KAMI <i class="bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a class="aktif" href="tentang-kami.php">Tentang Kami</a></li>
+                                <li><a href="galeri.php">Galeri</a></li>
+                            </ul>
+                        </div>
                         <a href="../proyek/proyek.php">PROYEK</a>
                         <a href="../bisnis/bisnis.php">BISNIS KAMI</a>
                         <a href="../artikel/artikel.php">ARTIKEL</a>
@@ -103,18 +109,22 @@
                         <p>Menjadi perusahaan jasa konstruksi terdapat dalam kualitas di pasar nasional dan internasional.</p>
                     </div>
 
-                    <div class="logo">
-                        <i class="bi-sun"></i>
+                    <div class="icon">
+                        <div class="logo">
+                            <i class="bi-sun"></i>
+                        </div>
                     </div>
                 </div>
 
                 <div class="ct">
-                    <div class="logo">
-                        <i class="bi-moon"></i>
+                    <div class="icon">
+                        <div class="logo">
+                            <i class="bi-moon"></i>
+                        </div>
                     </div>
 
                     <div class="main">
-                        <h1>Misi</h1>
+                        <h1 class="misi">Misi</h1>
                         <ul>
                             <li>- Menciptakan lapangan pekerjaan bagi masyarakat</li>
                             <li>- Memiliki pemikiran luas yang diserahkan ke seluruh jajaran karyawan</li>

@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="plugin/css/bisnis.css">
     <link rel="stylesheet" href="plugin/css/Db.css">
     <link rel="stylesheet" href="plugin/css/footer.css">
-    <link rel="stylesheet" href="plugin/css/navbar.css">
+    <link rel="stylesheet" href="plugin/css/Nav.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -72,7 +72,13 @@
                 <!-- Nav Start -->
                     <div class="navbars-nav">
                         <a class="aktif" href="index.php">BERANDA</a>
-                        <a href="#">TENTANG KAMI</a>
+                        <div class="drop">
+                            <a href="#">TENTANG KAMI <i class="bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="pages/tentang/tentang-kami.php">Tentang Kami</a></li>
+                                <li><a href="pages/tentang/galeri.php">Galeri</a></li>
+                            </ul>
+                        </div>
                         <a href="pages/proyek/proyek.php">PROYEK</a>
                         <a href="pages/bisnis/bisnis.php">BISNIS KAMI</a>
                         <a href="pages/artikel/artikel.php">ARTIKEL</a>

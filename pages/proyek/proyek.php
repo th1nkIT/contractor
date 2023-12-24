@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../plugin/css/bis.css">
     <link rel="stylesheet" href="../../plugin/css/db.css">
     <link rel="stylesheet" href="../../plugin/css/footer.css">
-    <link rel="stylesheet" href="../../plugin/css/navbar.css">
+    <link rel="stylesheet" href="../../plugin/css/Nav.css">
     <link rel="stylesheet" href="../../plugin/css/pry.css">
     
     <!-- My Icon Bootstrap -->
@@ -56,7 +56,13 @@
                 <!-- Nav Start -->
                     <div class="navbars-nav">
                         <a href="../../index.php">BERANDA</a>
-                        <a href="#">TENTANG KAMI</a>
+                        <div class="drop">
+                            <a href="#">TENTANG KAMI <i class="bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="../tentang/tentang-kami.php">Tentang Kami</a></li>
+                                <li><a href="../tentang/galeri.php">Galeri</a></li>
+                            </ul>
+                        </div>
                         <a class="aktif" href="proyek.php">PROYEK</a>
                         <a href="../bisnis/bisnis.php">BISNIS KAMI</a>
                         <a href="../artikel/artikel.php">ARTIKEL</a>

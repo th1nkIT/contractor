@@ -1,0 +1,126 @@
+/* Navbar CSS */
+.navbars {
+    position: fixed;
+    width: 100%;
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 51, 122, .8)
+}
+
+.navbars .navbars-sosmed {
+    padding: .8rem 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--tridary);
+}
+
+.navbars .navbars-sosmed .sosmed-kiri a,
+.navbars-sosmed .sosmed-kanan a {
+    padding: 0 .5rem;
+    font-size: .9rem;
+    color: #ffffff;
+}
+
+.navbars .navbars-sosmed .sosmed-kanan a {
+    font-size: 1.11rem;
+}
+
+.navbars .navbars-konten {
+    padding: 2rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbars .navbars-konten .navbars-logo a {
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.navbars .navbars-konten .navbars-nav {
+    display: flex;
+    align-items: center;
+}
+
+.navbars .navbars-konten .navbars-nav .aktif {
+    color: aqua;
+    text-shadow: 0 0 3px var(--tridary);
+}
+
+.navbars .navbars-konten .navbars-nav a {
+    margin: 0 .5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.navbars .navbars-konten .navbars-nav a:hover {
+    color: var(--primary);
+    text-shadow: 0 0 3px var(--tridary);
+}
+
+/* Dropdown List CSS */
+.navbars .navbars-konten .navbars-nav .drop {
+    padding: .5rem 1rem;
+    text-align: center;
+    z-index: 9998;
+}
+
+.navbars .navbars-konten .navbars-nav .drop a {
+    margin: 0;
+}
+
+.navbars .navbars-konten .navbars-nav .drop ul {
+    margin: .5rem -.6rem 0;
+    display: block;
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    list-style-type: none;
+    border-radius: .2rem;
+    background-color: rgba(28, 130, 173, .7);
+}
+
+.navbars .navbars-konten .navbars-nav .drop:hover {
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+}
+
+.navbars .navbars-konten .navbars-nav .drop:hover>a {
+    color: var(--primary);
+}
+
+.navbars .navbars-konten .navbars-nav .drop:hover>ul {
+    opacity: 1;
+    visibility: visible;
+    transition: .4s ease;
+}
+
+.navbars .navbars-konten .navbars-nav .drop ul li {
+    padding: .5rem 1rem;
+}
+
+.navbars .navbars-konten .navbars-nav .drop ul li:hover {
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+    cursor: pointer;
+}
+
+.navbars .navbars-konten .navbars-nav .drop ul li:hover>a {
+    color: var(--primary);
+    text-shadow: 0 0 3px var(--tridary);
+}
+
+.navbars .navbars-konten .navbars-nav .drop ul li a {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+.navbars .navbars-konten .navbars-nav .drop ul li .aktif {
+    color: aqua;
+}
+/* Dropdown List CSS */
+/* Navbar CSS */
