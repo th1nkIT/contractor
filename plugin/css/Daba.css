@@ -10,6 +10,28 @@
     background-position: center;
 }
 
+.jb2 {
+    padding: 0 2%;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../img/perumahan2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.jb3 {
+    padding: 0 2%;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../img/konstruksi.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .jb .jb-konten {
     padding: 12rem 0 0;
     display: flex;
@@ -26,16 +48,19 @@
     text-align: right;
 }
 
-.jb .jb-konten .jb-kiri a,
-.jb-kanan a {
+.jb .jb-konten .jb-kiri button,
+.jb-kanan button {
     font-size: 2rem;
     color: #ffffff;
     text-shadow: 0 0 6px var(--tridary);
+    background: none;
+    border: none;
 }
 
-.jb .jb-konten .jb-kiri a:hover,
-.jb-kanan a:hover {
+.jb .jb-konten .jb-kiri button:hover,
+.jb-kanan button:hover {
     color: var(--fourth);
+    cursor: pointer;
 }
 
 .jb .jb-konten .jb-main {
@@ -159,7 +184,7 @@
 }
 
 .pertanyaan .tanya .pertanyaan-img {
-    flex: 1 1 50rem;
+    width: 25rem;
     overflow: hidden;
     object-fit: cover;
 }
@@ -179,8 +204,9 @@
 }
 
 .pertanyaan .tanya .pertanyaan-konten .question .pertanyaannya {
-    margin: .5rem 0 0;
+    margin: 1rem 0 0;
     padding: .5rem 1.5rem;
+    width: 45rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -205,9 +231,18 @@
     cursor: pointer;
 }
 
-.pertanyaan .tanya .pertanyaan-konten .question .jawaban {
+.pertanyaan .tanya .pertanyaan-konten .question .jawaban, .pertanyaan-konten .question .jawaban2, .pertanyaan-konten .question .jawaban3, .pertanyaan-konten .question .jawaban4, .pertanyaan-konten .question .jawaban5 {
     margin: 0 0 1rem;
     padding: 1rem;
+    width: 45rem;
+}
+
+.none {
+    display: none;
+}
+
+.active-jawab {
+    display: block;
 }
 /* Pertanyaan End */
 
@@ -232,3 +267,117 @@
     border-radius: .3rem;
 }
 /* Client End */
+
+/* Artikel CSS */
+.artikel-konten .wraps {
+    display: flex;
+    box-shadow: 0 0 10px 1px black;
+    border-radius: .3rem;
+}
+
+.artikel-konten .wraps .title-page {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    background-color: var(--secondary);
+    border-radius: .3rem 0 0 .3rem;
+    text-align: center;
+}
+
+.artikel-konten .wraps .title-page div h1 {
+    padding: 0 0 1.4rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 0 2px black;
+}
+
+.artikel-konten .wraps .title-page div a {
+    padding: .5rem 1rem;
+    color: white;
+    border-radius: .3rem;
+    border: 1px solid white;
+}
+
+.artikel-konten .wraps .title-page div a:hover {
+    color: var(--primary);
+    border: 3px solid var(--primary);
+    text-shadow: 0 0 2px black;
+    box-shadow: 0 0 10 1px black;
+}
+
+.artikel-konten .wraps .content {
+    padding: .2rem;
+    max-width: 15rem;
+    border-left: 1px solid black;
+}
+
+.artikel-konten .wraps .content .cards-img {
+    display: flex;
+    align-items: center;
+    width: 15rem;
+    height: 15rem;
+    overflow: hidden;
+    border-radius: .3rem;
+}
+
+.artikel-konten .wraps .content .cards-img img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.artikel-konten .wraps .content .cards-content {
+    padding: .5rem;
+}
+
+.artikel-konten .wraps .content .cards-content .cards-title {
+    padding: 0 0 .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.artikel-konten .wraps .content .cards-content .cards-title h1 {
+    padding: .2rem .8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--secondary);
+    color: white;
+    border-radius: .3rem;
+}
+
+.artikel-konten .wraps .content .cards-content .cards-title .date {
+    font-size: 1rem;
+}
+
+.artikel-konten .wraps .content .cards-content .ttl {
+    padding: 0 0 .5rem;
+    height: 2.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.artikel-konten .wraps .content .cards-content p {
+    padding: 0 0 .3rem;
+    font-size: .9rem;
+}
+
+.artikel-konten .wraps .content .cards-content .cards-button {
+    padding: 0 .5rem 0 0;
+    height: 2rem;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.artikel-konten .wraps .content .cards-content .cards-button a {
+    color: var(--tridary);
+}
+
+.artikel-konten .wraps .content .cards-content .cards-button a:hover {
+    color: var(--fourth);
+}
+/* Artikel CSS */
