@@ -31,6 +31,10 @@
     padding: .5rem 1rem 0;
 }
 
+.page .artikel-konten .cards-artikel .cards-konten .cards-konten-title h1 {
+    text-align: left;
+}
+
 .page .cards-bisnis .cards .cards-konten h1 {
     padding: 0 0 .5rem;
     text-align: right;
