@@ -1,0 +1,95 @@
+/* Query Media CSS */
+@media (max-width: 758px) {
+    .jb, .jb2, .jb3 {
+        margin: 9rem 0 0;
+        background-size: 100%;
+        min-height: 38vh;
+    }
+
+    .jb .jb-konten {
+        padding: 3rem 0 0;
+    }
+
+    .jb .jb-konten .jb-kiri,
+    .jb-kanan {
+        min-width: 15%;
+    }
+
+    .jb .jb-konten .jb-main h1 {
+        font-size: 2.1rem;
+    }
+
+    .jb .jb-konten .jb-main .jb-main-btn a {
+        margin: 2rem 1.3rem 0;
+    }
+
+    .pertanyaan .tanya {
+        padding: 0;
+        display: block;
+    }
+
+    .pertanyaan .tanya .pertanyaan-img {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .pertanyaan .tanya .pertanyaan-img img {
+        width: 15rem;
+        height: 18rem;
+        object-fit: cover;
+    }
+
+    .pertanyaan .tanya .pertanyaan-konten .question .pertanyaannya {
+        width: auto;
+        padding: .5rem;
+    }
+
+    .pertanyaan .tanya .pertanyaan-konten .question .jawaban, .pertanyaan-konten .question .jawaban2, .pertanyaan-konten .question .jawaban3, .pertanyaan-konten .question .jawaban4, .pertanyaan-konten .question .jawaban5 {
+        width: 31.7rem;
+        text-align: justify;
+    }
+
+    .pertanyaan .tanya .pertanyaan-konten .question .pertanyaannya h1 {
+        max-width: 30rem;
+    }
+    
+    .alasan .konten-alasan .main-konten {
+        max-width: 80%;
+    }
+
+    .artikel-konten .wraps {
+        flex-wrap: wrap;
+        justify-content: center;
+        box-shadow: none;
+    }
+
+    .artikel-konten .wraps .title-page {
+        padding: 1rem 0 2rem;
+        width: 100%;
+    }
+
+    .artikel-konten .wraps .content {
+        margin: .5rem;
+        border-left: none;
+        box-shadow: 0 0 10px 1px black;
+        border-radius: .3rem;
+    }
+
+    .artikel-konten .wraps .content .cards-img img {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    .client .konten-client .img-client {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .client .konten-client .img-client img {
+        width: 8rem;
+        object-fit: cover;
+    }
+}
+/* Query Media CSS */
