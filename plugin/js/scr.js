@@ -1,4 +1,21 @@
 // Jawaban Pertanyaan 1 JS
+// Toggle class active for Navbar
+const navbarNav = document.querySelector(".navbars-nav");
+
+// ketika tombol di klik
+document.querySelector("#hamburger-menu").onclick = () => {
+    navbarNav.classList.toggle("active");
+};
+
+// Klik diluar elemen
+const hamburger = document.querySelector("#hamburger-menu");
+
+document.addEventListener("click", function (e) {
+    if (!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
+        navbarNav.classList.remove("active");
+    }
+});
+
 // Toggle class active for jawaban
 const jawaban = document.querySelector(".jawaban");
 

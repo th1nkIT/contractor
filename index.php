@@ -25,9 +25,14 @@
     <link rel="stylesheet" href="plugin/css/app.css">
     <link rel="stylesheet" href="plugin/css/Artikel.css">
     <link rel="stylesheet" href="plugin/css/bisnis.css">
-    <link rel="stylesheet" href="plugin/css/Daba.css">
+    <link rel="stylesheet" href="plugin/css/Db.css">
     <link rel="stylesheet" href="plugin/css/footer.css">
-    <link rel="stylesheet" href="plugin/css/Nav.css">
+    <link rel="stylesheet" href="plugin/css/nv.css">
+    
+    <!-- Query Media CSS -->
+    <link rel="stylesheet" href="plugin/css/responsive/navbar.css">
+    <link rel="stylesheet" href="plugin/css/responsive/Dashboard.css">
+    <link rel="stylesheet" href="plugin/css/responsive/Footer.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -70,13 +75,16 @@
                 <!-- Logo End -->
 
                 <!-- Nav Start -->
+                    <div class="navbars-ex">
+                        <button type="button" id="hamburger-menu"><i class="bi-list"></i></button>
+                    </div>
                     <div class="navbars-nav">
                         <a class="aktif" href="index.php">BERANDA</a>
                         <div class="drop">
-                            <a href="#">TENTANG KAMI <i class="bi-chevron-down"></i></a>
+                            <button type="button">TENTANG KAMI <i class="bi-chevron-down"></i></button>
                             <ul>
-                                <li><a href="pages/tentang/tentang-kami.php">Tentang Kami</a></li>
-                                <li><a href="pages/tentang/galeri.php">Galeri</a></li>
+                                <li><a href="pages/tentang/tentang-kami.php">TENTANG KAMI</a></li>
+                                <li><a href="pages/tentang/galeri.php">GALERI</a></li>
                             </ul>
                         </div>
                         <a href="pages/proyek/proyek.php">PROYEK</a>
@@ -128,7 +136,7 @@
                 <div class="konten-alasan">
                     <div class="main-konten">
                         <div class="main-alasan">
-                            <span>IKON 1</span>
+                            <span><i class="bi-person-lines-fill"></i></span>
                             <div class="isi-alasan">
                                 <h1>Kami Berpengalaman Lebih Dari 10 Tahun</h1>
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam ducimus velit veritatis odio id recusandae fugiat officia impedit nemo officiis!</p>
@@ -136,7 +144,7 @@
                         </div>
 
                         <div class="main-alasan">
-                            <span>IKON 2</span>
+                            <span><i class="bi-award-fill"></i></span>
                             <div class="isi-alasan">
                                 <h1>Mempunyai Tim yang Solid & Berpengalaman</h1>
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam ducimus velit veritatis odio id recusandae fugiat officia impedit nemo officiis!</p>
@@ -144,7 +152,7 @@
                         </div>
 
                         <div class="main-alasan">
-                            <span>IKON 3</span>
+                            <span><i class="bi-bar-chart-line-fill"></i></span>
                             <div class="isi-alasan">
                                 <h1>Berinovasi</h1>
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam ducimus velit veritatis odio id recusandae fugiat officia impedit nemo officiis!</p>
@@ -152,7 +160,7 @@
                         </div>
 
                         <div class="main-alasan">
-                            <span>IKON 4</span>
+                            <span><i class="bi-bar-chart-steps"></i></span>
                             <div class="isi-alasan">
                                 <h1>Tantangan Bukanlah Halangan</h1>
                                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veniam ducimus velit veritatis odio id recusandae fugiat officia impedit nemo officiis!</p>
@@ -388,15 +396,15 @@
     <!-- Client Kami End -->
 
         <!-- Info Start -->
-        <section class="info">
-            <?php while ($pecah_settings = $settings->fetch_assoc()) : ?>
-                <div class="konten-info">
-                    <h1>IKON 1</h1>
-                    <p><b><?php echo $pecah_settings['title']; ?></b></p>
-                    <p><?php echo $pecah_settings['keterangan']; ?></p>
-                </div>
-            <?php endwhile; ?>
-        </section>
+            <section class="info">
+                <?php while ($pecah_settings = $settings->fetch_assoc()) : ?>
+                    <div class="konten-info">
+                        <h1>IKON 1</h1>
+                        <p><b><?php echo $pecah_settings['title']; ?></b></p>
+                        <p><?php echo $pecah_settings['keterangan']; ?></p>
+                    </div>
+                <?php endwhile; ?>
+            </section>
         <!-- Info End -->
 
 
@@ -430,6 +438,6 @@
         <!-- Copyright End -->
     <!-- Footer End -->
 
-    <script src="plugin/js/script.js"></script>
+    <script src="plugin/js/scr.js"></script>
 </body>
 </html>

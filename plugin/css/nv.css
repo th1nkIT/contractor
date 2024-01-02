@@ -23,6 +23,11 @@
     color: #ffffff;
 }
 
+.navbars .navbars-sosmed .sosmed-kiri a:hover,
+.navbars-sosmed .sosmed-kanan a:hover {
+    color: var(--primary);
+}
+
 .navbars .navbars-sosmed .sosmed-kanan a {
     font-size: 1.11rem;
 }
@@ -32,6 +37,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.navbars .navbars-konten .navbars-ex button {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
 }
 
 .navbars .navbars-konten .navbars-logo a {
@@ -68,6 +81,19 @@
     z-index: 9998;
 }
 
+.navbars .navbars-konten .navbars-nav .drop button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.navbars .navbars-konten .navbars-nav .drop button:hover {
+    color: var(--primary);
+    text-shadow: 0 0 3px var(--tridary);
+}
+
 .navbars .navbars-konten .navbars-nav .drop a {
     margin: 0;
 }
@@ -90,6 +116,11 @@
 
 .navbars .navbars-konten .navbars-nav .drop:hover>a {
     color: var(--primary);
+}
+
+.navbars .navbars-konten .navbars-nav .drop:hover>button {
+    color: var(--primary);
+    font-weight: 600;
 }
 
 .navbars .navbars-konten .navbars-nav .drop:hover>ul {
@@ -121,6 +152,10 @@
 
 .navbars .navbars-konten .navbars-nav .drop ul li .aktif {
     color: aqua;
+}
+
+.navbars .navbars-konten .navbars-nav #hamburger-menu {
+    display: none;
 }
 /* Dropdown List CSS */
 /* Navbar CSS */
