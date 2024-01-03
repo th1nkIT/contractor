@@ -1,0 +1,76 @@
+/* Media Querys CSS */
+@media (max-width: 758px) {
+    html {
+        font-size: 62.5%;
+    }
+
+    .navbars .navbars-konten .navbars-logo a {
+        font-size: 1.4rem;
+    }
+
+    .navbars .navbars-konten .navbars-logo a:hover {
+        color: var(--primary);
+    }
+    
+    .navbars .navbars-konten .navbars-ex button {
+        display: inline-block;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        color: white;
+    }
+
+    .navbars .navbars-konten .navbars-ex button:hover {
+        color: var(--primary);
+    }
+    
+    .navbars .navbars-konten .navbars-nav {
+        position: absolute;
+        display: block;
+        top: 100%;
+        right: -100%;
+        background-color: rgba(0, 51, 122, .8);
+        box-shadow: 0 0 5px .1px black;
+        width: 20rem;
+        height: 100vh;
+        transition: 0.3s;
+    }
+
+    .navbars .navbars-konten .navbars-nav.active {
+        right: 0%;
+    }
+
+    .navbars .navbars-konten .navbars-nav a {
+        margin: 1.5rem;
+        padding: 0.5rem;
+        display: block;
+        color: var(--bg);
+        font-size: 1.4rem;
+        text-shadow: 0 0 3px var(--tridary);
+    }
+
+    .navbars .navbars-konten .navbars-nav .drop {
+        text-align: left;
+    }
+
+    .navbars .navbars-konten .navbars-nav .drop button {
+        padding: 0 0 0 .8rem;
+        font-size: 1.4rem;
+        text-align: left;
+        text-shadow: 0 0 3px var(--tridary);
+    }
+
+    .navbars .navbars-konten .navbars-nav .drop ul {
+        margin: .5rem .5rem 0;
+        padding: 0 1rem;
+    }
+
+    .navbars .navbars-konten .navbars-nav .drop ul li a {
+        padding: .4rem 0;
+    }
+
+    .navbars .navbars-konten .navbars-nav .drop:hover>ul {
+        position: relative;
+    }
+}
+/* Media Querys CSS */

@@ -8,23 +8,30 @@
 
 .page .artikel-konten .cards-artikel {
     margin: 1rem;
-    padding: 0 0 1rem;
+    padding: .5rem 0 1rem;
     border-radius: 1rem;
-    max-width: 23rem;
-    min-height: 26rem;
+    max-width: 19rem;
+    min-height: 25rem;
     height: auto;
+    overflow: hidden;
     background-color: none;
     box-shadow: 0 0 10px 1px black;
 }
 
 .page .artikel-konten .cards-artikel .cards-foto {
     padding: .5rem;
-    width: 22rem;
+    display: flex;
+    align-items: center;
+    width: 18rem;
+    height: 19rem;
+    overflow: hidden;
+    border-radius: 1.5rem;
 }
 
 .page .artikel-konten .cards-artikel .cards-foto img {
     width: 100%;
-    border-radius: .5rem;
+    object-fit: cover;
+    border-radius: 2rem;
 }
 
 .page .artikel-konten .cards-artikel .cards-konten {
@@ -85,4 +92,33 @@
     background-color: var(--primary);
 }
 
+/* Pagination CSS */
+.page .pagination {
+    padding: 2rem 0 .5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.page .pagination .wrap {
+    padding: .3rem;
+    border-radius: .3rem;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    font-size: 1rem;
+}
+
+.page .pagination .wrap a {
+    padding: 0 .5rem;
+    color: var(--secondary);
+}
+
+.page .pagination .wrap a:hover {
+    color: var(--fourth);
+}
+
+.page .pagination .wrap span {
+    padding: 0 .5rem;
+    color: rgb(95, 95, 95);
+}
+/* Pagination CSS */
 /* Artikel End */

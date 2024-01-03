@@ -1,0 +1,35 @@
+/* Query Media CSS */
+@media (max-width: 758px) {
+    .info .konten-info {
+        max-width: 11rem;
+    }
+
+    .info .konten-info h1 {
+        font-size: 1.5rem;
+    }
+
+    .info .konten-info p {
+        font-size: .8rem;
+    }
+
+    .footer .foot {
+        max-width: 8rem;
+    }
+
+    .footer .foot h1 {
+        font-size: 1.5rem;
+    }
+
+    .footer .foot p {
+        font-size: .8rem;
+    }
+
+    .copy {
+        padding: .5rem 0;
+    }
+    
+    .copy h1 {
+        font-size: .9rem;
+    }
+}
+/* Query Media CSS */

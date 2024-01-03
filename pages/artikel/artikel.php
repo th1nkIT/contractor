@@ -6,11 +6,11 @@
     
     <!-- My CSS -->
     <link rel="stylesheet" href="../../plugin/css/App.css">
-    <link rel="stylesheet" href="../../plugin/css/Artikel.css">
+    <link rel="stylesheet" href="../../plugin/css/artikel.css">
     <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
     <link rel="stylesheet" href="../../plugin/css/db.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
-    <link rel="stylesheet" href="../../plugin/css/Navbar.css">
+    <link rel="stylesheet" href="../../plugin/css/Nav.css">
     <link rel="stylesheet" href="../../plugin/css/pry.css">
     
     <!-- My Icon Bootstrap -->
@@ -56,7 +56,13 @@
                 <!-- Nav Start -->
                     <div class="navbars-nav">
                         <a href="../../index.php">BERANDA</a>
-                        <a href="#">TENTANG KAMI</a>
+                        <div class="drop">
+                            <a href="#">TENTANG KAMI <i class="bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="../tentang/tentang-kami.php">Tentang Kami</a></li>
+                                <li><a href="../tentang/galeri.php">Galeri</a></li>
+                            </ul>
+                        </div>
                         <a href="../proyek/proyek.php">PROYEK</a>
                         <a href="../bisnis/bisnis.php">BISNIS KAMI</a>
                         <a class="aktif" href="artikel.php">ARTIKEL</a>
@@ -75,14 +81,38 @@
         <!-- Jumbotron End -->
     <!-- Header End -->
 
+    <?php
+        include "../../backstage/config/koneksi.php";
+    
+        // Contoh query untuk mendapatkan jumlah total data
+        $queryTotalRows = "SELECT COUNT(*) as total_rows FROM articles";
+        $resultTotalRows = mysqli_query($koneksi, $queryTotalRows);
+        $rowTotalRows = mysqli_fetch_assoc($resultTotalRows);
+
+        $totalRows = $rowTotalRows['total_rows'];
+
+        $dataPerPage = 12; // Jumlah data per halaman
+        $totalPages = ceil($totalRows / $dataPerPage); // Hitung jumlah halaman
+
+        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+        $offset = ($currentPage - 1) * $dataPerPage;
+
+        $queryData = "SELECT * FROM articles LIMIT $offset, $dataPerPage";
+        $resultData = mysqli_query($koneksi, $queryData);
+    ?>
+    
     <!-- Konten Artikel Start -->
         <div class="page">
             <div class="artikel-konten">
                 <!-- Card Artikel Start -->
+                    <?php
+                        while ($row = mysqli_fetch_assoc($resultData)) {
+                    ?>
                     <div class="cards-artikel">
                         <!-- Cards Foto Start -->
                             <div class="cards-foto">
-                                <img src="../../plugin/img/danau.jpeg" alt="" />
+                                <img height="350px" src="../../backstage/view/articles/images/<?php echo $row['images_article']; ?>" alt="" />
                             </div>
                         <!-- Cards Foto End -->
     
@@ -91,19 +121,54 @@
                                 <div class="cards-konten-title">
                                     <div class="info-title">
                                         <h1>Admin</h1>
-                                        <p>20-10-2023</p>
+                                        <p><?php echo date('d-m-Y', strtotime($row['created_at'])); ?></p>
                                     </div>
-                                    <h1>Judul</h1>
+                                    <h1><?php echo $row['title_article']; ?></h1>
                                 </div>
-                                <p class='isi-artikel'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, possimus. Nemo nihil quas minima exercitationem!</p>
+                                <p class='isi-artikel'>
+                                    <?php
+                                        // Memotong isi_article menjadi maksimal 100 kata
+                                        $isi_article = $row['isi_article'];
+                                        $words = explode(" ", $isi_article);
+                                        $trimmed_content = implode(" ", array_slice($words, 0, 5));
+                                        echo $trimmed_content . (count($words) > 5 ? "..." : "");
+                                    ?>
+                                </p>
                                 <div class="cards-btn">
-                                    <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                                    <a href="show_artikel.php?id=<?php echo $row['id']; ?>">Selengkapnya <i class="bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         <!-- Cards Konten End -->
                     </div>
+                    <?php } ?>
                 <!-- Card Artikel End -->
             </div>
+
+            <!-- Pagination Start -->
+                <div class="pagination">
+                    <div class="wrap">
+                    <?php
+                        $now;
+                        if ($currentPage > 1) {
+                            $prevPage = $currentPage - 1;
+                            echo "<a href='?page=$prevPage'><i class='bi-caret-left'></i> SEBELUMNYA</a>";
+                        } else {
+                            echo "<span><i class='bi-caret-left'></i> SEBELUMNYA</span>";
+                        }
+                        for ($i = 1; $i <= $totalPages; $i++) {
+                            echo "<a href='?page=$i'>$i</a>";
+                        }
+
+                        if ($currentPage < $totalPages) {
+                            $nextPage = $currentPage + 1;
+                            echo "<a href='?page=$nextPage'>SELANJUTNYA <i class='bi-caret-right'></i></a>";
+                        } else {
+                            echo "<span>SELANJUTNYA <i class='bi-caret-right'></i></span>";
+                        }
+                        ?>
+                    </div>
+                </div>
+            <!-- Pagination End -->
         </div>
     <!-- Konten Artikel End -->
 
