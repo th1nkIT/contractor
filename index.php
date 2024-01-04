@@ -22,12 +22,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="plugin/css/app.css">
+    <link rel="stylesheet" href="plugin/css/App.css">
     <link rel="stylesheet" href="plugin/css/Artikel.css">
-    <link rel="stylesheet" href="plugin/css/bisnis.css">
+    <link rel="stylesheet" href="plugin/css/Bns.css">
     <link rel="stylesheet" href="plugin/css/Db.css">
-    <link rel="stylesheet" href="plugin/css/footer.css">
-    <link rel="stylesheet" href="plugin/css/nv.css">
+    <link rel="stylesheet" href="plugin/css/Footer.css">
+    <link rel="stylesheet" href="plugin/css/Nv.css">
     
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="plugin/css/responsive/navbar.css">
