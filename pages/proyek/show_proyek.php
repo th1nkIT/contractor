@@ -7,11 +7,16 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="../../plugin/css/App.css">
     <link rel="stylesheet" href="../../plugin/css/Artikel.css">
-    <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
+    <link rel="stylesheet" href="../../plugin/css/Bns.css">
+    <link rel="stylesheet" href="../../plugin/css/Db.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
-    <link rel="stylesheet" href="../../plugin/css/Nav.css">
-    <link rel="stylesheet" href="../../plugin/css/Proyek.css">
+    <link rel="stylesheet" href="../../plugin/css/Nv.css">
+    <link rel="stylesheet" href="../../plugin/css/pry.css">
+    
+    <!-- Query Media CSS -->
+    <link rel="stylesheet" href="../../plugin/css/responsive/navbar.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/Dashboard.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/Footer.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -54,13 +59,16 @@
                 <!-- Logo End -->
 
                 <!-- Nav Start -->
+                    <div class="navbars-ex">
+                        <button type="button" id="hamburger-menu"><i class="bi-list"></i></button>
+                    </div>
                     <div class="navbars-nav">
                         <a href="../../index.php">BERANDA</a>
                         <div class="drop">
-                            <a href="#">TENTANG KAMI <i class="bi-chevron-down"></i></a>
+                            <button type="button">TENTANG KAMI <i class="bi-chevron-down"></i></button>
                             <ul>
-                                <li><a href="../tentang/tentang-kami.php">Tentang Kami</a></li>
-                                <li><a href="../tentang/galeri.php">Galeri</a></li>
+                                <li><a href="../tentang/tentang-kami.php">TENTANG KAMI</a></li>
+                                <li><a href="../tentang/galeri.php">GALERI</a></li>
                             </ul>
                         </div>
                         <a class="aktif" href="proyek.php">PROYEK</a>
@@ -189,5 +197,7 @@
             </div>
         <!-- Copyright End -->
     <!-- Footer End -->
+
+    <script src="../../plugin/js/scr.js"></script>
 </body>
 </html>
