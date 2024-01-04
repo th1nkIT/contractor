@@ -154,6 +154,10 @@
     color: aqua;
 }
 
+.navbars .navbars-konten .navbars-nav .drop .aktif {
+    color: aqua;
+}
+
 .navbars .navbars-konten .navbars-nav #hamburger-menu {
     display: none;
 }
