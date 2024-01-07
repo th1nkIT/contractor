@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/migrate.php';
 
 use Dotenv\Dotenv;
 
@@ -21,7 +22,8 @@ if ($koneksi->connect_error) {
 
 $koneksi->set_charset("utf8");
 
-function executeQuery($query, $params = array()) {
+function executeQuery($query, $params = array())
+{
     global $koneksi;
 
     $stmt = $koneksi->prepare($query);
@@ -36,11 +38,11 @@ function executeQuery($query, $params = array()) {
 
         foreach ($params as $param) {
             if (is_int($param)) {
-                $types .= "i"; 
+                $types .= "i";
             } elseif (is_double($param)) {
-                $types .= "d"; 
+                $types .= "d";
             } elseif (is_string($param)) {
-                $types .= "s"; 
+                $types .= "s";
             } else {
                 $types .= "b";
             }
@@ -60,4 +62,6 @@ function executeQuery($query, $params = array()) {
 
     return $result;
 }
-?>
+
+// Migrate Table
+Migrate();

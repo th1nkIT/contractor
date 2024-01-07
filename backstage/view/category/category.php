@@ -3,7 +3,6 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Settings Page</h1>
-    <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus fermentum justo ut nisi molestie tempus. Praesent ultricies nulla convallis dui efficitur, eu facilisis libero vestibulum. Proin dui quam, eleifend vitae mi et, laoreet viverra felis. Aliquam eu turpis non lacus fermentum aliquam sit amet eget eros. Maecenas vehicula, est sed porta suscipit, ipsum mauris aliquet ipsum, eu semper leo leo vel sapien. Nullam et venenatis enim. Nunc nibh nisl, maximus consectetur neque vitae, blandit bibendum metus. <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

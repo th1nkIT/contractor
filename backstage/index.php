@@ -1,12 +1,13 @@
 <?php
-    session_start();
-    include 'config/koneksi.php';
-    include 'config/uuid.php';
+session_start();
+include 'config/koneksi.php';
+include 'config/uuid.php';
+include 'config/helper.php';
 
-    if (!isset($_SESSION['administrator'])) {
-        header('location:login.php');
-        exit();
-    }
+if (!isset($_SESSION['administrator'])) {
+    header('location:login.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,15 +76,22 @@
                 <a class="nav-link" href="index.php?halaman=articles">
                     <i class="fas fa-regular fa-file"></i>
                     <span>Article</span></a>
-            </li>   
+            </li>
+
+            <!-- Nav Item - Client -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.php?halaman=client">
+                    <i class="fas fa-regular fa-file"></i>
+                    <span>Client</span></a>
+            </li>
 
             <!-- Nav Item - Category -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php?halaman=category">
                     <i class="fas fa-regular fa-file"></i>
                     <span>Category</span></a>
-            </li>   
-            
+            </li>
+
             <!-- Nav Item - Projects -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php?halaman=projects">
@@ -91,8 +99,8 @@
                     <span>Project</span></a>
             </li>
 
-              <!-- Nav Item - Register -->
-              <li class="nav-item">
+            <!-- Nav Item - Register -->
+            <li class="nav-item">
                 <a class="nav-link" href="index.php?halaman=register">
                     <i class="fas fa-regular fa-file"></i>
                     <span>Register</span></a>
@@ -287,7 +295,7 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php  echo $_SESSION['administrator']['nama_lengkap']; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['administrator']['nama_lengkap']; ?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -325,49 +333,58 @@
                         <!-- Content Column -->
                         <?php
                         if (isset($_GET['halaman'])) {
-                        // Halaman Category
+                            // Halaman Category
                             if ($_GET['halaman'] == 'category') {
                                 include 'view/category/category.php';
-                            } else if ($_GET['halaman'] == 'tambah_category'){
+                            } else if ($_GET['halaman'] == 'tambah_category') {
                                 include 'view/category/tambah_category.php';
-                            } else if ($_GET['halaman']== 'update_category'){
+                            } else if ($_GET['halaman'] == 'update_category') {
                                 include 'view/category/ubah_category.php';
-                            } else if ($_GET['halaman'] == 'delete_category'){
+                            } else if ($_GET['halaman'] == 'delete_category') {
                                 include 'view/category/hapus_category.php';
                             }
+                            // Halaman Client
+                            else if ($_GET['halaman'] == 'client') {
+                                include 'view/client/client.php';
+                            } else if ($_GET['halaman'] == 'tambah_client') {
+                                include 'view/client/tambah_client.php';
+                            } else if ($_GET['halaman'] == 'update_client') {
+                                include 'view/client/ubah_client.php';
+                            } else if ($_GET['halaman'] == 'delete_client') {
+                                include 'view/client/hapus_client.php';
+                            }
                             // Halaman Setting
-                            else if ($_GET['halaman'] == 'setting'){
+                            else if ($_GET['halaman'] == 'setting') {
                                 include 'view/setting/setting.php';
                             }
                             // Halaman Projects
-                            else if ($_GET['halaman'] == 'projects'){
+                            else if ($_GET['halaman'] == 'projects') {
                                 include 'view/projects/projects.php';
-                            } else if ($_GET['halaman'] == 'tambah_projects'){
+                            } else if ($_GET['halaman'] == 'tambah_projects') {
                                 include 'view/projects/tambah_projects.php';
-                            } else if ($_GET['halaman'] == 'update_projects'){
+                            } else if ($_GET['halaman'] == 'update_projects') {
                                 include 'view/projects/ubah_projects.php';
-                            } else if ($_GET['halaman'] == 'delete_projects'){
+                            } else if ($_GET['halaman'] == 'delete_projects') {
                                 include 'view/projects/hapus_projects.php';
-                            } 
+                            }
                             // Halaman Article
-                            else if ($_GET['halaman'] == 'articles'){
+                            else if ($_GET['halaman'] == 'articles') {
                                 include 'view/articles/articles.php';
-                            } else if ($_GET['halaman'] == 'tambah_articles'){
+                            } else if ($_GET['halaman'] == 'tambah_articles') {
                                 include 'view/articles/tambah_articles.php';
-                            } else if ($_GET['halaman'] == 'update_articles'){
+                            } else if ($_GET['halaman'] == 'update_articles') {
                                 include 'view/articles/ubah_articles.php';
-                            } else if ($_GET['halaman'] == 'delete_articles'){
+                            } else if ($_GET['halaman'] == 'delete_articles') {
                                 include 'view/articles/hapus_articles.php';
                             }
                             // Halaman Logout
-                            else if ($_GET['halaman'] == 'logout'){
+                            else if ($_GET['halaman'] == 'logout') {
                                 include 'logout.php';
                             }
                             // Halaman Register
-                            else if ($_GET['halaman'] == 'register'){
+                            else if ($_GET['halaman'] == 'register') {
                                 include 'view/register/register.php';
-                            }
-                            else {
+                            } else {
                                 include 'view/404/404.php';
                             }
                         } else {
@@ -443,61 +460,94 @@
         <script src="js/demo/datatables-demo.js"></script>
         <script>
             tinymce.init({
-            selector: 'textarea',
-            plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
-            menubar: 'file edit view insert format tools table help',
-            toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
-            toolbar_sticky: true,
-            autosave_ask_before_unload: true,
-            autosave_interval: '30s',
-            autosave_prefix: '{path}{query}-{id}-',
-            autosave_restore_when_empty: false,
-            autosave_retention: '2m',
-            image_advtab: true,
-            link_list: [
-            { title: 'My page 1', value: 'https://www.codexworld.com' },
-            { title: 'My page 2', value: 'http://www.codexqa.com' }
-            ],
-            image_list: [
-            { title: 'My page 1', value: 'https://www.codexworld.com' },
-            { title: 'My page 2', value: 'http://www.codexqa.com' }
-            ],
-            image_class_list: [
-            { title: 'None', value: '' },
-            { title: 'Some class', value: 'class-name' }
-            ],
-            importcss_append: true,
-            file_picker_callback: (callback, value, meta) => {
-            /* Provide file and text for the link dialog */
-            if (meta.filetype === 'file') {
-                callback('https://www.google.com/logos/google.jpg', { text: 'My text' });
-            }
-        
-            /* Provide image and alt text for the image dialog */
-            if (meta.filetype === 'image') {
-                callback('https://www.google.com/logos/google.jpg', { alt: 'My alt text' });
-            }
-        
-            /* Provide alternative source and posted for the media dialog */
-            if (meta.filetype === 'media') {
-                callback('movie.mp4', { source2: 'alt.ogg', poster: 'https://www.google.com/logos/google.jpg' });
-            }
-            },
-            templates: [
-            { title: 'New Table', description: 'creates a new table', content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>' },
-            { title: 'Starting my story', description: 'A cure for writers block', content: 'Once upon a time...' },
-            { title: 'New list with dates', description: 'New List with dates', content: '<div class="mceTmpl"><span class="cdate">cdate</span><br><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>' }
-            ],
-            template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
-            template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
-            height: 400,
-            image_caption: true,
-            quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
-            noneditable_class: 'mceNonEditable',
-            toolbar_mode: 'sliding',
-            contextmenu: 'link image table',
-            content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
-        });
+                selector: 'textarea',
+                plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
+                menubar: 'file edit view insert format tools table help',
+                toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
+                toolbar_sticky: true,
+                autosave_ask_before_unload: true,
+                autosave_interval: '30s',
+                autosave_prefix: '{path}{query}-{id}-',
+                autosave_restore_when_empty: false,
+                autosave_retention: '2m',
+                image_advtab: true,
+                link_list: [{
+                        title: 'My page 1',
+                        value: 'https://www.codexworld.com'
+                    },
+                    {
+                        title: 'My page 2',
+                        value: 'http://www.codexqa.com'
+                    }
+                ],
+                image_list: [{
+                        title: 'My page 1',
+                        value: 'https://www.codexworld.com'
+                    },
+                    {
+                        title: 'My page 2',
+                        value: 'http://www.codexqa.com'
+                    }
+                ],
+                image_class_list: [{
+                        title: 'None',
+                        value: ''
+                    },
+                    {
+                        title: 'Some class',
+                        value: 'class-name'
+                    }
+                ],
+                importcss_append: true,
+                file_picker_callback: (callback, value, meta) => {
+                    /* Provide file and text for the link dialog */
+                    if (meta.filetype === 'file') {
+                        callback('https://www.google.com/logos/google.jpg', {
+                            text: 'My text'
+                        });
+                    }
+
+                    /* Provide image and alt text for the image dialog */
+                    if (meta.filetype === 'image') {
+                        callback('https://www.google.com/logos/google.jpg', {
+                            alt: 'My alt text'
+                        });
+                    }
+
+                    /* Provide alternative source and posted for the media dialog */
+                    if (meta.filetype === 'media') {
+                        callback('movie.mp4', {
+                            source2: 'alt.ogg',
+                            poster: 'https://www.google.com/logos/google.jpg'
+                        });
+                    }
+                },
+                templates: [{
+                        title: 'New Table',
+                        description: 'creates a new table',
+                        content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>'
+                    },
+                    {
+                        title: 'Starting my story',
+                        description: 'A cure for writers block',
+                        content: 'Once upon a time...'
+                    },
+                    {
+                        title: 'New list with dates',
+                        description: 'New List with dates',
+                        content: '<div class="mceTmpl"><span class="cdate">cdate</span><br><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>'
+                    }
+                ],
+                template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
+                template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
+                height: 400,
+                image_caption: true,
+                quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+                noneditable_class: 'mceNonEditable',
+                toolbar_mode: 'sliding',
+                contextmenu: 'link image table',
+                content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:16px }'
+            });
         </script>
 
 </body>
