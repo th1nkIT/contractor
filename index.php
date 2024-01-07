@@ -32,13 +32,13 @@ $stmt_clients->close();
     <link rel="stylesheet" href="plugin/css/App.css">
     <link rel="stylesheet" href="plugin/css/Artikel.css">
     <link rel="stylesheet" href="plugin/css/Bns.css">
-    <link rel="stylesheet" href="plugin/css/Db.css">
+    <link rel="stylesheet" href="plugin/css/db.css">
     <link rel="stylesheet" href="plugin/css/Footer.css">
     <link rel="stylesheet" href="plugin/css/Nv.css">
 
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="plugin/css/responsive/navbar.css">
-    <link rel="stylesheet" href="plugin/css/responsive/Dashboard.css">
+    <link rel="stylesheet" href="plugin/css/responsive/dashboard.css">
     <link rel="stylesheet" href="plugin/css/responsive/Footer.css">
 
     <!-- My Icon Bootstrap -->
@@ -334,33 +334,35 @@ $stmt_clients->close();
                 <!-- Title Page End -->
 
                 <!-- Content Start -->
-                <?php while ($article = $articles->fetch_assoc()) : ?>
-                    <div class="content">
-                        <div class="cards-img">
-                            <img height="350px" src="backstage/view/articles/images/<?php echo $article['images_article']; ?>" alt="<?php echo $article['title_article']; ?>" />
-                        </div>
-
-                        <div class="cards-content">
-                            <div class="cards-title">
-                                <h1>Admin</h1>
-                                <p class="date"><?php echo date('d-m-Y', strtotime($article['created_at'])); ?></p>
+                <div class="cont">
+                    <?php while ($article = $articles->fetch_assoc()) : ?>
+                        <div class="content">
+                            <div class="cards-img">
+                                <img height="350px" src="backstage/view/articles/images/<?php echo $article['images_article']; ?>" alt="<?php echo $article['title_article']; ?>" />
                             </div>
-                            <h1 class="ttl"><?php echo $article['title_article']; ?></h1>
-                            <p class='isi-artikel'>
-                                <?php
-                                // Memotong isi_article menjadi maksimal 100 kata
-                                $isi_article = $article['isi_article'];
-                                $words = explode(" ", $isi_article);
-                                $trimmed_content = implode(" ", array_slice($words, 0, 5));
-                                echo $trimmed_content . (count($words) > 5 ? "..." : "");
-                                ?>
-                            </p>
-                            <div class="cards-button">
-                                <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+    
+                            <div class="cards-content">
+                                <div class="cards-title">
+                                    <h1>Admin</h1>
+                                    <p class="date"><?php echo date('d-m-Y', strtotime($article['created_at'])); ?></p>
+                                </div>
+                                <h1 class="ttl"><?php echo $article['title_article']; ?></h1>
+                                <p class='isi-artikel'>
+                                    <?php
+                                    // Memotong isi_article menjadi maksimal 100 kata
+                                    $isi_article = $article['isi_article'];
+                                    $words = explode(" ", $isi_article);
+                                    $trimmed_content = implode(" ", array_slice($words, 0, 5));
+                                    echo $trimmed_content . (count($words) > 5 ? "..." : "");
+                                    ?>
+                                </p>
+                                <div class="cards-button">
+                                    <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php endwhile; ?>
+                    <?php endwhile; ?>
+                </div>
                 <!-- Content End -->
             </div>
         </div>
@@ -379,11 +381,11 @@ $stmt_clients->close();
 
         <!-- Konten Client Start -->
         <div class="konten-client">
-            <?php while ($client = $clients->fetch_assoc()) : ?>
-                <div class="img-client">
+            <div class="img-client">
+                <?php while ($client = $clients->fetch_assoc()) : ?>
                     <img src="backstage/view/client/images/<?php echo $client['client_images']; ?>" alt="<?php echo $client['client_name']; ?>" />
-                </div>
-            <?php endwhile; ?>
+                <?php endwhile; ?>
+            </div>
         </div>
         <!-- Konten Client End -->
     </section>
