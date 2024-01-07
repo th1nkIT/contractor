@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../plugin/css/App.css">
     <link rel="stylesheet" href="../../plugin/css/Artikel.css">
     <link rel="stylesheet" href="../../plugin/css/Bns.css">
-    <link rel="stylesheet" href="../../plugin/css/Db.css">
+    <link rel="stylesheet" href="../../plugin/css/db.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
     <link rel="stylesheet" href="../../plugin/css/Nv.css">
     <link rel="stylesheet" href="../../plugin/css/pry.css">
@@ -16,7 +16,7 @@
     
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="../../plugin/css/responsive/navbar.css">
-    <link rel="stylesheet" href="../../plugin/css/responsive/Dashboard.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/dashboard.css">
     <link rel="stylesheet" href="../../plugin/css/responsive/Footer.css">
     
     <!-- My Icon Bootstrap -->

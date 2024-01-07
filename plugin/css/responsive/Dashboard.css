@@ -60,12 +60,14 @@
 
     .artikel-konten .wraps {
         flex-wrap: wrap;
+        display: block;
         justify-content: center;
         box-shadow: none;
     }
-
+    
     .artikel-konten .wraps .title-page {
         padding: 1rem 0 2rem;
+        /* min-width: 100%; */
         width: 100%;
     }
 
@@ -88,7 +90,7 @@
     }
     
     .client .konten-client .img-client img {
-        width: 8rem;
+        height: 4rem;
         object-fit: cover;
     }
 }
