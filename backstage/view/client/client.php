@@ -2,60 +2,63 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Article Page</h1>
+    <h1 class="h3 mb-2 text-gray-800">Client Page</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Article Page</h6>
-            <a href="index.php?halaman=tambah_articles" class="btn btn-primary">Tambah Data</a>
+            <h6 class="m-0 font-weight-bold text-primary">Client Page</h6>
+            <a href="index.php?halaman=tambah_client" class="btn btn-primary">Tambah Data</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Title Article</th>
-                            <th>Deskripsi Article</th>
-                            <th>Isi Article</th>
-                            <th>Images Article</th>
+                            <th>Client Name</th>
+                            <th>Client Email</th>
+                            <th>Client Phone</th>
+                            <th>Client Address</th>
+                            <th>Client Images</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Title Article</th>
-                            <th>Deskripsi Article</th>
-                            <th>Isi Article</th>
-                            <th>Images Article</th>
+                            <th>Client Name</th>
+                            <th>Client Email</th>
+                            <th>Client Phone</th>
+                            <th>Client Address</th>
+                            <th>Client Images</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         <?php
-                        $stmt = $koneksi->prepare("SELECT id, uuid, title_article, deskripsi_article, isi_article, images_article FROM articles");
+                        $stmt = $koneksi->prepare("SELECT id, uuid, client_name, client_email, client_phone, client_address, client_images FROM client");
                         $stmt->execute();
                         $result = $stmt->get_result();
 
                         if ($result->num_rows === 0) {
-                            echo "<tr><td colspan='5' align='center'>Data Kosong</td></tr>";
+                            echo "<tr><td colspan='6' align='center'>Data Kosong</td></tr>";
                         } else {
                             while ($pecah = $result->fetch_assoc()) {
                         ?>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($pecah['title_article']) ?></td>
-                                    <td><?php echo htmlspecialchars($pecah['deskripsi_article']) ?></td>
-                                    <td><?php echo htmlspecialchars($pecah['isi_article']) ?></td>
-                                    <td><img src="view/articles/images/<?php echo htmlspecialchars($pecah['images_article']) ?>" alt="<?php echo htmlspecialchars($pecah['title_article']) ?>" width="100px" height="100px"></td>
+                                    <td><?php echo htmlspecialchars($pecah['client_name']) ?></td>
+                                    <td><?php echo htmlspecialchars($pecah['client_email']) ?></td>
+                                    <td><?php echo htmlspecialchars($pecah['client_phone']) ?></td>
+                                    <td><?php echo htmlspecialchars($pecah['client_address']) ?></td>
+                                    <td><img src="view/client/images/<?php echo htmlspecialchars($pecah['client_images']) ?>" alt="<?php echo htmlspecialchars($pecah['title_article']) ?>" width="100px" height="100px"></td>
                                     <td>
-                                        <a href="index.php?halaman=update_articles&id=<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
+                                        <a href="index.php?halaman=update_client&id=<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-edit"></i>
                                             </span>
                                             <span class="text">Update</span>
                                         </a>
                                         |
-                                        <a href="index.php?halaman=delete_articles&id=<?php echo $pecah['uuid'] ?>" class="btn btn-danger btn-icon-split">
+                                        <a href="index.php?halaman=delete_client&id=<?php echo $pecah['uuid'] ?>" class="btn btn-danger btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>
