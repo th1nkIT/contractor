@@ -1,0 +1,32 @@
+/* Galeri CSS */
+    @media (max-width: 758px) {
+        .jb-proyek {
+            min-height: 40vh;
+        }
+
+        .page .cards-bisnis .cards {
+            max-width: 13rem;
+            min-height: 20rem;
+        }
+
+        .page .cards-bisnis .cards .cards-foto {
+            display: flex;
+            align-items: center;
+            max-width: 100%;
+            min-height: 10rem;
+            overflow: hidden;
+        }
+        
+        .page .cards-bisnis .cards .cards-foto img {
+            width: 12rem;
+            height: 150px;
+            object-fit: cover;
+            border-radius: .3rem;
+        }
+
+        .page .cards-bisnis .cards .cards-konten h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    }
+/* Galeri CSS */

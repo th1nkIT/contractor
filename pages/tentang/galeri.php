@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
     <link rel="stylesheet" href="../../plugin/css/nv.css">
     <link rel="stylesheet" href="../../plugin/css/Pro.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/Galeri.css">
     
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="../../plugin/css/responsive/navbar.css">
@@ -127,7 +128,22 @@
                             <!-- Card Konten Start -->
                                 <div class="cards-konten">
                                     <h1>Judul</h1>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perferendis provident odit, nihil illo eligendi possimus, dolorum minima pariatur nesciunt, obcaecati numquam rerum mollitia maxime deserunt necessitatibus quia harum officiis.</p>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perferendis provident odit, nihil illo eligendi possimus, dolorum minima pariatur nesciunt, obcaecati numquam rerum mollitia...</p>
+                                </div>
+                            <!-- Card Konten End -->
+                        </div>
+                        
+                        <div class="cards">
+                            <!-- Card Foto -->
+                                <div class="cards-foto">
+                                    <img src="../../plugin/img/danau.jpeg" alt="" />
+                                </div>
+                            <!-- Card Foto End -->
+
+                            <!-- Card Konten Start -->
+                                <div class="cards-konten">
+                                    <h1>Judul</h1>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid perferendis provident odit, nihil illo eligendi possimus, dolorum minima pariatur nesciunt, obcaecati numquam rerum mollitia...</p>
                                 </div>
                             <!-- Card Konten End -->
                         </div>
