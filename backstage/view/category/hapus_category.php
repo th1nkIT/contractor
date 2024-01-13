@@ -1,7 +1,7 @@
 <?php
 $id_category = $_GET['id'];
 
- // Validasi ID
+// Validasi ID
 if (!isValidUuid($id_category)) {
     echo "<div class='alert alert-danger'>ID Category tidak valid</div>";
     echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
@@ -10,7 +10,7 @@ if (!isValidUuid($id_category)) {
 
 // Retrieve category data
 $stmt = $koneksi->prepare("SELECT images_category FROM category WHERE uuid = ?");
-$stmt->bind_param("i", $id_category);
+$stmt->bind_param("s", $id_category);
 $stmt->execute();
 $stmt->bind_result($foto);
 $stmt->fetch();
@@ -23,7 +23,7 @@ if ($foto && file_exists("assets/images/category/$foto")) {
 
 // Delete category data from the database
 $stmt = $koneksi->prepare("DELETE FROM category WHERE uuid = ?");
-$stmt->bind_param("i", $id_category);
+$stmt->bind_param("s", $id_category);
 
 if ($stmt->execute()) {
     echo "<div class='alert alert-info'>Data Terhapus</div>";
@@ -34,4 +34,3 @@ if ($stmt->execute()) {
 }
 
 $stmt->close();
-?>
