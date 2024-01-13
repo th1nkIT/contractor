@@ -4,16 +4,6 @@ require_once __DIR__ . '/config/jwt.php';
 
 require 'config/koneksi.php';
 include 'config/seeding.php';
-
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (SessionManager::login($_POST['email'], $_POST['password'])) {
-        echo "<div class='alert alert-info'>Login Berhasil</div>";
-        echo "<meta http-equiv='refresh' content='1;url=index.php'>";
-    } else {
-        echo "<div class='alert alert-danger'>Login Gagal: Password tidak sesuai</div>";
-        echo "<meta http-equiv='refresh' content='1;url=login.php'>";
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -76,12 +66,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                         </button>
                                         <hr>
                                     </form>
+                                    <?php
+                                    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                                        if (SessionManager::login($_POST['email'], $_POST['password'])) {
+                                            echo "<div class='alert alert-info'>Login Berhasil</div>";
+                                            echo "<meta http-equiv='refresh' content='1;url=index.php'>";
+                                        } else {
+                                            echo "<div class='alert alert-danger'>Login Gagal: Email atau Password tidak sesuai</div>";
+                                        }
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
