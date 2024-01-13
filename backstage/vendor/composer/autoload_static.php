@@ -70,6 +70,7 @@ class ComposerStaticInit9ecaee92d311f5c572991d689338ca3b
         ),
         'F' => 
         array (
+            'Firebase\\JWT\\' => 13,
             'Faker\\' => 6,
         ),
         'D' => 
@@ -187,6 +188,10 @@ class ComposerStaticInit9ecaee92d311f5c572991d689338ca3b
         'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Faker\\' => 
         array (

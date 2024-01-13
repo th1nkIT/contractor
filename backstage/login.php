@@ -1,42 +1,18 @@
 <?php
-session_start();
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/config/jwt.php';
+
 require 'config/koneksi.php';
 include 'config/seeding.php';
 
-if (isset($_SESSION['administrator'])) {
-    header('location:index.php');
-}
-
-if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $ambil = $koneksi->prepare("SELECT * FROM user WHERE email=?");
-    if (!$ambil) {
-        die("Prepare failed: (" . $koneksi->errno . ") " . $koneksi->error);
-    }
-
-    $ambil->bind_param("s", $email);
-    $ambil->execute();
-    $result = $ambil->get_result();
-
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-        $storedHashedPassword = $user['password'];
-        $passwordMatches = password_verify($password, $storedHashedPassword);
-
-        if ($passwordMatches) {
-            $_SESSION['administrator'] = $user;
-            echo "<div class='alert alert-info'>Login Berhasil</div>";
-            echo "<meta http-equiv='refresh' content='1;url=index.php'>";
-        } else {
-            echo "<div class='alert alert-danger'>Login Gagal: Password tidak sesuai</div>";
-        }
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (SessionManager::login($_POST['email'], $_POST['password'])) {
+        echo "<div class='alert alert-info'>Login Berhasil</div>";
+        echo "<meta http-equiv='refresh' content='1;url=index.php'>";
     } else {
-        echo "<div class='alert alert-danger'>Login Gagal: Email tidak ditemukan</div>";
+        echo "<div class='alert alert-danger'>Login Gagal: Password tidak sesuai</div>";
+        echo "<meta http-equiv='refresh' content='1;url=login.php'>";
     }
-
-    $ambil->close();
 }
 ?>
 
@@ -55,9 +31,7 @@ if (isset($_POST['login'])) {
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -85,13 +59,10 @@ if (isset($_POST['login'])) {
                                     </div>
                                     <form class="user" method="POST">
                                         <div class="form-group">
-                                            <input type="email" name="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                            <input type="email" name="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">

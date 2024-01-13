@@ -340,7 +340,7 @@ $stmt_clients->close();
                             <div class="cards-img">
                                 <img height="350px" src="backstage/view/articles/images/<?php echo $article['images_article']; ?>" alt="<?php echo $article['title_article']; ?>" />
                             </div>
-    
+
                             <div class="cards-content">
                                 <div class="cards-title">
                                     <h1>Admin</h1>
@@ -350,8 +350,8 @@ $stmt_clients->close();
                                 <p class='isi-artikel'>
                                     <?php
                                     // Memotong isi_article menjadi maksimal 100 kata
-                                    $isi_article = $article['isi_article'];
-                                    $words = explode(" ", $isi_article);
+                                    $deskripsi_article = $article['deskripsi_article'];
+                                    $words = explode(" ", $deskripsi_article);
                                     $trimmed_content = implode(" ", array_slice($words, 0, 5));
                                     echo $trimmed_content . (count($words) > 5 ? "..." : "");
                                     ?>

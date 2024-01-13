@@ -1,12 +1,14 @@
 <?php
-session_start();
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/config/jwt.php';
 include 'config/koneksi.php';
 include 'config/uuid.php';
 include 'config/helper.php';
 
-if (!isset($_SESSION['administrator'])) {
-    header('location:login.php');
-    exit();
+try {
+    $session = SessionManager::getCurrentSession();
+} catch (Exception $e) {
+    header("Location: login.php");
 }
 ?>
 
@@ -303,7 +305,7 @@ if (!isset($_SESSION['administrator'])) {
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['administrator']['nama_lengkap']; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $session->nama_lengkap; ?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -439,7 +441,7 @@ if (!isset($_SESSION['administrator'])) {
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="index.php?halaman=logout">Logout</a>
+                        <a class="btn btn-primary" href="logout.php">Logout</a>
                     </div>
                 </div>
             </div>
