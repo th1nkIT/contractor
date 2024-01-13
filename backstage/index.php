@@ -68,41 +68,49 @@ if (!isset($_SESSION['administrator'])) {
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Master Data
             </div>
 
             <!-- Nav Item - Article -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php?halaman=articles">
-                    <i class="fas fa-regular fa-file"></i>
+                    <i class="fas fa-regular fa-clipboard-list"></i>
                     <span>Article</span></a>
             </li>
 
             <!-- Nav Item - Client -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php?halaman=client">
-                    <i class="fas fa-regular fa-file"></i>
+                    <i class="fas fa-regular fa-user-alt"></i>
                     <span>Client</span></a>
             </li>
 
             <!-- Nav Item - Category -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php?halaman=category">
-                    <i class="fas fa-regular fa-file"></i>
+                    <i class="fas fa-regular fa-tags"></i>
                     <span>Category</span></a>
             </li>
 
             <!-- Nav Item - Projects -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php?halaman=projects">
-                    <i class="fas fa-regular fa-file"></i>
+                    <i class="fas fa-regular fa-receipt"></i>
                     <span>Project</span></a>
             </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Authentikasi
+            </div>
 
             <!-- Nav Item - Register -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php?halaman=register">
-                    <i class="fas fa-regular fa-file"></i>
+                    <i class="fas fa-regular fa-user-plus"></i>
                     <span>Register</span></a>
             </li>
 
@@ -117,7 +125,7 @@ if (!isset($_SESSION['administrator'])) {
             <!-- Nav Item - Projects -->
             <li class="nav-item">
                 <a class="nav-link" href="index.php?halaman=setting">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-tools"></i>
                     <span>Setting</span></a>
             </li>
 
