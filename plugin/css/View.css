@@ -1,0 +1,66 @@
+/* View Proyek CSS */
+    .page .judul h1 {
+        font-weight: 600;
+    }
+
+    .page .ct {
+        padding: 0 0 2rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .page .ct .ct-img {
+        margin: 0 2rem 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        object-fit: cover;
+        width: auto;
+        max-width: 35rem;
+        height: auto;
+        overflow: hidden;
+        border-radius: .3rem;
+        box-shadow: 0 0 10px 1px black;
+    }
+    
+    .page .ct .ct-img img {
+        width: 100%;
+        border-radius: .3rem;
+    }
+
+    .page .ct .ct-main {
+        padding: .5rem 1rem 1rem;
+        /* min-width: 36.5rem; */
+    }
+
+    .page .ct .ct-main h1 {
+        margin: 0 0 .5rem 0;
+        padding: 0 0 .5rem 0;
+        font-size: 1.6rem;
+        font-weight: 600;
+        border-bottom: 2px solid black;
+    }
+
+    .page .ct .ct-main table tr {
+        display: flex;
+        width: auto;
+        line-height: 1.7rem;
+    }
+    
+    .page .ct .ct-main table tr th {
+        display: flex;
+        min-width: 13rem;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    
+    .page .ct .ct-main table tr .titik {
+        margin: 0 .5rem 0 0;
+        display: flex;
+    }
+
+    .page .ct .ct-main table tr td {
+        text-align: justify;
+    }
+/* View Proyek CSS */

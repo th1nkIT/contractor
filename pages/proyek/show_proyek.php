@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="../../plugin/css/Bns.css">
     <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
-    <link rel="stylesheet" href="../../plugin/css/Nv.css">
-    <link rel="stylesheet" href="../../plugin/css/pry.css">
+    <link rel="stylesheet" href="../../plugin/css/nv.css">
+    <link rel="stylesheet" href="../../plugin/css/Pro.css">
+    <link rel="stylesheet" href="../../plugin/css/View.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/View.css">
     
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="../../plugin/css/responsive/navbar.css">
@@ -94,14 +96,14 @@
             <!-- Konten Proyek Start -->
                 <!-- Title Proyek Start -->
                     <div class="judul">
-                        <h1>JUDUL</h1>
+                        <h1>( JUDUL DARI PROYEK )</h1>
                     </div>
                 <!-- Title Proyek End -->
 
                 <!-- Content Show Start -->
                     <div class="ct">
                         <div class="ct-img">
-                            <img src="" alt="">
+                            <img src="../../plugin/img/konstruksi.jpg" alt="" />
                         </div>
 
                         <div class="ct-main">
@@ -111,19 +113,23 @@
                                 <table>
                                     <tr>
                                         <th>Nama Klien</th>
-                                        <td>: -</td>
+                                        <td class="titik">:</td>
+                                        <td>-</td>
                                     </tr>
                                     <tr>
                                         <th>Perusahaan Klien</th>
-                                        <td>: PPK Soe - Bts. Kota Kefamenanu</td>
+                                        <td class="titik">:</td>
+                                        <td>PPK Soe - Bts. Kota Kefamenanu</td>
                                     </tr>
                                     <tr>
                                         <th>Tanggal Proyek Dimulai</th>
-                                        <td>: 15 - 05 - 2013</td>
+                                        <td class="titik">:</td>
+                                        <td>15 - 05 - 2013</td>
                                     </tr>
                                     <tr>
                                         <th>Tanggal Proyek Selesai</th>
-                                        <td>: 06 - 11 - 2013</td>
+                                        <td class="titik">:</td>
+                                        <td>06 - 11 - 2013</td>
                                     </tr>
                                 </table>
                             <!-- Deskripsi Content End -->

@@ -1,0 +1,28 @@
+/* View CSS */
+    /* View Proyek CSS */
+        @media (max-width: 758px) {
+            .jb-proyek {
+                min-height: 40vh;
+            }
+            
+            .page .ct {
+                padding: 0 0 .5rem;
+                display: block;
+            }
+    
+            .page .ct .ct-img {
+                margin: 0;
+                padding: 1rem 0;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                box-shadow: none;
+            }
+
+            .page .ct .ct-img img {
+                width: 60%;
+                box-shadow: 0 0 10px 1px black;
+            }
+        }
+    /* View Proyek CSS */
+/* View CSS */
