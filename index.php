@@ -18,6 +18,12 @@ $stmt_clients = $koneksi->prepare("SELECT * FROM client ORDER BY id DESC");
 $stmt_clients->execute();
 $clients = $stmt_clients->get_result();
 $stmt_clients->close();
+
+// Bisnis Terbaru
+$stmt_category = $koneksi->prepare("SELECT * FROM category ORDER BY id DESC");
+$stmt_category->execute();
+$categorys = $stmt_category->get_result();
+$stmt_category->close();
 ?>
 
 
@@ -203,17 +209,19 @@ $stmt_clients->close();
 
                 <!-- Content Start -->
                 <div class="content">
-                    <div class="cards-img">
-                        <img height="350px" src="plugin/img/danau.jpeg" alt="" />
-                    </div>
-
-                    <div class="cards-content">
-                        <h1 class="ttl">Judul Bisnis</h1>
-                        <p class='isi-artikel'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim odio nobis ab magnam nesciunt, consequuntur illum commodi quis ipsa soluta!</p>
-                        <div class="cards-button">
-                            <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                    <?php while ($category = $categorys->fetch_assoc()) : ?>
+                        <div class="cards-img">
+                            <img height="350px" src="backstage/view/category/images/<?php echo $category['images_category'] ?>" alt="<?php echo $category['nama_category'] ?>" />
                         </div>
-                    </div>
+
+                        <div class="cards-content">
+                            <h1 class="ttl"><?php echo $category['nama_category'] ?></h1>
+                            <p class='isi-artikel'><?php echo $category['deskripsi_category'] ?></p>
+                            <div class="cards-button">
+                                <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
                 </div>
                 <!-- Content End -->
             </div>

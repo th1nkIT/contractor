@@ -1,6 +1,6 @@
 node_modules
 backstage/.env
-view/articles/images
-view/category/images
-view/client/images
-view/projects/images
+view/articles/images/
+view/category/images/
+view/client/images/
+view/projects/images/
