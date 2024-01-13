@@ -1,5 +1,6 @@
 <?php
 include '../../backstage/config/koneksi.php';
+include '../../backstage/config/constants.php';
 
 $slug = isset($_GET['slug']) ? $_GET['slug'] : 0;
 
@@ -142,12 +143,12 @@ $stmt->close();
                     <tr>
                         <th>Tanggal Proyek Dimulai</th>
                         <td class="titik">:</td>
-                        <td><?php echo $row['tanggal_projects_start'] ?></td>
+                        <td><?php echo ProjectDate($row['tanggal_projects_start']) ?></td>
                     </tr>
                     <tr>
                         <th>Tanggal Proyek Selesai</th>
                         <td class="titik">:</td>
-                        <td><?php echo $row['tanggal_projects_end'] ?></td>
+                        <td><?php echo ProjectDate($row['tanggal_projects_end']) ?></td>
                     </tr>
                 </table>
                 <!-- Deskripsi Content End -->
