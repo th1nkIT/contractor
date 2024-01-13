@@ -3,7 +3,7 @@ include '../../backstage/config/koneksi.php';
 
 $slug = isset($_GET['slug']) ? $_GET['slug'] : 0;
 
-$stmt = $koneksi->prepare("SELECT * FROM projects WHERE LOWER(slug) LIKE LOWER(?)");
+$stmt = $koneksi->prepare("SELECT * FROM projects LEFT JOIN client ON projects.client_id = client.uuid WHERE LOWER(slug) LIKE LOWER(?)");
 $slugParam = "%" . $slug . "%";
 $stmt->bind_param("s", $slugParam);
 $stmt->execute();
@@ -114,7 +114,7 @@ $stmt->close();
         <!-- Konten Proyek Start -->
         <!-- Title Proyek Start -->
         <div class="judul">
-            <h1><?php echo $row['nama_client']; ?></h1>
+            <h1><?php echo $row['title_project']; ?></h1>
         </div>
         <!-- Title Proyek End -->
 
@@ -132,22 +132,22 @@ $stmt->close();
                     <tr>
                         <th>Nama Klien</th>
                         <td class="titik">:</td>
-                        <td>-</td>
+                        <td><?php echo $row['client_name'] ?></td>
                     </tr>
                     <tr>
                         <th>Perusahaan Klien</th>
                         <td class="titik">:</td>
-                        <td>PPK Soe - Bts. Kota Kefamenanu</td>
+                        <td><?php echo $row['client_name'] ?></td>
                     </tr>
                     <tr>
                         <th>Tanggal Proyek Dimulai</th>
                         <td class="titik">:</td>
-                        <td>15 - 05 - 2013</td>
+                        <td><?php echo $row['tanggal_projects_start'] ?></td>
                     </tr>
                     <tr>
                         <th>Tanggal Proyek Selesai</th>
                         <td class="titik">:</td>
-                        <td>06 - 11 - 2013</td>
+                        <td><?php echo $row['tanggal_projects_end'] ?></td>
                     </tr>
                 </table>
                 <!-- Deskripsi Content End -->

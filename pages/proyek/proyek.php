@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/thinkit/plugin/css/Nv.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Proyek.css">
-    
+
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/navbar.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Dashboards.css">
@@ -95,6 +95,7 @@
     <!-- Logika Paginition Start -->
     <?php
     include "../../backstage/config/koneksi.php";
+    include "../../backstage/config/constants.php";
 
     $queryTotalRows = "SELECT COUNT(*) as total_rows FROM projects";
     $stmtTotalRows = $koneksi->prepare($queryTotalRows);
@@ -111,7 +112,7 @@
 
     $offset = ($currentPage - 1) * $dataPerPage;
 
-    $queryData = "SELECT * FROM projects LIMIT ?, ?";
+    $queryData = "SELECT * FROM projects LEFT JOIN client ON projects.client_id = client.uuid LIMIT ?, ?";
     $stmtData = $koneksi->prepare($queryData);
     $stmtData->bind_param("ii", $offset, $dataPerPage);
     $stmtData->execute();
@@ -123,10 +124,10 @@
     <section class="page">
         <!-- Button Proyek Start -->
         <div class="status">
-              <button class="aktif" type="button" onclick="semua()">SEMUA STATUS</button>
-              <button type="button" onclick="sudah()">SUDAH DIKERJAKAN</button>
-              <button type="button" onclick="sedang()">SEDANG DIKERJAKAN</button>
-              <button type="button" onclick="akan()">AKAN DIKERJAKAN</button>
+            <button class="aktif" type="button" onclick="semua()">SEMUA STATUS</button>
+            <button type="button" onclick="sudah()">SUDAH DIKERJAKAN</button>
+            <button type="button" onclick="sedang()">SEDANG DIKERJAKAN</button>
+            <button type="button" onclick="akan()">AKAN DIKERJAKAN</button>
         </div>
         <!-- Button Proyek End -->
 
@@ -144,13 +145,13 @@
 
                     <!-- Konten Cards Start -->
                     <div class="cards-main">
-                        <h1 class="title"><?php echo $row['nama_client']; ?></h1>
-                        <p class="sts-done"><span>Selesai!</span></p>
+                        <h1 class="title"><?php echo $row['title_project']; ?></h1>
+                        <p class="sts-done"><span><?php echo StatusProject($row['status_projects']); ?></span></p>
                         <p class="isi-artikel">
                             <?php
                             // Memotong isi_article menjadi maksimal 100 kata
-                            $nama_client = $row['nama_client'];
-                            $words = explode(" ", $nama_client);
+                            $description_project = $row['description_project'];
+                            $words = explode(" ", $description_project);
                             $trimmed_content = implode(" ", array_slice($words, 0, 5));
                             echo $trimmed_content . (count($words) > 5 ? "..." : "");
                             ?>
