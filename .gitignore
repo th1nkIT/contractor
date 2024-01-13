@@ -1,5 +1,5 @@
 node_modules
-.env
+backstage/.env
 view/articles/images
 view/category/images
 view/client/images
