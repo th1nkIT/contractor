@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../plugin/css/nv.css">
     <link rel="stylesheet" href="../../plugin/css/Pro.css">
     <link rel="stylesheet" href="../../plugin/css/View.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/View.css">
     
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="../../plugin/css/responsive/navbar.css">
