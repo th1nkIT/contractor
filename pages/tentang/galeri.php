@@ -89,6 +89,29 @@
         <!-- Jumbotron End -->
     <!-- Header End -->
 
+    <!-- Logika Paginition Start -->
+        <?php
+            include "../../backstage/config/koneksi.php";
+        
+            // Contoh query untuk mendapatkan jumlah total data
+            $queryTotalRows = "SELECT COUNT(*) as total_rows FROM articles";
+            $resultTotalRows = mysqli_query($koneksi, $queryTotalRows);
+            $rowTotalRows = mysqli_fetch_assoc($resultTotalRows);
+
+            $totalRows = $rowTotalRows['total_rows'];
+
+            $dataPerPage = 12; // Jumlah data per halaman
+            $totalPages = ceil($totalRows / $dataPerPage); // Hitung jumlah halaman
+
+            $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+            $offset = ($currentPage - 1) * $dataPerPage;
+
+            $queryData = "SELECT * FROM articles LIMIT $offset, $dataPerPage";
+            $resultData = mysqli_query($koneksi, $queryData);
+        ?>
+    <!-- Logika Paginition End -->
+
     <!-- Konten Bisnis Start -->
         <section class="page">
             <!-- Konten Bisnis Start -->
@@ -111,6 +134,32 @@
                     </div>
                 <!-- Card End -->
             <!-- Konten Bisnis End -->
+            
+            <!-- Pagination Start -->
+                <div class="pagination">
+                    <div class="wrap">
+                    <?php
+                        $now;
+                        if ($currentPage > 1) {
+                            $prevPage = $currentPage - 1;
+                            echo "<a href='?page=$prevPage'><i class='bi-caret-left'></i> SEBELUMNYA</a>";
+                        } else {
+                            echo "<span><i class='bi-caret-left'></i> SEBELUMNYA</span>";
+                        }
+                        for ($i = 1; $i <= $totalPages; $i++) {
+                            echo "<a href='?page=$i'>$i</a>";
+                        }
+
+                        if ($currentPage < $totalPages) {
+                            $nextPage = $currentPage + 1;
+                            echo "<a href='?page=$nextPage'>SELANJUTNYA <i class='bi-caret-right'></i></a>";
+                        } else {
+                            echo "<span>SELANJUTNYA <i class='bi-caret-right'></i></span>";
+                        }
+                        ?>
+                    </div>
+                </div>
+            <!-- Pagination End -->
         </section>
     <!-- Konten Bisnis End -->
 
