@@ -1,0 +1,41 @@
+/* Proyek CSS */
+    @media (max-width: 758px) {
+        .jb-proyek {
+            min-height: 40vh;
+        }
+        
+        .page .status {
+            font-size: 1rem;
+        }
+        
+        .page .konten-proyek .cards-proyek {
+            padding: .5rem 0;
+            max-width: 13rem;
+            min-height: 20rem;
+            overflow: hidden;
+        }
+        
+        .page .konten-proyek .cards-proyek .img-cards {
+            display: flex;
+            align-items: center;
+            max-width: 100%;
+            min-height: 15rem;
+            object-fit: cover;
+        }
+        
+        .page .konten-proyek .cards-proyek .img-cards img {
+            width: 12rem;
+            height: 200px;
+            border-radius: .3rem;
+        }
+
+        .page .konten-proyek .cards-proyek .cards-main .title {
+            font-size: 1.1rem;
+            min-height: 2rem;
+        }
+
+        .page .pagination {
+            padding: 1rem 0 .5rem;
+        }
+    }
+/* Proyek CSS */

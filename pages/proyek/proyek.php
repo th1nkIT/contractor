@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="../../plugin/css/Bns.css">
     <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
-    <link rel="stylesheet" href="../../plugin/css/Nv.css">
+    <link rel="stylesheet" href="../../plugin/css/nv.css">
     <link rel="stylesheet" href="../../plugin/css/Pro.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/Proyek.css">
     
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="../../plugin/css/responsive/navbar.css">
@@ -116,7 +117,7 @@
         <section class="page">
             <!-- Button Proyek Start -->
                 <div class="status">
-                    <button class="aktif" type="button" onclick="semua()">SEMUA</button>
+                    <button class="aktif" type="button" onclick="semua()">SEMUA STATUS</button>
                     <button type="button" onclick="sudah()">SUDAH DIKERJAKAN</button>
                     <button type="button" onclick="sedang()">SEDANG DIKERJAKAN</button>
                     <button type="button" onclick="akan()">AKAN DIKERJAKAN</button>
