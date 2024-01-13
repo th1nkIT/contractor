@@ -65,9 +65,9 @@
 
 .page .konten-proyek .cards-proyek {
     margin: 1rem;
-    padding: 0 0 1rem;
-    max-width: 23rem;
-    min-height: 26rem;
+    padding: .5rem 0 1rem;
+    max-width: 19rem;
+    min-height: 25rem;
     height: auto;
     background: none;
     box-shadow: 0 0 10px 1px black;
@@ -76,22 +76,32 @@
 
 .page .konten-proyek .cards-proyek .img-cards {
     padding: .5rem;
-    width: 22rem;
+    display: flex;
+    align-items: center;
+    width: 18rem;
+    height: 19rem;
+    overflow: hidden;
+    border-radius: 1.5rem;
 }
 
 .page .konten-proyek .cards-proyek .img-cards img {
     width: 100%;
-    border-radius: .3rem;
+    object-fit: cover;
+    border-radius: 2rem;
 }
 
 .page .konten-proyek .cards-proyek .cards-main {
     padding: .5rem 1rem 0;
 }
 
-.page .konten-proyek .cards-proyek .cards-main h1 {
+.page .konten-proyek .cards-proyek .cards-main .title {
     margin: 0 0 .5rem;
     padding: 0 0 .5rem;
+    display: flex;
+    align-items: end;
+    min-height: 4rem;
     text-align: end;
+    justify-content: flex-end;
     font-size: 1.4rem;
     border-bottom: 2px solid black;
 }
@@ -147,8 +157,9 @@
 }
 /* Span Proyek Akan Dikerjakan CSS */
 
-.page .konten-proyek .cards-proyek .cards-main p {
+.page .konten-proyek .cards-proyek .cards-main .isi-artikel {
     padding: .5rem 0 2rem;
+    min-height: 2rem;
     text-align: justify;
 }
 
@@ -166,6 +177,10 @@
     font-size: .9rem;
     font-weight: 600;
     text-transform: uppercase;
+}
+
+.page .konten-proyek .cards-proyek .cards-main .btn-cards a:hover {
+    background-color: var(--primary);
 }
 /* Konten CSS */
 /* Proyek End */
