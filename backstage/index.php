@@ -4,6 +4,7 @@ require_once __DIR__ . '/config/jwt.php';
 include 'config/koneksi.php';
 include 'config/uuid.php';
 include 'config/helper.php';
+include 'config/utils.php';
 
 try {
     $session = SessionManager::getCurrentSession();

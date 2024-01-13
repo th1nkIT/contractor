@@ -3,6 +3,9 @@
 function Migrate()
 {
     MigrateAddTableClient();
+    MigrateAlterTableArticle();
+    MigrateAlterTableCategory();
+    MigrateAlterTableProject();
 }
 
 function MigrateAddTableClient()
@@ -20,6 +23,45 @@ function MigrateAddTableClient()
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
+
+    $stmt = $koneksi->prepare($query);
+    if ($stmt) {
+        $stmt->execute();
+        $stmt->close();
+    }
+}
+
+function MigrateAlterTableArticle()
+{
+    global $koneksi;
+
+    $query = "ALTER TABLE articles ADD COLUMN slug VARCHAR(255) NOT NULL UNIQUE";
+
+    $stmt = $koneksi->prepare($query);
+    if ($stmt) {
+        $stmt->execute();
+        $stmt->close();
+    }
+}
+
+function MigrateAlterTableCategory()
+{
+    global $koneksi;
+
+    $query = "ALTER TABLE category ADD COLUMN slug VARCHAR(255) NOT NULL UNIQUE";
+
+    $stmt = $koneksi->prepare($query);
+    if ($stmt) {
+        $stmt->execute();
+        $stmt->close();
+    }
+}
+
+function MigrateAlterTableProject()
+{
+    global $koneksi;
+
+    $query = "ALTER TABLE projects ADD COLUMN slug VARCHAR(255) NOT NULL UNIQUE";
 
     $stmt = $koneksi->prepare($query);
     if ($stmt) {

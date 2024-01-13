@@ -86,8 +86,11 @@ if (isset($_POST['simpan'])) {
         $summary_category = $_POST['summary_category'];
         $guid = generateUuid();
 
-        $stmt = $koneksi->prepare("INSERT INTO category (uuid, nama_category, deskripsi_category, summary_category, images_category) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssss", $guid, $nama_category, $deskripsi_category, $summary_category, $nama);
+        // make slug from utils
+        $slug = createSlug($nama_category);
+
+        $stmt = $koneksi->prepare("INSERT INTO category (uuid, slug, nama_category, deskripsi_category, summary_category, images_category) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssss", $guid, $slug, $nama_category, $deskripsi_category, $summary_category, $nama);
 
         if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";
