@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="../../plugin/css/Bns.css">
     <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
-    <link rel="stylesheet" href="../../plugin/css/Nv.css">
-    <link rel="stylesheet" href="../../plugin/css/pry.css">
+    <link rel="stylesheet" href="../../plugin/css/nv.css">
+    <link rel="stylesheet" href="../../plugin/css/Pro.css">
     <link rel="stylesheet" href="../../plugin/css/ttg.css">
     
     <!-- Query Media CSS -->

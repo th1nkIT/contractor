@@ -23,6 +23,28 @@
                 width: 60%;
                 box-shadow: 0 0 10px 1px black;
             }
+
+            .page .ct .ct-main h1 {
+                font-size: 1.3rem;
+            }
+
+            .page .ct-btn {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .page .ct-btn a {
+                margin: .5rem;
+                padding: .4rem .5rem;
+                background-color: var(--fourth);
+                font-weight: 500;
+                color: white;
+            }
+            
+            .page .ct-btn a:hover {
+                background-color: var(--primary);
+            }
         }
     /* View Proyek CSS */
 /* View CSS */

@@ -40,7 +40,7 @@ $stmt_category->close();
     <link rel="stylesheet" href="plugin/css/Bns.css">
     <link rel="stylesheet" href="plugin/css/Dashboard.css">
     <link rel="stylesheet" href="plugin/css/Footer.css">
-    <link rel="stylesheet" href="plugin/css/Nv.css">
+    <link rel="stylesheet" href="plugin/css/nv.css">
 
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="plugin/css/responsive/navbar.css">

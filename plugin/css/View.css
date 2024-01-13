@@ -60,6 +60,33 @@
         display: flex;
     }
 
+    .page .ct .ct-main h1 {
+        font-size: 1.4rem;
+    }
+    
+    .page .ct .ct-main p {
+        text-align: justify;
+    }
+
+    .page .ct-btn {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .page .ct-btn a {
+        margin: .5rem;
+        padding: .4rem .5rem;
+        background-color: var(--fourth);
+        border-radius: .3rem;
+        font-weight: 500;
+        color: white;
+    }
+    
+    .page .ct-btn a:hover {
+        background-color: var(--primary);
+    }
+
     .page .ct .ct-main table tr td {
         text-align: justify;
     }

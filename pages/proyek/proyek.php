@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="/thinkit/plugin/css/Footer.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Nv.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
-
+    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Proyek.css">
+    
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/navbar.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Dashboards.css">
@@ -122,10 +123,10 @@
     <section class="page">
         <!-- Button Proyek Start -->
         <div class="status">
-            <button class="aktif" type="button" onclick="semua()">SEMUA</button>
-            <button type="button" onclick="sudah()">SUDAH DIKERJAKAN</button>
-            <button type="button" onclick="sedang()">SEDANG DIKERJAKAN</button>
-            <button type="button" onclick="akan()">AKAN DIKERJAKAN</button>
+              <button class="aktif" type="button" onclick="semua()">SEMUA STATUS</button>
+              <button type="button" onclick="sudah()">SUDAH DIKERJAKAN</button>
+              <button type="button" onclick="sedang()">SEDANG DIKERJAKAN</button>
+              <button type="button" onclick="akan()">AKAN DIKERJAKAN</button>
         </div>
         <!-- Button Proyek End -->
 
