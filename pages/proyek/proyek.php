@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
     <link rel="stylesheet" href="../../plugin/css/Nv.css">
-    <link rel="stylesheet" href="../../plugin/css/pry.css">
+    <link rel="stylesheet" href="../../plugin/css/Pro.css">
     
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="../../plugin/css/responsive/navbar.css">
@@ -89,6 +89,29 @@
         <!-- Jumbotron End -->
     <!-- Header End -->
 
+    <!-- Logika Paginition Start -->
+        <?php
+            include "../../backstage/config/koneksi.php";
+        
+            // Contoh query untuk mendapatkan jumlah total data
+            $queryTotalRows = "SELECT COUNT(*) as total_rows FROM articles";
+            $resultTotalRows = mysqli_query($koneksi, $queryTotalRows);
+            $rowTotalRows = mysqli_fetch_assoc($resultTotalRows);
+
+            $totalRows = $rowTotalRows['total_rows'];
+
+            $dataPerPage = 12; // Jumlah data per halaman
+            $totalPages = ceil($totalRows / $dataPerPage); // Hitung jumlah halaman
+
+            $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+            $offset = ($currentPage - 1) * $dataPerPage;
+
+            $queryData = "SELECT * FROM articles LIMIT $offset, $dataPerPage";
+            $resultData = mysqli_query($koneksi, $queryData);
+        ?>
+    <!-- Logika Paginition End -->
+
     <!-- Konten Proyek Start -->
         <section class="page">
             <!-- Button Proyek Start -->
@@ -102,25 +125,63 @@
 
             <!-- Konten Proyek Start -->
                 <div class="konten-proyek">
+                    <?php
+                        while ($row = mysqli_fetch_assoc($resultData)) {
+                    ?>
                     <div class="cards-proyek">
                         <!-- Img Cards Start -->
                             <div class="img-cards">
-                                <img src="../../plugin/img/danau.jpeg" alt="">
+                                <img height="350px" src="../../backstage/view/articles/images/<?php echo $row['images_article']; ?>" alt="" />
                             </div>
                         <!-- Img Cards End -->
 
                         <!-- Konten Cards Start -->
                             <div class="cards-main">
-                                <h1>Judul</h1>
+                                <h1 class="title"><?php echo $row['title_article']; ?></h1>
                                 <p class="sts-done"><span>Selesai!</span></p>
-                                <p>&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, itaque.</p>
+                                <p class="isi-artikel">
+                                    <?php
+                                        // Memotong isi_article menjadi maksimal 100 kata
+                                        $isi_article = $row['deskripsi_article'];
+                                        $words = explode(" ", $isi_article);
+                                        $trimmed_content = implode(" ", array_slice($words, 0, 5));
+                                        echo $trimmed_content . (count($words) > 5 ? "..." : "");
+                                    ?>
+                                </p>
                                 <div class="btn-cards">
                                     <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         <!-- Konten Cards End -->
                     </div>
+                    <?php } ?>
                 </div>
+
+                <!-- Pagination Start -->
+                <div class="pagination">
+                        <div class="wrap">
+                        <?php
+                            $now;
+                            if ($currentPage > 1) {
+                                $prevPage = $currentPage - 1;
+                                echo "<a href='?page=$prevPage'><i class='bi-caret-left'></i> SEBELUMNYA</a>";
+                            } else {
+                                echo "<span><i class='bi-caret-left'></i> SEBELUMNYA</span>";
+                            }
+                            for ($i = 1; $i <= $totalPages; $i++) {
+                                echo "<a href='?page=$i'>$i</a>";
+                            }
+
+                            if ($currentPage < $totalPages) {
+                                $nextPage = $currentPage + 1;
+                                echo "<a href='?page=$nextPage'>SELANJUTNYA <i class='bi-caret-right'></i></a>";
+                            } else {
+                                echo "<span>SELANJUTNYA <i class='bi-caret-right'></i></span>";
+                            }
+                            ?>
+                        </div>
+                    </div>
+                <!-- Pagination End -->
             <!-- Konten Proyek End -->
         </section>
     <!-- Konten Proyek End -->
