@@ -1,4 +1,4 @@
-<?php 
+<?php
 $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
@@ -28,48 +28,48 @@ if ($result->num_rows > 0) {
 
 <div class="card-body">
     <form method="POST" enctype="multipart/form-data">
-    <div class="row">
-        <div class="col-md-8">
-        <div class="card">
-            <div class="card-header pb-0">
-            <div class="d-flex align-items-center">
-                <p class="mb-0">
-                <h2>Edit Data Article</h2>
-                </p>
-                <button class="btn btn-primary btn-sm ms-auto" name="simpan">Simpan Data</button>
-            </div>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Title Article</label>
-                        <input class="form-control" type="text" name="title_article" value="<?php echo $pecah['title_article']; ?>" required>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="d-flex align-items-center">
+                            <p class="mb-0">
+                            <h2>Edit Data Article</h2>
+                            </p>
+                            <button class="btn btn-primary btn-sm ms-auto" name="simpan">Simpan Data</button>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="example-text-input" class="form-control-label">Deskripsi Article</label>
-                        <input class="form-control" type="text" name="deskripsi_article" value="<?php echo $pecah['deskripsi_article']; ?>" required>
-                    </div>
-                </div>
-                <label for="example-text-input" class="form-control-label">Isi Article</label>
-                <textarea name="isi_article" id="isi_article" value="<?php echo $pecah['isi_article']; ?>">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Title Article</label>
+                                    <input class="form-control" type="text" name="title_article" value="<?php echo $pecah['title_article']; ?>" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Deskripsi Article</label>
+                                    <input class="form-control" type="text" name="deskripsi_article" value="<?php echo $pecah['deskripsi_article']; ?>" required>
+                                </div>
+                            </div>
+                            <label for="example-text-input" class="form-control-label">Isi Article</label>
+                            <textarea name="isi_article" id="isi_article" value="<?php echo $pecah['isi_article']; ?>">
                 <?php echo $pecah['isi_article']; ?>
                 </textarea>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="example-text-input" class="form-control-label">Foto Article</label>
-                            <input class="form-control" type="file" name="foto_article">
-                            <img src="view/articles/images/<?php echo $pecah['images_article']; ?>" alt="<?php echo $pecah['title_article'] ?>">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Foto Article</label>
+                                        <input class="form-control" type="file" name="foto_article">
+                                        <img src="view/articles/images/<?php echo $pecah['images_article']; ?>" alt="<?php echo $pecah['title_article'] ?>">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-        </div>
-    </div>
     </form>
 </div>
 <?php
@@ -77,6 +77,11 @@ if (isset($_POST['simpan'])) {
     $id_article = $_GET['id'];
     $nama_article = $_FILES['foto_article']['name'];
     $lokasi_article = $_FILES['foto_article']['tmp_name'];
+    $slug = $pecah['slug'];
+
+    if ($_POST['title_article'] != $pecah['title_article']) {
+        $slug = createSlug($_POST['title_article']);
+    }
 
     // Jika foto diubah
     if (!empty($lokasi_article)) {
@@ -89,7 +94,7 @@ if (isset($_POST['simpan'])) {
             exit();
         }
 
-        if(empty($_POST['isi_article'])){
+        if (empty($_POST['isi_article'])) {
             echo "<div class='alert alert-danger'>Artikel tidak boleh kosong</div>";
         }
 
@@ -111,12 +116,12 @@ if (isset($_POST['simpan'])) {
         move_uploaded_file($lokasi_article, "view/articles/images/$nama_article");
 
         // Update data artikel dengan foto baru
-        $stmt = $koneksi->prepare("UPDATE articles SET title_article=?, deskripsi_article=?, isi_article=?, images_article=? WHERE uuid=?");
-        $stmt->bind_param("sssss", $_POST['title_article'], $_POST['deskripsi_article'], $_POST['isi_article'], $nama_article, $id_article);
+        $stmt = $koneksi->prepare("UPDATE articles SET slug=?, title_article=?, deskripsi_article=?, isi_article=?, images_article=? WHERE uuid=?");
+        $stmt->bind_param("ssssss", $slug, $_POST['title_article'], $_POST['deskripsi_article'], $_POST['isi_article'], $nama_article, $id_article);
     } else {
         // Update data artikel tanpa mengubah foto
-        $stmt = $koneksi->prepare("UPDATE articles SET title_article=?, deskripsi_article=?, isi_article=? WHERE uuid=?");
-        $stmt->bind_param("ssss", $_POST['title_article'], $_POST['deskripsi_article'], $_POST['isi_article'], $id_article);
+        $stmt = $koneksi->prepare("UPDATE articles SET slug=?, title_article=?, deskripsi_article=?, isi_article=? WHERE uuid=?");
+        $stmt->bind_param("sssss", $slug, $_POST['title_article'], $_POST['deskripsi_article'], $_POST['isi_article'], $id_article);
     }
 
     if ($stmt->execute()) {
@@ -130,4 +135,3 @@ if (isset($_POST['simpan'])) {
     $stmt->close();
 }
 ?>
-
