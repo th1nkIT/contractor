@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /thinkit/
+
+    # Aturan untuk menangani proyek/test-slug
+    RewriteRule ^proyek/([^/]+)$ pages/proyek/show_proyek.php?slug=$1 [L]
+
+    # Aturan untuk menangani proyek/
+    RewriteRule ^proyek$ pages/proyek/proyek.php [L]
+</IfModule>

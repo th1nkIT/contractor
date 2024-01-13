@@ -15,8 +15,32 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Nama Client</label>
-                                    <input class="form-control" type="text" name="nama_client" required>
+                                    <label for="example-text-input" class="form-control-label">Title Project</label>
+                                    <input class="form-control" type="text" name="title_project" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Description Project</label>
+                                    <input class="form-control" type="text" name="description_project" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Client</label>
+                                    <select name="nama_client" class="form-control" required>
+                                        <option value="0">--Pilih Client--</option>
+                                        <?php
+                                        $query = "SELECT uuid, client_name FROM client";
+                                        $stmt = $koneksi->prepare($query);
+                                        $stmt->execute();
+                                        $stmt->bind_result($uuid, $client_name);
+                                        while ($stmt->fetch()) {
+                                            echo "<option value='$uuid'>$client_name</option>";
+                                        }
+                                        $stmt->close();
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -68,6 +92,7 @@ $tanggal = date('Y-m-d');
 
 if (isset($_POST['simpan'])) {
     $status_project = $_POST['status_project'];
+    $nama_client = $_POST['nama_client'];
 
     // Check if file is not jpeg, jpg, or png
     $allowed = array('jpeg', 'jpg', 'png');
@@ -83,6 +108,13 @@ if (isset($_POST['simpan'])) {
     // Check if status_project is not empty
     if ($status_project === "0") {
         echo "<div class='alert alert-danger'>Status Project tidak boleh kosong</div>";
+        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
+        exit();
+    }
+
+    // Check if nama_client is not empty
+    if ($nama_client === "0") {
+        echo "<div class='alert alert-danger'>Nama Client tidak boleh kosong</div>";
         echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
         exit();
     }
@@ -106,16 +138,17 @@ if (isset($_POST['simpan'])) {
     // Move the uploaded file to the destination directory
     if (move_uploaded_file($lokasi, $upload_directory . $nama)) {
         // Insert project data into the database
-        $nama_client = $_POST['nama_client'];
         $location_project = $_POST['location_project'];
         $date_start_project = $_POST['date_start_project'];
         $date_end_project = $_POST['date_end_project'];
+        $title_project = $_POST['title_project'];
+        $description_project = $_POST['description_project'];
         $guid = generateUuid();
 
-        $slug = createSlug($nama_client);
+        $slug = createSlug($title_project);
 
-        $stmt = $koneksi->prepare("INSERT INTO projects (uuid, slug, nama_client, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssss", $guid, $slug, $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project);
+        $stmt = $koneksi->prepare("INSERT INTO projects (uuid, slug, client_id, lokasi_projects, tanggal_projects_start, tanggal_projects_end, images_projects, status_projects, title_project, description_project) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssssss", $guid, $slug, $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project, $title_project, $description_project);
 
         if ($stmt->execute()) {
             echo "<div class='alert alert-info'>Data Tersimpan</div>";
