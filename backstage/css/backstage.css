@@ -76,3 +76,51 @@
     margin-left: auto;
     margin-right: 0;
 }
+
+.form-group {
+    position: relative;
+}
+
+.form-control-profile {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size: 0.8rem;
+    border-radius: 10rem;
+    padding: 0.8rem 1rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #6e707e;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-control-profile::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.form-control-profile option {
+    font-size: 1rem;
+}
+
+.bg-profile-images-container {
+    position: relative;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.bg-profile-images {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

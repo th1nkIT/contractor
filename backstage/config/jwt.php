@@ -76,4 +76,28 @@ class SessionManager
             throw new Exception("User is not logged in");
         }
     }
+
+    public static function getCurrentBackstageUser($session): array
+    {
+        global $koneksi;
+
+        $query = "SELECT * FROM user WHERE uuid=?";
+        $stmt = $koneksi->prepare($query);
+        if (!$stmt) {
+            die("Prepare failed: (" . $koneksi->errno . ") " . $koneksi->error);
+        }
+
+        $stmt->bind_param("s", $session->uuid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $user = $result->fetch_assoc();
+            return $user;
+        } else {
+            return [];
+        }
+
+        $stmt->close();
+    }
 }

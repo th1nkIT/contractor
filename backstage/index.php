@@ -9,6 +9,7 @@ include 'config/constants.php';
 
 try {
     $session = SessionManager::getCurrentSession();
+    $profileUser = SessionManager::getCurrentBackstageUser($session);
 } catch (Exception $e) {
     header("Location: login.php");
 }
@@ -39,6 +40,12 @@ try {
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- Link ke jQuery (dibutuhkan oleh Select2) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Link ke Select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
 
     <!-- Tiny MCE -->
     <script src="https://cdn.tiny.cloud/1/aelqqxy98004gvf81gon7ecyb2nm2e15gfhvnmanb3lgc3nd/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -310,12 +317,12 @@ try {
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $session->nama_lengkap; ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $profileUser['nama_lengkap']; ?></span>
                                 <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="index.php?halaman=profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -399,6 +406,8 @@ try {
                             // Halaman Register
                             else if ($_GET['halaman'] == 'register') {
                                 include 'view/register/register.php';
+                            } else if ($_GET['halaman'] == 'profile') {
+                                include 'view/profile/profile.php';
                             } else {
                                 include 'view/404/404.php';
                             }
