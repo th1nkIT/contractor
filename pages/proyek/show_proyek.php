@@ -89,12 +89,12 @@ $stmt->close();
                 <!-- Deskripsi Content Start -->
                 <table>
                     <tr>
-                        <th>Nama Klien</th>
+                        <th>Perusahaan Klien</th>
                         <td class="titik">:</td>
                         <td><?php echo $row['client_name'] ?></td>
                     </tr>
                     <tr>
-                        <th>Perusahaan Klien</th>
+                        <th>Deskripsi Proyek</th>
                         <td class="titik">:</td>
                         <td><?php echo $row['client_name'] ?></td>
                     </tr>
