@@ -94,7 +94,7 @@ $stmt->close();
                         <td><?php echo $row['client_name'] ?></td>
                     </tr>
                     <tr>
-                        <th>Deskripsi Perusahaan</th>
+                        <th>Deskripsi Proyek</th>
                         <td class="titik">:</td>
                         <td><?php echo $row['client_name'] ?></td>
                     </tr>
