@@ -34,6 +34,9 @@ $stmt_category->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Custom fonts for this template-->
+    <link href="/thinkit/backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
     <!-- My CSS -->
     <link rel="stylesheet" href="plugin/css/App.css">
     <link rel="stylesheet" href="plugin/css/Artikel.css">
@@ -403,7 +406,8 @@ $stmt_category->close();
     <section class="info">
         <?php while ($pecah_settings = $settings->fetch_assoc()) : ?>
             <div class="konten-info">
-                <h1>IKON 1</h1>
+                <li class="fa <?php echo $pecah_settings['fa_icon']; ?> fa-3x"></li>
+                <br>
                 <p><b><?php echo $pecah_settings['title']; ?></b></p>
                 <p><?php echo $pecah_settings['keterangan']; ?></p>
             </div>

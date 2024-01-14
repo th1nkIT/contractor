@@ -7,6 +7,7 @@ function Migrate()
     MigrateAlterTableProject();
     MigrateClientNewTable();
     MigrateAlterTableProjectTable();
+    MigrateAlterTableSetting();
 }
 
 function MigrateAlterTableArticle()
@@ -76,7 +77,6 @@ function MigrateAlterTableProjectTable()
 {
     global $koneksi;
 
-    // Pengecekan apakah kolom client_id sudah ada
     $checkQuery = "SHOW COLUMNS FROM projects LIKE 'client_id'";
     $checkStmt = $koneksi->prepare($checkQuery);
 
@@ -84,9 +84,7 @@ function MigrateAlterTableProjectTable()
         $checkStmt->execute();
         $checkStmt->store_result();
 
-        // Jika hasil query menunjukkan bahwa kolom belum ada
         if ($checkStmt->num_rows == 0) {
-            // Query untuk menambahkan kolom dan foreign key
             $query =
                 "ALTER TABLE projects
                 ADD COLUMN client_id VARCHAR(255) NOT NULL,
@@ -94,6 +92,34 @@ function MigrateAlterTableProjectTable()
                 ADD COLUMN title_project VARCHAR(50) NOT NULL,
                 ADD COLUMN description_project VARCHAR(255) NOT NULL,
                 DROP COLUMN nama_client";
+
+            $stmt = $koneksi->prepare($query);
+            if ($stmt) {
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+
+        $checkStmt->close();
+    }
+}
+
+function MigrateAlterTableSetting()
+{
+    global $koneksi;
+
+    // Pengecekan apakah kolom client_id sudah ada
+    $checkQuery = "SHOW COLUMNS FROM settings LIKE 'fa_icon'";
+    $checkStmt = $koneksi->prepare($checkQuery);
+
+    if ($checkStmt) {
+        $checkStmt->execute();
+        $checkStmt->store_result();
+
+        if ($checkStmt->num_rows == 0) {
+            $query =
+                "ALTER TABLE settings
+                ADD COLUMN fa_icon VARCHAR(50)";
 
             // Eksekusi query
             $stmt = $koneksi->prepare($query);
@@ -103,7 +129,6 @@ function MigrateAlterTableProjectTable()
             }
         }
 
-        // Tutup statement untuk pengecekan
         $checkStmt->close();
     }
 }
