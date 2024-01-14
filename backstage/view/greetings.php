@@ -95,6 +95,13 @@
          <div class="card-body">
              <?php
                 $result = getLatestArticle();
+                if ($result->num_rows == 0) {
+                    echo '<div class="latest-container">
+                            <div class="latest-details">
+                                <div class="latest-name">No Data</div>
+                            </div>
+                        </div>';
+                }
                 while ($row = $result->fetch_assoc()) :
                     $titleArticle = $row['title_article'];
                     $descArticle = $row['deskripsi_article'];
@@ -141,6 +148,13 @@
          <div class="card-body">
              <?php
                 $result = getLatestProject();
+                if ($result->num_rows == 0) {
+                    echo '<div class="latest-container">
+                            <div class="latest-details">
+                                <div class="latest-name">No Data</div>
+                            </div>
+                        </div>';
+                }
                 while ($row = $result->fetch_assoc()) :
                     $projectName = $row['title_project'];
                     $clientName = $row['client_name'];
@@ -186,6 +200,13 @@
          <div class="card-body">
              <?php
                 $result = topClient();
+                if ($result->num_rows == 0) {
+                    echo '<div class="latest-container">
+                            <div class="latest-details">
+                                <div class="latest-name">No Data</div>
+                            </div>
+                        </div>';
+                }
                 while ($row = $result->fetch_assoc()) :
                     $clientName = $row['client_name'];
                     $clientEmail = $row['client_email'];

@@ -8,6 +8,7 @@ function Migrate()
     MigrateClientNewTable();
     MigrateAlterTableProjectTable();
     MigrateAlterTableSetting();
+    MigrateAlterTableUser();
 }
 
 function MigrateAlterTableArticle()
@@ -120,6 +121,36 @@ function MigrateAlterTableSetting()
             $query =
                 "ALTER TABLE settings
                 ADD COLUMN fa_icon VARCHAR(50)";
+
+            // Eksekusi query
+            $stmt = $koneksi->prepare($query);
+            if ($stmt) {
+                $stmt->execute();
+                $stmt->close();
+            }
+        }
+
+        $checkStmt->close();
+    }
+}
+
+function MigrateAlterTableUser()
+{
+    global $koneksi;
+
+    // Mengechek apakah sudah ada kolom images_user
+    $checkQuery = "SHOW COLUMNS FROM user LIKE 'images_user'";
+    $checkStmt = $koneksi->prepare($checkQuery);
+
+    if ($checkStmt) {
+        $checkStmt->execute();
+        $checkStmt->store_result();
+
+        if ($checkStmt->num_rows == 0) {
+            $query =
+                "ALTER TABLE user
+                ADD COLUMN images_user VARCHAR(255) NOT NULL,
+                ADD COLUMN role int(1) NOT NULL DEFAULT 2";
 
             // Eksekusi query
             $stmt = $koneksi->prepare($query);

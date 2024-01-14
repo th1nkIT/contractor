@@ -187,6 +187,18 @@ if (isset($_POST['simpan'])) {
 
         // Move the uploaded file to the destination directory
         if (move_uploaded_file($lokasi, $upload_directory . $nama)) {
+            // Hapus foto lama
+            $stmt = $koneksi->prepare("SELECT images_projects FROM projects WHERE uuid = ?");
+            $stmt->bind_param("i", $id_project);
+            $stmt->execute();
+            $stmt->bind_result($foto_lama);
+            $stmt->fetch();
+            $stmt->close();
+
+            if ($foto_lama && file_exists("view/projects/images/$foto_lama")) {
+                unlink("view/projects/images/$foto_lama");
+            }
+
             // Update project data in the database
             $location_project = $_POST['location_project'];
             $date_start_project = $_POST['date_start_project'];

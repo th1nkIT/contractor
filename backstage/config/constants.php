@@ -23,3 +23,15 @@ function ProjectDate($date)
 
     return $formattedDate;
 }
+
+function RoleBackstage(int $role)
+{
+    switch ($role) {
+        case 1:
+            return "Administrator";
+        case 2:
+            return "User";
+        default:
+            return "Unknown";
+    }
+}
