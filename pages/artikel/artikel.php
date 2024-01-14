@@ -6,12 +6,13 @@
     
     <!-- My CSS -->
     <link rel="stylesheet" href="../../plugin/css/App.css">
-    <link rel="stylesheet" href="../../plugin/css/Artikel.css">
-    <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
+    <link rel="stylesheet" href="../../plugin/css/artikel.css">
     <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
     <link rel="stylesheet" href="../../plugin/css/nv.css">
     <link rel="stylesheet" href="../../plugin/css/Pro.css">
+    <link rel="stylesheet" href="../../plugin/css/View.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/Artikel.css">
     
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="../../plugin/css/responsive/navbar.css">
@@ -120,7 +121,7 @@
                     <div class="cards-artikel">
                         <!-- Cards Foto Start -->
                             <div class="cards-foto">
-                                <img height="350px" src="../../backstage/view/articles/images/<?php echo $row['images_article']; ?>" alt="" />
+                                <img src="../../backstage/view/articles/images/<?php echo $row['images_article']; ?>" alt="" />
                             </div>
                         <!-- Cards Foto End -->
     
@@ -131,7 +132,7 @@
                                         <h1>Admin</h1>
                                         <p><?php echo date('d-m-Y', strtotime($row['created_at'])); ?></p>
                                     </div>
-                                    <h1><?php echo $row['title_article']; ?></h1>
+                                    <h1 class="judul"><?php echo $row['title_article']; ?></h1>
                                 </div>
                                 <p class='isi-artikel'>
                                     <?php
