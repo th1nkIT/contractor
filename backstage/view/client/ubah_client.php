@@ -3,7 +3,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    showAlert("error", "ID Client tidak valid", "", "index.php?halaman=client");
+    showAlert("error", "ID Client tidak valid", "", "/thinkit/backstage/client");
     exit();
 }
 
@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data client yang ditemukan
 } else {
-    showAlert("error", "Client tidak ditemukan", "", "index.php?halaman=client");
+    showAlert("error", "Client tidak ditemukan", "", "/thinkit/backstage/client");
     exit();
 }
 ?>
@@ -68,7 +68,7 @@ if ($result->num_rows > 0) {
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Client Image</label>
                                         <input class="form-control" type="file" name="client_image">
-                                        <img src="view/client/images/<?php echo $pecah['client_images']; ?>" alt="<?php echo $pecah['client_name'] ?>">
+                                        <img src="/thinkit/backstage/view/client/images/<?php echo $pecah['client_images']; ?>" alt="<?php echo $pecah['client_name'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -91,12 +91,12 @@ if (isset($_POST['simpan'])) {
 
         if (!in_array($ext, $allowed)) {
             echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=client&id=$id_client");
+            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/client/$id_client");
             exit();
         }
 
         if (empty($_POST['client_name']) && empty($_POST['client_email']) && empty($_POST['client_phone']) && empty($_POST['client_address'])) {
-            showAlert("error", "Data client tidak boleh kosong", "", "index.php?halaman=client&id=$id_client");
+            showAlert("error", "Data client tidak boleh kosong", "", "/thinkit/backstage/client/$id_client");
             exit();
         }
 
@@ -127,10 +127,10 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        showAlert("success", "Data tersimpan", "", "index.php?halaman=client");
+        showAlert("success", "Data tersimpan", "", "/thinkit/backstage/client");
         exit();
     } else {
-        showAlert("error", "Gagal menyimpan data client", "", "index.php?halaman=client&id=$id_client");
+        showAlert("error", "Gagal menyimpan data client", "", "/thinkit/backstage/client/$id_client");
         exit();
     }
 

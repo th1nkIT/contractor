@@ -3,7 +3,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    showAlert("error", "ID Article tidak valid", "", "index.php?halaman=articles");
+    showAlert("error", "ID Article tidak valid", "", "/thinkit/backstage/article");
     exit();
 }
 
@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data artikel yang ditemukan
 } else {
-    showAlert("error", "Article tidak ditemukan", "", "index.php?halaman=articles");
+    showAlert("error", "Article tidak ditemukan", "", "/thinkit/backstage/article");
     exit();
 }
 ?>
@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Foto Article</label>
                                         <input class="form-control" type="file" name="foto_article">
-                                        <img src="view/articles/images/<?php echo $pecah['images_article']; ?>" alt="<?php echo $pecah['title_article'] ?>">
+                                        <img src="/thinkit/backstage/view/articles/images/<?php echo $pecah['images_article']; ?>" alt="<?php echo $pecah['title_article'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -87,12 +87,12 @@ if (isset($_POST['simpan'])) {
         $ext = pathinfo($nama_article, PATHINFO_EXTENSION);
 
         if (!in_array($ext, $allowed)) {
-            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=ubah_article&id=$id_article");
+            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/article/$id_article");
             exit();
         }
 
         if (empty($_POST['isi_article'])) {
-            showAlert("error", "Artikel tidak boleh kosong", "", "index.php?halaman=ubah_article&id=$id_article");
+            showAlert("error", "Artikel tidak boleh kosong", "", "/thinkit/backstage/article/$id_article");
             exit();
         }
 
@@ -123,10 +123,10 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        showAlert("success", "Data Tersimpan", "", "index.php?halaman=articles");
+        showAlert("success", "Data Tersimpan", "", "/thinkit/backstage/article");
         exit();
     } else {
-        showAlert("error", "Gagal Menyimpan data Artikel", "", "index.php?halaman=ubah_article&id=$id_article");
+        showAlert("error", "Gagal Menyimpan data Artikel", "", "/thinkit/backstage/article/$id_article");
         exit();
     }
 

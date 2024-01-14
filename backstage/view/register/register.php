@@ -48,7 +48,7 @@
                             $roleBackstage = $_POST['role_backstage'];
 
                             if ($roleBackstage == 0) {
-                                showAlert("error", "Role tidak boleh kosong", "", "index.php?halaman=register");
+                                showAlert("error", "Role tidak boleh kosong", "", "/thinkit/backstage/user/add");
                                 exit();
                             }
 
@@ -59,19 +59,19 @@
                             $result = $stmt->get_result();
 
                             if ($result->num_rows > 0) {
-                                showAlert("error", "Email sudah digunakan", "", "index.php?halaman=register");
+                                showAlert("error", "Email sudah digunakan", "", "/thinkit/backstage/user/add");
                                 exit();
                             }
 
                             // Check Password length
                             if (strlen($password) < 6) {
-                                showAlert("error", "Password minimal 6 karakter", "", "index.php?halaman=register");
+                                showAlert("error", "Password minimal 6 karakter", "", "/thinkit/backstage/user/add");
                                 exit();
                             }
 
                             // Check Password sama atau tidak
                             if ($password !== $repeatPassword) {
-                                showAlert("error", "Password tidak sama dengan Repeat Password", "", "index.php?halaman=register");
+                                showAlert("error", "Password tidak sama dengan Repeat Password", "", "/thinkit/backstage/user/add");
                                 exit();
                             }
 
@@ -81,13 +81,13 @@
                             $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
                             if (!in_array($ext, $allowed)) {
-                                showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=register");
+                                showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/user/add");
                                 exit();
                             }
 
                             // Check if the file is uploaded
                             if (empty($_FILES['foto_profile']['name'])) {
-                                showAlert("error", "Foto tidak boleh kosong", "", "index.php?halaman=register");
+                                showAlert("error", "Foto tidak boleh kosong", "", "/thinkit/backstage/user/add");
                                 exit();
                             }
 
@@ -115,16 +115,16 @@
                                 $stmt->bind_param("ssssis", $guid, $namaLengkap, $email, $hashedPassword, $roleBackstage, $nama);
 
                                 if ($stmt->execute()) {
-                                    showAlert("success", "Registrasi Berhasil", "", "index.php?halaman=user");
+                                    showAlert("success", "Registrasi Berhasil", "", "/thinkit/backstage/user");
                                     exit();
                                 } else {
-                                    showAlert("error", "Registrasi Gagal", "", "index.php?halaman=register");
+                                    showAlert("error", "Registrasi Gagal", "", "/thinkit/backstage/user/add");
                                     exit();
                                 }
 
                                 $stmt->close();
                             } else {
-                                showAlert("error", "Gagal mengupload file", "", "index.php?halaman=register");
+                                showAlert("error", "Gagal mengupload file", "", "/thinkit/backstage/user/add");
                                 exit();
                             }
                         }

@@ -3,7 +3,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    showAlert("error", "ID Category tidak valid", "", "index.php?halaman=category");
+    showAlert("error", "ID Category tidak valid", "", "/thinkit/backstage/category");
     exit();
 }
 
@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data kategori yang ditemukan
 } else {
-    showAlert("error", "Category tidak ditemukan", "", "index.php?halaman=category");
+    showAlert("error", "Category tidak ditemukan", "", "/thinkit/backstage/category");
     exit();
 }
 ?>
@@ -58,7 +58,7 @@ if ($result->num_rows > 0) {
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Foto Category</label>
                                         <input class="form-control" type="file" name="foto_category">
-                                        <img src="view/category/images/<?php echo $pecah['images_category']; ?>" alt="<?php echo $pecah['nama_category'] ?>">
+                                        <img src="/thinkit/backstage/view/category/images/<?php echo $pecah['images_category']; ?>" alt="<?php echo $pecah['nama_category'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@ if (isset($_POST['simpan'])) {
         $ext = pathinfo($foto_category, PATHINFO_EXTENSION);
 
         if (!in_array($ext, $allowed)) {
-            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=ubah_category&id=$id_category");
+            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/category/$id_category");
             exit();
         }
 
@@ -119,10 +119,10 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        showAlert("success", "Data tersimpan", "", "index.php?halaman=category");
+        showAlert("success", "Data tersimpan", "", "/thinkit/backstage/category");
         exit();
     } else {
-        showAlert("error", "Gagal mengupdate data category", "", "index.php?halaman=ubah_category&id=$id_category");
+        showAlert("error", "Gagal mengupdate data category", "", "/thinkit/backstage/category/$id_category");
         exit();
     }
 

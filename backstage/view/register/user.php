@@ -8,7 +8,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">User Management</h6>
-            <a href="index.php?halaman=tambah_user" class="btn btn-primary">Tambah Data</a>
+            <a href="/thinkit/backstage/user/add" class="btn btn-primary">Tambah Data</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -55,7 +55,7 @@
                                     <td><?php echo RoleBackstage($pecah['role']); ?></td>
                                     <td><img src="view/profile/images/<?php echo htmlspecialchars($pecah['images_user']) ?>" alt="<?php echo htmlspecialchars($pecah['nama_lengkap']) ?>" width="100px" height="100px"></td>
                                     <td>
-                                        <a href="index.php?halaman=update_user&id=<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
+                                        <a href="/thinkit/backstage/user/<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-edit"></i>
                                             </span>

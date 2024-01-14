@@ -8,7 +8,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Article Page</h6>
-            <a href="index.php?halaman=tambah_articles" class="btn btn-primary">Tambah Data</a>
+            <a href="/thinkit/backstage/article/add" class="btn btn-primary">Tambah Data</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -46,9 +46,9 @@
                                     <td><?php echo htmlspecialchars($pecah['title_article']) ?></td>
                                     <td><?php echo htmlspecialchars($pecah['deskripsi_article']) ?></td>
                                     <td><?php echo htmlspecialchars($pecah['isi_article']) ?></td>
-                                    <td><img src="view/articles/images/<?php echo htmlspecialchars($pecah['images_article']) ?>" alt="<?php echo htmlspecialchars($pecah['title_article']) ?>" width="100px" height="100px"></td>
+                                    <td><img src="/thinkit/backstage/view/articles/images/<?php echo htmlspecialchars($pecah['images_article']) ?>" alt="<?php echo htmlspecialchars($pecah['title_article']) ?>" width="100px" height="100px"></td>
                                     <td>
-                                        <a href="index.php?halaman=update_articles&id=<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
+                                        <a href="/thinkit/backstage/article/<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-edit"></i>
                                             </span>

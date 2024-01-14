@@ -8,7 +8,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Projects Page</h6>
-            <a href="index.php?halaman=tambah_projects" class="btn btn-primary">Tambah Data</a>
+            <a href="/thinkit/backstage/project/add" class="btn btn-primary">Tambah Data</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -67,7 +67,7 @@
                                     <td><img src="view/projects/images/<?php echo htmlspecialchars($pecah['images_projects']) ?>" alt="<?php echo htmlspecialchars($pecah['nama_client']) ?>" width="100px" height="100px"></td>
                                     <td><?php echo htmlspecialchars(StatusProject($pecah['status_projects'])) ?></td>
                                     <td>
-                                        <a href="index.php?halaman=update_projects&id=<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
+                                        <a href="/thinkit/backstage/project/<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-edit"></i>
                                             </span>
