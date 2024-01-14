@@ -25,12 +25,12 @@ $stmt->close();
     <!-- My CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/App.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Artikel.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Bns.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/Bisnis.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Dashboard.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Footer.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/nv.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/View.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/view.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/View.css">
 
     <!-- Query Media CSS -->
