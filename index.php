@@ -87,7 +87,7 @@ $stmt_category->close();
         <div class="navbars-konten">
             <!-- Logo Start -->
             <div class="navbars-logo">
-                <a href="index.php">logo</a>
+                <a href="/thinkit">logo</a>
             </div>
             <!-- Logo End -->
 
@@ -96,7 +96,7 @@ $stmt_category->close();
                 <button type="button" id="hamburger-menu"><i class="bi-list"></i></button>
             </div>
             <div class="navbars-nav">
-                <a class="aktif" href="index.php">BERANDA</a>
+                <a class="aktif" href="/thinkit">BERANDA</a>
                 <div class="drop">
                     <button type="button">TENTANG KAMI <i class="bi-chevron-down"></i></button>
                     <ul>
@@ -104,9 +104,9 @@ $stmt_category->close();
                         <li><a href="pages/tentang/galeri.php">GALERI</a></li>
                     </ul>
                 </div>
-                <a href="pages/proyek/proyek.php">PROYEK</a>
-                <a href="pages/bisnis/bisnis.php">BISNIS KAMI</a>
-                <a href="pages/artikel/artikel.php">ARTIKEL</a>
+                <a href="/thinkit/proyek">PROYEK</a>
+                <a href="/thinkit/bisnis">BISNIS KAMI</a>
+                <a href="/thinkit/article">ARTIKEL</a>
                 <a href="pages/kontak/kontak.php">KONTAK</a>
             </div>
             <!-- Nav End -->
