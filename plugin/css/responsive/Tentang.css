@@ -1,0 +1,38 @@
+/* Tentang CSS */
+    @media (max-width: 758px) {
+        .jb-proyek {
+            min-height: 40vh;
+        }
+
+        .about {
+            display: block;
+        }
+
+        .about .about-img {
+            padding: 0 0 1.5rem;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .about .about-img img {
+            width: 25rem;
+        }
+
+        .about .about-main {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about .about-main p {}
+
+        .vm .ct .icon {
+            margin: 0;
+        }
+
+        .vm .ct .icon .logo {
+            font-size: 5rem;
+        }
+    }
+/* Tentang CSS */

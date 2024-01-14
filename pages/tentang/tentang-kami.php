@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../../plugin/css/responsive/Dashboards.css">
     <link rel="stylesheet" href="../../plugin/css/responsive/Footer.css">
     <link rel="stylesheet" href="../../plugin/css/responsive/navbar.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/Tentang.css">
     
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
