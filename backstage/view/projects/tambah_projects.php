@@ -100,29 +100,25 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!in_array($ext, $allowed)) {
-        echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
+        showAlert("error", "oto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=tambah_projects");
         exit();
     }
 
     // Check if status_project is not empty
     if ($status_project === "0") {
-        echo "<div class='alert alert-danger'>Status Project tidak boleh kosong</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
+        showAlert("error", "Status project tidak boleh kosong", "", "index.php?halaman=tambah_projects");
         exit();
     }
 
     // Check if nama_client is not empty
     if ($nama_client === "0") {
-        echo "<div class='alert alert-danger'>Nama Client tidak boleh kosong</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
+        showAlert("error", "Nama client tidak boleh kosong", "", "index.php?halaman=tambah_projects");
         exit();
     }
 
     // Check if the file is uploaded
     if (empty($_FILES['foto_project']['name'])) {
-        echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
+        showAlert("error", "Foto tidak boleh kosong", "", "index.php?halaman=tambah_projects");
         exit();
     }
 
@@ -151,17 +147,17 @@ if (isset($_POST['simpan'])) {
         $stmt->bind_param("ssssssssss", $guid, $slug, $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project, $title_project, $description_project);
 
         if ($stmt->execute()) {
-            echo "<div class='alert alert-info'>Data Tersimpan</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=projects'>";
+            showAlert("success", "Data tersimpan", "", "index.php?halaman=projects");
+            exit();
         } else {
-            echo "<div class='alert alert-danger'>Gagal menyimpan data proyek</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
+            showAlert("error", "Gagal menyimpan data project", "", "index.php?halaman=tambah_projects");
+            exit();
         }
 
         $stmt->close();
     } else {
-        echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_projects'>";
+        showAlert("error", "Gagal mengupload file", "", "index.php?halaman=tambah_projects");
+        exit();
     }
 }
 ?>

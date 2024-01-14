@@ -3,8 +3,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    echo "<div class='alert alert-danger'>ID Client tidak valid</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=client'>";
+    showAlert("error", "ID Client tidak valid", "", "index.php?halaman=client");
     exit();
 }
 
@@ -20,8 +19,7 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data client yang ditemukan
 } else {
-    echo "<div class='alert alert-danger'>Client tidak ditemukan</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=client'>";
+    showAlert("error", "Client tidak ditemukan", "", "index.php?halaman=client");
     exit();
 }
 ?>
@@ -93,12 +91,13 @@ if (isset($_POST['simpan'])) {
 
         if (!in_array($ext, $allowed)) {
             echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=update_client&id=$id_client'>";
+            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=client&id=$id_client");
             exit();
         }
 
         if (empty($_POST['client_name']) && empty($_POST['client_email']) && empty($_POST['client_phone']) && empty($_POST['client_address'])) {
-            echo "<div class='alert alert-danger'>Data Client tidak boleh kosong</div>";
+            showAlert("error", "Data client tidak boleh kosong", "", "index.php?halaman=client&id=$id_client");
+            exit();
         }
 
         // Hapus foto lama
@@ -128,11 +127,11 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        echo "<div class='alert alert-info'>Data Tersimpan</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=client'>";
+        showAlert("success", "Data tersimpan", "", "index.php?halaman=client");
+        exit();
     } else {
-        echo "<div class='alert alert-danger'>Gagal menyimpan data client</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=update_client&id=$id_client'>";
+        showAlert("error", "Gagal menyimpan data client", "", "index.php?halaman=client&id=$id_client");
+        exit();
     }
 
     $stmt->close();

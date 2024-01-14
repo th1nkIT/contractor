@@ -31,19 +31,19 @@
                             <th>Action</th>
                         </tr>
                     </tfoot>
-                    <tbody>
-                    <?php
-                    $stmt = $koneksi->prepare("SELECT id, uuid, nama_category, deskripsi_category, summary_category, images_category FROM category");
-                    $stmt->execute();
-                    $stmt->store_result();
+                    <tbody id="categoryTableBody">
+                        <?php
+                        $stmt = $koneksi->prepare("SELECT id, uuid, nama_category, deskripsi_category, summary_category, images_category FROM category");
+                        $stmt->execute();
+                        $stmt->store_result();
 
-                    if ($stmt->num_rows == 0) {
-                        echo "<tr><td colspan='4' align='center'>Data Kosong</td></tr>";
-                    } else {
-                        $stmt->bind_result($id, $uuid, $nama_category, $deskripsi_category, $summary_category, $images_category);
-                        
-                        while ($stmt->fetch()) {
-                    ?>
+                        if ($stmt->num_rows == 0) {
+                            echo "<tr><td colspan='5' align='center'>Data Kosong</td></tr>";
+                        } else {
+                            $stmt->bind_result($id, $uuid, $nama_category, $deskripsi_category, $summary_category, $images_category);
+
+                            while ($stmt->fetch()) {
+                        ?>
                                 <tr>
                                     <td><?php echo $nama_category ?></td>
                                     <td><?php echo $deskripsi_category ?></td>
@@ -57,7 +57,7 @@
                                             <span class="text">Update</span>
                                         </a>
                                         |
-                                        <a href="index.php?halaman=delete_category&id=<?php echo $uuid ?>" class="btn btn-danger btn-icon-split">
+                                        <a href="#" class="btn btn-danger btn-icon-split delete-category-btn" data-id="<?php echo $uuid; ?>">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>
@@ -65,11 +65,11 @@
                                         </a>
                                     </td>
                                 </tr>
-                                <?php
+                        <?php
+                            }
                         }
-                    }
-                    $stmt->close();
-                    ?>
+                        $stmt->close();
+                        ?>
                     </tbody>
                 </table>
             </div>

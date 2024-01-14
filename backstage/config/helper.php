@@ -160,3 +160,20 @@ function getSetting()
         return -1;
     }
 }
+
+function showAlert($icon, $title, $message, $location = null)
+{
+    echo "<script>
+        Swal.fire({
+            icon: '{$icon}',
+            title: '{$title}',
+            text: '{$message}',
+            showConfirmButton: false,
+            timer: 2000
+        });
+        
+        setTimeout(function() {
+            window.location.href = '{$location}';
+        }, 2000);
+    </script>";
+}

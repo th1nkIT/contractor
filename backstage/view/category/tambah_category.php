@@ -57,15 +57,13 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!in_array($ext, $allowed)) {
-        echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
+        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=tambah_category");
         exit();
     }
 
     // Check if the file is uploaded
     if (empty($_FILES['foto_category']['name'])) {
-        echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
+        showAlert("error", "Foto tidak boleh kosong", "", "index.php?halaman=tambah_category");
         exit();
     }
 
@@ -93,17 +91,17 @@ if (isset($_POST['simpan'])) {
         $stmt->bind_param("ssssss", $guid, $slug, $nama_category, $deskripsi_category, $summary_category, $nama);
 
         if ($stmt->execute()) {
-            echo "<div class='alert alert-info'>Data Tersimpan</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
+            showAlert("success", "Data Tersimpan", "", "index.php?halaman=category");
+            exit();
         } else {
-            echo "<div class='alert alert-danger'>Gagal menyimpan data kategori</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
+            showAlert("error", "Gagal menyimpan data kategori", "", "index.php?halaman=tambah_category");
+            exit();
         }
 
         $stmt->close();
     } else {
-        echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_category'>";
+        showAlert("error", "Gagal mengupload file", "", "index.php?halaman=tambah_category");
+        exit();
     }
 }
 ?>

@@ -31,7 +31,7 @@
                             <th>Action</th>
                         </tr>
                     </tfoot>
-                    <tbody>
+                    <tbody id="userTableBody">
                         <?php
                         $stmt = $koneksi->prepare("
                             SELECT 
@@ -62,7 +62,7 @@
                                             <span class="text">Update</span>
                                         </a>
                                         |
-                                        <a href="index.php?halaman=delete_user&id=<?php echo $pecah['uuid'] ?>" class="btn btn-danger btn-icon-split">
+                                        <a href="#" class="btn btn-danger btn-icon-split delete-user-btn" data-id="<?php echo $pecah['uuid'] ?>">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>

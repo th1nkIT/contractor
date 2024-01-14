@@ -48,8 +48,8 @@
                             $roleBackstage = $_POST['role_backstage'];
 
                             if ($roleBackstage == 0) {
-                                echo "<script>alert('Update Gagal, Role Tidak Boleh Kosong');</script>";
-                                echo "<script>location='index.php?halaman=profile';</script>";
+                                showAlert("error", "Role tidak boleh kosong", "", "index.php?halaman=register");
+                                exit();
                             }
 
                             // Check if email already exists
@@ -59,20 +59,20 @@
                             $result = $stmt->get_result();
 
                             if ($result->num_rows > 0) {
-                                echo "<script>alert('Pendaftaran Gagal, Email Sudah Digunakan');</script>";
-                                echo "<script>location='index.php?halaman=register';</script>";
+                                showAlert("error", "Email sudah digunakan", "", "index.php?halaman=register");
+                                exit();
                             }
 
                             // Check Password length
                             if (strlen($password) < 6) {
-                                echo "<script>alert('Pendaftaran Gagal, Password Minimal 6 Karakter');</script>";
-                                echo "<script>location='index.php?halaman=register';</script>";
+                                showAlert("error", "Password minimal 6 karakter", "", "index.php?halaman=register");
+                                exit();
                             }
 
                             // Check Password sama atau tidak
                             if ($password !== $repeatPassword) {
-                                echo "<script>alert('Pendaftaran Gagal, Password Tidak Sama');</script>";
-                                echo "<script>location='index.php?halaman=register';</script>";
+                                showAlert("error", "Password tidak sama dengan Repeat Password", "", "index.php?halaman=register");
+                                exit();
                             }
 
                             // Check if file is not jpeg, jpg, or png
@@ -81,15 +81,13 @@
                             $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
                             if (!in_array($ext, $allowed)) {
-                                echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-                                echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
+                                showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=register");
                                 exit();
                             }
 
                             // Check if the file is uploaded
                             if (empty($_FILES['foto_profile']['name'])) {
-                                echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
-                                echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
+                                showAlert("error", "Foto tidak boleh kosong", "", "index.php?halaman=register");
                                 exit();
                             }
 
@@ -117,17 +115,17 @@
                                 $stmt->bind_param("ssssis", $guid, $namaLengkap, $email, $hashedPassword, $roleBackstage, $nama);
 
                                 if ($stmt->execute()) {
-                                    echo "<div class='alert alert-info'>Register Berhasil</div>";
-                                    echo "<meta http-equiv='refresh' content='1;url=index.php'>";
+                                    showAlert("success", "Registrasi Berhasil", "", "index.php?halaman=user");
+                                    exit();
                                 } else {
-                                    echo "<div class='alert alert-info'>Register Gagal</div>";
-                                    echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=register'>";
+                                    showAlert("error", "Registrasi Gagal", "", "index.php?halaman=register");
+                                    exit();
                                 }
 
                                 $stmt->close();
                             } else {
-                                echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
-                                echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=register'>";
+                                showAlert("error", "Gagal mengupload file", "", "index.php?halaman=register");
+                                exit();
                             }
                         }
                         ?>

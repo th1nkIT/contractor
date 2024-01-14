@@ -31,7 +31,7 @@
                             <th>Action</th>
                         </tr>
                     </tfoot>
-                    <tbody>
+                    <tbody id="articleTableBody">
                         <?php
                         $stmt = $koneksi->prepare("SELECT id, uuid, title_article, deskripsi_article, isi_article, images_article FROM articles");
                         $stmt->execute();
@@ -55,7 +55,7 @@
                                             <span class="text">Update</span>
                                         </a>
                                         |
-                                        <a href="index.php?halaman=delete_articles&id=<?php echo $pecah['uuid'] ?>" class="btn btn-danger btn-icon-split">
+                                        <a href="#" class="btn btn-danger btn-icon-split delete-article-btn" data-id="<?php echo $pecah['uuid'] ?>">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>

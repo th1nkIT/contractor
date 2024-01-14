@@ -15,6 +15,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Judul Project</th>
                             <th>Name Client</th>
                             <th>Lokasi Projects</th>
                             <th>Tanggal Projects Start - End</th>
@@ -25,6 +26,7 @@
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>Judul Project</th>
                             <th>Name Client</th>
                             <th>Lokasi Projects</th>
                             <th>Tanggal Projects Start - End</th>
@@ -33,13 +35,13 @@
                             <th>Action</th>
                         </tr>
                     </tfoot>
-                    <tbody>
+                    <tbody id="projectTableBody">
                         <?php
                         $stmt = $koneksi->prepare("
                             SELECT 
                                 projects.id, projects.uuid, projects.client_id, projects.lokasi_projects, 
                                 projects.tanggal_projects_start, projects.tanggal_projects_end, projects.images_projects, 
-                                projects.status_projects, client.client_name
+                                projects.status_projects,projects.title_project, client.client_name
                             FROM 
                                 projects
                             LEFT JOIN
@@ -53,11 +55,12 @@
                         $result = $stmt->get_result();
 
                         if ($result->num_rows === 0) {
-                            echo "<tr><td colspan='6' align='center'>Data Kosong</td></tr>";
+                            echo "<tr><td colspan='7' align='center'>Data Kosong</td></tr>";
                         } else {
                             while ($pecah = $result->fetch_assoc()) {
                         ?>
                                 <tr>
+                                    <td><?php echo htmlspecialchars($pecah['title_project']) ?></td>
                                     <td><?php echo htmlspecialchars($pecah['client_name']) ?></td>
                                     <td><?php echo htmlspecialchars($pecah['lokasi_projects']) ?></td>
                                     <td><?php echo date('d-m-Y', strtotime($pecah['tanggal_projects_start'])) ?> - <?php echo date('d-m-Y', strtotime($pecah['tanggal_projects_end'])) ?></td>
@@ -71,7 +74,7 @@
                                             <span class="text">Update</span>
                                         </a>
                                         |
-                                        <a href="index.php?halaman=delete_projects&id=<?php echo $pecah['uuid'] ?>" class="btn btn-danger btn-icon-split">
+                                        <a href="#" class="btn btn-danger btn-icon-split delete-project-btn" data-id="<?php echo $pecah['uuid'] ?>">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>

@@ -2,8 +2,7 @@
 $id_user = $_GET['id'];
 
 if (!isValidUuid($id_user)) {
-    echo "<div class='alert alert-danger'>ID User tidak valid</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=user'>";
+    showAlert("error", "ID User tidak valid", "", "index.php?halaman=user");
     exit();
 }
 
@@ -14,13 +13,10 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 
-// Periksa apakah proyek ditemukan
 if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
-    // Lakukan operasi dengan data proyek yang ditemukan
 } else {
-    echo "<div class='alert alert-danger'>User tidak ditemukan</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=user'>";
+    showAlert("error", "User tidak ditemukan", "", "index.php?halaman=user");
     exit();
 }
 ?>
@@ -88,8 +84,8 @@ if ($result->num_rows > 0) {
                             $roleBackstage = $_POST['role_backstage'];
 
                             if ($roleBackstage == 0) {
-                                echo "<script>alert('Update Gagal, Role Tidak Boleh Kosong');</script>";
-                                echo "<script>location='index.php?halaman=profile';</script>";
+                                showAlert("error", "Role tidak boleh kosong", "", "index.php?halaman=update_user&id=$id_user");
+                                exit();
                             }
 
                             if ($row['email'] != $email) {
@@ -100,29 +96,29 @@ if ($result->num_rows > 0) {
                                 $result = $stmt->get_result();
 
                                 if ($result->num_rows > 0) {
-                                    echo "<script>alert('Update Gagal, Email Sudah Digunakan');</script>";
-                                    echo "<script>location='index.php?halaman=profile';</script>";
+                                    showAlert("error", "Email sudah digunakan", "", "index.php?halaman=update_user&id=$id_user");
+                                    exit();
                                 }
                             }
 
                             if ($password != "" || $repeatPassword != "") {
                                 if ($password == "" || $repeatPassword == "") {
-                                    echo "<script>alert('Update Gagal, Password Tidak Boleh Kosong');</script>";
-                                    echo "<script>location='index.php?halaman=profile';</script>";
+                                    showAlert("error", "Password tidak boleh kosong", "", "index.php?halaman=update_user&id=$id_user");
+                                    exit();
                                 }
                             }
 
                             if ($password != "" && $repeatPassword != "") {
                                 // Check Password length
                                 if (strlen($password) < 6) {
-                                    echo "<script>alert('Pendaftaran Gagal, Password Minimal 6 Karakter');</script>";
-                                    echo "<script>location='index.php?halaman=register';</script>";
+                                    showAlert("error", "Password minimal 6 karakter", "", "index.php?halaman=update_user&id=$id_user");
+                                    exit();
                                 }
 
                                 // Check Password sama atau tidak
                                 if ($password !== $repeatPassword) {
-                                    echo "<script>alert('Pendaftaran Gagal, Password Tidak Sama');</script>";
-                                    echo "<script>location='index.php?halaman=register';</script>";
+                                    showAlert("error", "Password tidak sama dengan Repeat Password", "", "index.php?halaman=update_user&id=$id_user");
+                                    exit();
                                 }
 
                                 // Enkripsi Password dengan password_hash
@@ -137,8 +133,7 @@ if ($result->num_rows > 0) {
                             $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
                             if (!empty($filename) && !in_array($ext, $allowed)) {
-                                echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-                                echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_projects&id_project=$id_project'>";
+                                showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=update_user&id=$id_user");
                                 exit();
                             }
 
@@ -168,17 +163,17 @@ if ($result->num_rows > 0) {
                                     $stmt->bind_param("sssiss", $namaLengkap, $email, $hashedPassword, $roleBackstage, $nama, $id_user);
 
                                     if ($stmt->execute()) {
-                                        echo "<div class='alert alert-info'>Data Tersimpan</div>";
-                                        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=user'>";
+                                        showAlert("success", "Update User Berhasil", "", "index.php?halaman=user");
+                                        exit();
                                     } else {
-                                        echo "<div class='alert alert-danger'>Gagal menyimpan data proyek</div>";
-                                        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=update_user&id=$id_user>";
+                                        showAlert("error", "Gagal menyimpan data user", "", "index.php?halaman=update_user&id=$id_user");
+                                        exit();
                                     }
 
                                     $stmt->close();
                                 } else {
-                                    echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
-                                    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=update_user&id=$id_user>";
+                                    showAlert("error", "Gagal mengupload file", "", "index.php?halaman=update_user&id=$id_user");
+                                    exit();
                                 }
                             } else {
                                 // Update Data
@@ -186,11 +181,11 @@ if ($result->num_rows > 0) {
                                 $stmt->bind_param("sssis", $namaLengkap, $email, $hashedPassword, $roleBackstage, $id_user);
 
                                 if ($stmt->execute()) {
-                                    echo "<div class='alert alert-info'>Update User Berhasil</div>";
-                                    echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=user'>";
+                                    showAlert("success", "Update User Berhasil", "", "index.php?halaman=user");
+                                    exit();
                                 } else {
-                                    echo "<div class='alert alert-info'>Update User Gagal</div>";
-                                    echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=update_user&id=$id_user'>";
+                                    showAlert("error", "Update User Gagal", "", "index.php?halaman=update_user&id=$id_user");
+                                    exit();
                                 }
 
                                 $stmt->close();
