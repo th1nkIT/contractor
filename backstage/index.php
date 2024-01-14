@@ -42,13 +42,16 @@ try {
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Link ke jQuery (dibutuhkan oleh Select2) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <!-- Link ke Select2 JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
 
     <!-- Tiny MCE -->
     <script src="https://cdn.tiny.cloud/1/aelqqxy98004gvf81gon7ecyb2nm2e15gfhvnmanb3lgc3nd/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body id="page-top">
@@ -492,6 +495,7 @@ try {
 
         <!-- Page level custom scripts -->
         <script src="js/demo/datatables-demo.js"></script>
+        <script src="js/backstage.js"></script>
         <script>
             tinymce.init({
                 selector: 'textarea',

@@ -53,15 +53,13 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!in_array($ext, $allowed)) {
-        echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
+        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=tambah_articles");
         exit();
     }
 
     // Check if the file is uploaded
     if (empty($_FILES['foto_article']['name'])) {
-        echo "<div class='alert alert-danger'>Foto tidak boleh kosong</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
+        showAlert("error", "Foto tidak boleh kosong", "", "index.php?halaman=tambah_articles");
         exit();
     }
 
@@ -93,20 +91,20 @@ if (isset($_POST['simpan'])) {
             $stmt->bind_param("ssssss", $guid, $slug, $title_article, $deskripsi_article, $isi_article, $nama);
 
             if ($stmt->execute()) {
-                echo "<div class='alert alert-info'>Data Tersimpan</div>";
-                echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=articles'>";
+                showAlert("success", "Data Tersimpan", "", "index.php?halaman=articles");
+                exit();
             } else {
-                echo "<div class='alert alert-danger'>Gagal menyimpan data artikel</div>";
-                echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
+                showAlert("error", "Gagal Menyimpan Artikel", "", "index.php?halaman=tambah_articles");
             }
 
             $stmt->close();
         } else {
-            echo "<div class='alert alert-danger'>Artikel tidak boleh kosong</div>";
+            showAlert("error", "Artikel tidak boleh kosong", "", "index.php?halaman=tambah_articles");
+            exit();
         }
     } else {
-        echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=tambah_articles'>";
+        showAlert("error", "Gagal menyimpan file", "", "index.php?halaman=tambah_articles");
+        exit();
     }
 }
 ?>

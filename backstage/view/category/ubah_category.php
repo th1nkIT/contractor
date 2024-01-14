@@ -3,8 +3,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    echo "<div class='alert alert-danger'>ID Category tidak valid</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
+    showAlert("error", "ID Category tidak valid", "", "index.php?halaman=category");
     exit();
 }
 
@@ -20,8 +19,7 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data kategori yang ditemukan
 } else {
-    echo "<div class='alert alert-danger'>Kategori tidak ditemukan</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
+    showAlert("error", "Category tidak ditemukan", "", "index.php?halaman=category");
     exit();
 }
 ?>
@@ -90,8 +88,7 @@ if (isset($_POST['simpan'])) {
         $ext = pathinfo($foto_category, PATHINFO_EXTENSION);
 
         if (!in_array($ext, $allowed)) {
-            echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_category&id=$id_category'>";
+            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=ubah_category&id=$id_category");
             exit();
         }
 
@@ -122,11 +119,11 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        echo "<div class='alert alert-info'>Data Tersimpan</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=category'>";
+        showAlert("success", "Data tersimpan", "", "index.php?halaman=category");
+        exit();
     } else {
-        echo "<div class='alert alert-danger'>Gagal menyimpan data kategori</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_category&id=$id_category'>";
+        showAlert("error", "Gagal mengupdate data category", "", "index.php?halaman=ubah_category&id=$id_category");
+        exit();
     }
 
     $stmt->close();

@@ -4,6 +4,7 @@ require_once __DIR__ . '/config/jwt.php';
 
 require 'config/koneksi.php';
 include 'config/seeding.php';
+include 'config/helper.php';
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +27,9 @@ include 'config/seeding.php';
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-gradient-primary">
@@ -69,10 +73,9 @@ include 'config/seeding.php';
                                     <?php
                                     if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                         if (SessionManager::login($_POST['email'], $_POST['password'])) {
-                                            echo "<div class='alert alert-info'>Login Berhasil</div>";
-                                            echo "<meta http-equiv='refresh' content='1;url=index.php'>";
+                                            showAlert("success", "Login Berhasil", "", "index.php");
                                         } else {
-                                            echo "<div class='alert alert-danger'>Login Gagal: Email atau Password tidak sesuai</div>";
+                                            showAlert("error", "Login Gagal", "Email atau Password Salah");
                                         }
                                     }
                                     ?>

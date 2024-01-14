@@ -33,7 +33,7 @@
                             <th>Action</th>
                         </tr>
                     </tfoot>
-                    <tbody>
+                    <tbody id="clientTableBody">
                         <?php
                         $stmt = $koneksi->prepare("SELECT id, uuid, client_name, client_email, client_phone, client_address, client_images FROM client");
                         $stmt->execute();
@@ -58,7 +58,7 @@
                                             <span class="text">Update</span>
                                         </a>
                                         |
-                                        <a href="index.php?halaman=delete_client&id=<?php echo $pecah['uuid'] ?>" class="btn btn-danger btn-icon-split">
+                                        <a href="#" class="btn btn-danger btn-icon-split delete-client-btn" data-id="<?php echo $pecah['uuid'] ?>">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>

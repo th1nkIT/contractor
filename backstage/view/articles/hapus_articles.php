@@ -4,8 +4,7 @@ if (isset($_GET['id'])) {
 
     // Validasi ID
     if (!isValidUuid($id_article)) {
-        echo "<div class='alert alert-danger'>ID Article tidak valid</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=articles'>";
+        showAlert("error", "ID Artikel tidak valid", "", "index.php?halaman=articles");
         exit();
     }
 
@@ -27,15 +26,15 @@ if (isset($_GET['id'])) {
     $stmt->bind_param("s", $id_article);
 
     if ($stmt->execute()) {
-        echo "<div class='alert alert-info'>Data Terhapus</div>";
-        echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=articles'>";
+        showAlert("success", "Berhasil menghapus data artikel", "", "index.php?halaman=articles");
+        exit();
     } else {
-        echo "<div class='alert alert-danger'>Gagal menghapus data artikel</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=articles'>";
+        showAlert("error", "Gagal menghapus data artikel", "", "index.php?halaman=articles");
+        exit();
     }
 
     $stmt->close();
 } else {
-    echo "<div class='alert alert-danger'>ID Artikel tidak valid</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=articles'>";
+    showAlert("error", "ID Artikel tidak ditemukan", "", "index.php?halaman=articles");
+    exit();
 }

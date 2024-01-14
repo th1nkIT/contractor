@@ -3,8 +3,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    echo "<div class='alert alert-danger'>ID Article tidak valid</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=articles'>";
+    showAlert("error", "ID Article tidak valid", "", "index.php?halaman=articles");
     exit();
 }
 
@@ -20,8 +19,7 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data artikel yang ditemukan
 } else {
-    echo "<div class='alert alert-danger'>Artikel tidak ditemukan</div>";
-    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=articles'>";
+    showAlert("error", "Article tidak ditemukan", "", "index.php?halaman=articles");
     exit();
 }
 ?>
@@ -89,13 +87,13 @@ if (isset($_POST['simpan'])) {
         $ext = pathinfo($nama_article, PATHINFO_EXTENSION);
 
         if (!in_array($ext, $allowed)) {
-            echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-            echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_article&id=$id_article'>";
+            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=ubah_article&id=$id_article");
             exit();
         }
 
         if (empty($_POST['isi_article'])) {
-            echo "<div class='alert alert-danger'>Artikel tidak boleh kosong</div>";
+            showAlert("error", "Artikel tidak boleh kosong", "", "index.php?halaman=ubah_article&id=$id_article");
+            exit();
         }
 
         // Hapus foto lama
@@ -125,11 +123,11 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        echo "<div class='alert alert-info'>Data Tersimpan</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=articles'>";
+        showAlert("success", "Data Tersimpan", "", "index.php?halaman=articles");
+        exit();
     } else {
-        echo "<div class='alert alert-danger'>Gagal menyimpan data artikel</div>";
-        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=ubah_article&id=$id_article'>";
+        showAlert("error", "Gagal Menyimpan data Artikel", "", "index.php?halaman=ubah_article&id=$id_article");
+        exit();
     }
 
     $stmt->close();
