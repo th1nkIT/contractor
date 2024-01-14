@@ -31,7 +31,7 @@ $stmt->close();
     <link rel="stylesheet" href="/thinkit/plugin/css/nv.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/view.css">
-    
+
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Dashboards.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Footer.css">
@@ -93,8 +93,8 @@ $stmt->close();
                     </ul>
                 </div>
                 <a class="aktif" href="/thinkit/proyek">PROYEK</a>
-                <a href="/thinkit/bisnis/bisnis.php">BISNIS KAMI</a>
-                <a href="/thinkit/artikel/artikel.php">ARTIKEL</a>
+                <a href="/thinkit/bisnis">BISNIS KAMI</a>
+                <a href="/thinkit/article">ARTIKEL</a>
                 <a href="/thinkit/kontak/kontak.php">KONTAK</a>
             </div>
             <!-- Nav End -->

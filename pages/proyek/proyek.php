@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/thinkit/plugin/css/Footer.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/nv.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
-    
+
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Dashboards.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Footer.css">
@@ -74,9 +74,9 @@
                         <li><a href="../tentang/galeri.php">GALERI</a></li>
                     </ul>
                 </div>
-                <a class="aktif" href="proyek.php">PROYEK</a>
-                <a href="../bisnis/bisnis.php">BISNIS KAMI</a>
-                <a href="../artikel/artikel.php">ARTIKEL</a>
+                <a class="aktif" href="/thinkit/proyek">PROYEK</a>
+                <a href="/thinkit/bisnis">BISNIS KAMI</a>
+                <a href="/thinkit/article">ARTIKEL</a>
                 <a href="../kontak/kontak.php">KONTAK</a>
             </div>
             <!-- Nav End -->
