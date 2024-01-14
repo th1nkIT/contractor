@@ -123,9 +123,9 @@ try {
 
             <!-- Nav Item - Register -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php?halaman=register">
+                <a class="nav-link" href="index.php?halaman=user">
                     <i class="fas fa-regular fa-user-plus"></i>
-                    <span>Register</span></a>
+                    <span>User Management</span></a>
             </li>
 
             <!-- Divider -->
@@ -318,7 +318,7 @@ try {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $profileUser['nama_lengkap']; ?></span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="view/profile/images/<?php echo $profileUser['images_user']; ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -402,6 +402,16 @@ try {
                             // Halaman Logout
                             else if ($_GET['halaman'] == 'logout') {
                                 include 'logout.php';
+                            }
+                            // User Management
+                            else if ($_GET['halaman'] == 'user') {
+                                include 'view/register/user.php';
+                            } else if ($_GET['halaman'] == 'delete_user') {
+                                include 'view/register/hapus_user.php';
+                            } else if ($_GET['halaman'] == 'tambah_user') {
+                                include 'view/register/register.php';
+                            } else if ($_GET['halaman'] == 'update_user') {
+                                include 'view/register/ubah_user.php';
                             }
                             // Halaman Register
                             else if ($_GET['halaman'] == 'register') {
