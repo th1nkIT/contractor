@@ -1,5 +1,8 @@
 <?php
 require 'backstage/config/koneksi.php';
+require 'components/footer.php';
+require 'components/info.php';
+require 'components/navbar.php';
 
 // Settings
 $stmt_settings = $koneksi->prepare("SELECT * FROM settings");
@@ -63,55 +66,7 @@ $stmt_category->close();
 
 <body>
     <!-- Header Start -->
-    <section class="navbars">
-        <!-- Navbar Sosmed Start -->
-        <div class="navbars-sosmed">
-            <!-- Sosmed Link Kiri Start -->
-            <div class="sosmed-kiri">
-                <a href="#"><i class="bi-envelope"></i> info@gmail.com</a>
-                <a href="#"><i class="bi-telephone"></i> +6221 4288 4257</a>
-            </div>
-            <!-- Sosmed Link Kiri End -->
-
-            <!-- Sosmed Link Kanan Start -->
-            <div class="sosmed-kanan">
-                <a href="#"><i class="bi-facebook"></i></a>
-                <a href="#"><i class="bi-twitter"></i></a>
-                <a href="#"><i class="bi-linkedin"></i></a>
-                <a href="#"><i class="bi-google"></i></a>
-            </div>
-            <!-- Sosmed Link Kanan End -->
-        </div>
-        <!-- Navbar Sosmed End -->
-
-        <div class="navbars-konten">
-            <!-- Logo Start -->
-            <div class="navbars-logo">
-                <a href="/thinkit">logo</a>
-            </div>
-            <!-- Logo End -->
-
-            <!-- Nav Start -->
-            <div class="navbars-ex">
-                <button type="button" id="hamburger-menu"><i class="bi-list"></i></button>
-            </div>
-            <div class="navbars-nav">
-                <a class="aktif" href="/thinkit">BERANDA</a>
-                <div class="drop">
-                    <button type="button">TENTANG KAMI <i class="bi-chevron-down"></i></button>
-                    <ul>
-                        <li><a href="pages/tentang/tentang-kami.php">TENTANG KAMI</a></li>
-                        <li><a href="pages/tentang/galeri.php">GALERI</a></li>
-                    </ul>
-                </div>
-                <a href="/thinkit/proyek">PROYEK</a>
-                <a href="/thinkit/bisnis">BISNIS KAMI</a>
-                <a href="/thinkit/article">ARTIKEL</a>
-                <a href="pages/kontak/kontak.php">KONTAK</a>
-            </div>
-            <!-- Nav End -->
-        </div>
-    </section>
+    <?php navbarComponent(); ?>
 
     <!-- Jumbotron Start -->
     <section class="jb">
@@ -402,51 +357,11 @@ $stmt_category->close();
     </section>
     <!-- Client Kami End -->
 
-    <!-- Info Start -->
-    <section class="info">
-        <?php while ($pecah_settings = $settings->fetch_assoc()) : ?>
-            <div class="konten-info">
-                <li class="fa <?php echo $pecah_settings['fa_icon']; ?> fa-3x"></li>
-                <br>
-                <p><b><?php echo $pecah_settings['title']; ?></b></p>
-                <p><?php echo $pecah_settings['keterangan']; ?></p>
-            </div>
-        <?php endwhile; ?>
-    </section>
-    <!-- Info End -->
+    <?php infoComponents(); ?>
 
+    <?php footerComponent(); ?>
 
-    <!-- Footer Start -->
-    <footer class="footer">
-        <div class="foot">
-            <h1>Tentang Kami</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima repudiandae optio aliquam omnis earum expedita, blanditiis saepe sapiente numquam ipsa!</p>
-        </div>
-
-        <div class="foot">
-            <h1>Info Terbaru</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima repudiandae optio aliquam omnis earum expedita, blanditiis saepe sapiente numquam ipsa!</p>
-        </div>
-
-        <div class="foot">
-            <h1>Berita Terpopuler</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima repudiandae optio aliquam omnis earum expedita, blanditiis saepe sapiente numquam ipsa!</p>
-        </div>
-
-        <div class="foot">
-            <h1>Quick Links</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima repudiandae optio aliquam omnis earum expedita, blanditiis saepe sapiente numquam ipsa!</p>
-        </div>
-    </footer>
-
-    <!-- Copyright Start -->
-    <div class="copy">
-        <h1>Copyright &copy; 2023. All Rights Reserved.</h1>
-    </div>
-    <!-- Copyright End -->
-    <!-- Footer End -->
-
-    <script src="plugin/js/scr.js"></script>
+    <script src="/thinkit/plugin/js/scr.js"></script>
 </body>
 
 </html>
