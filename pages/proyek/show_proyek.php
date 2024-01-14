@@ -122,7 +122,7 @@ $stmt->close();
         <!-- Content Show Start -->
         <div class="ct">
             <div class="ct-img">
-                <img src="/thinkit/plugin/img/konstruksi.jpg" alt="" />
+                <img src="/thinkit/backstage/view/projects/images/<?php echo $row['images_projects'] ?>" alt="<?php echo $row['title_project']; ?>" />
             </div>
 
             <div class="ct-main">
