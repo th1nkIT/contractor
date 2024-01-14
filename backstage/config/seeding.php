@@ -35,3 +35,11 @@ if ($result->num_rows === 0) {
 }
 
 $stmt->close();
+
+// Melakukan seeding dari img/undraw_profile.svg ke view/profile/images/undraw_profile.svg
+$imagesSeed = $_ENV['IMAGES_SEED'];
+$imagesSeedPath = "view/profile/images/$imagesSeed";
+
+if (!file_exists($imagesSeedPath)) {
+    copy("img/undraw_profile.svg", $imagesSeedPath);
+}

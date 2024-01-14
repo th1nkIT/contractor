@@ -1,10 +1,28 @@
 <?php
+$id_user = $_GET['id'];
+
+if (!isValidUuid($id_user)) {
+    echo "<div class='alert alert-danger'>ID User tidak valid</div>";
+    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=user'>";
+    exit();
+}
+
 // Get Profile
 $stmt = $koneksi->prepare("SELECT * FROM user WHERE uuid=?");
-$stmt->bind_param("s", $session->uuid);
+$stmt->bind_param("s", $id_user);
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
+
+// Periksa apakah proyek ditemukan
+if ($result->num_rows > 0) {
+    $pecah = $result->fetch_assoc();
+    // Lakukan operasi dengan data proyek yang ditemukan
+} else {
+    echo "<div class='alert alert-danger'>User tidak ditemukan</div>";
+    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=user'>";
+    exit();
+}
 ?>
 
 <div class="container">
@@ -147,32 +165,32 @@ $row = $result->fetch_assoc();
                                     }
 
                                     $stmt = $koneksi->prepare("UPDATE user SET nama_lengkap=?, email=?, password=?, role=?, images_user=? WHERE uuid=?");
-                                    $stmt->bind_param("sssiss", $namaLengkap, $email, $hashedPassword, $roleBackstage, $nama, $session->uuid);
+                                    $stmt->bind_param("sssiss", $namaLengkap, $email, $hashedPassword, $roleBackstage, $nama, $id_user);
 
                                     if ($stmt->execute()) {
                                         echo "<div class='alert alert-info'>Data Tersimpan</div>";
-                                        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=profile'>";
+                                        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=user'>";
                                     } else {
                                         echo "<div class='alert alert-danger'>Gagal menyimpan data proyek</div>";
-                                        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=profile>";
+                                        echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=update_user&id=$id_user>";
                                     }
 
                                     $stmt->close();
                                 } else {
                                     echo "<div class='alert alert-danger'>Gagal mengupload file</div>";
-                                    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=profile>";
+                                    echo "<meta http-equiv='refresh' content='2;url=index.php?halaman=update_user&id=$id_user>";
                                 }
                             } else {
                                 // Update Data
                                 $stmt = $koneksi->prepare("UPDATE user SET nama_lengkap=?, email=?, password=?, role=? WHERE uuid=?");
-                                $stmt->bind_param("sssis", $namaLengkap, $email, $hashedPassword, $roleBackstage, $session->uuid);
+                                $stmt->bind_param("sssis", $namaLengkap, $email, $hashedPassword, $roleBackstage, $id_user);
 
                                 if ($stmt->execute()) {
-                                    echo "<div class='alert alert-info'>Update Profile Berhasil</div>";
-                                    echo "<meta http-equiv='refresh' content='1;url=index.php'>";
+                                    echo "<div class='alert alert-info'>Update User Berhasil</div>";
+                                    echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=user'>";
                                 } else {
-                                    echo "<div class='alert alert-info'>Update Profile Gagal</div>";
-                                    echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=profile'>";
+                                    echo "<div class='alert alert-info'>Update User Gagal</div>";
+                                    echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=update_user&id=$id_user'>";
                                 }
 
                                 $stmt->close();
