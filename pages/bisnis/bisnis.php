@@ -1,3 +1,8 @@
+<?php
+require '../../components/navbar.php';
+require  '../../components/footer.php';
+require  '../../components/info.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +18,9 @@
     <link rel="stylesheet" href="/thinkit/plugin/css/Footer.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/nv.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
+
+    <!-- Custom fonts for this template-->
+    <link href="/thinkit/backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Bisnis.css">
@@ -34,55 +42,7 @@
 
 <body>
     <!-- Header Start -->
-    <section class="navbars">
-        <!-- Navbar Sosmed Start -->
-        <div class="navbars-sosmed">
-            <!-- Sosmed Link Kiri Start -->
-            <div class="sosmed-kiri">
-                <a href="#"><i class="bi-envelope"></i> info@gmail.com</a>
-                <a href="#"><i class="bi-telephone"></i> +6221 4288 4257</a>
-            </div>
-            <!-- Sosmed Link Kiri End -->
-
-            <!-- Sosmed Link Kanan Start -->
-            <div class="sosmed-kanan">
-                <a href="#"><i class="bi-facebook"></i></a>
-                <a href="#"><i class="bi-twitter"></i></a>
-                <a href="#"><i class="bi-linkedin"></i></a>
-                <a href="#"><i class="bi-google"></i></a>
-            </div>
-            <!-- Sosmed Link Kanan End -->
-        </div>
-        <!-- Navbar Sosmed End -->
-
-        <div class="navbars-konten">
-            <!-- Logo Start -->
-            <div class="navbars-logo">
-                <a href="/thinkit">logo</a>
-            </div>
-            <!-- Logo End -->
-
-            <!-- Nav Start -->
-            <div class="navbars-ex">
-                <button type="button" id="hamburger-menu"><i class="bi-list"></i></button>
-            </div>
-            <div class="navbars-nav">
-                <a href="/thinkit">BERANDA</a>
-                <div class="drop">
-                    <button type="button">TENTANG KAMI <i class="bi-chevron-down"></i></button>
-                    <ul>
-                        <li><a href="../tentang/tentang-kami.php">TENTANG KAMI</a></li>
-                        <li><a href="../tentang/galeri.php">GALERI</a></li>
-                    </ul>
-                </div>
-                <a href="/thinkit/proyek">PROYEK</a>
-                <a class="aktif" href="/thinkit/bisnis">BISNIS KAMI</a>
-                <a href="/thinkit/article">ARTIKEL</a>
-                <a href="../kontak/kontak.php">KONTAK</a>
-            </div>
-            <!-- Nav End -->
-        </div>
-    </section>
+    <?php navbarComponent(); ?>
 
     <!-- Jumbotron Start -->
     <section class="jb-proyek">
@@ -187,67 +147,11 @@
     <!-- Konten Bisnis End -->
 
     <!-- Info Start -->
-    <section class="info">
-        <!-- Alamat Start -->
-        <div class="konten-info">
-            <h1>IKON 1</h1>
-            <p><b>Alamat</b></p>
-            <p>Jl. Letjen Lorem ipsum dolor sit amet consectetur.</p>
-        </div>
-        <!-- Alamat End -->
-
-        <!-- Telefon Start -->
-        <div class="konten-info">
-            <h1>IKON 2</h1>
-            <p><b>Hubungi Kami</b></p>
-            <p>
-                +62 821 4288 4257 <br />
-                +62 821 4288 4258
-            </p>
-        </div>
-        <!-- Telefon End -->
-
-        <!-- Jam Kerja Start -->
-        <div class="konten-info">
-            <h1>IKON 3</h1>
-            <p><b>Jam Kerja</b></p>
-            <p>
-                Senin - Jumat (08:00 AM - 05:00 PM) <br />
-                Sabtu dan Minggu : Libur
-            </p>
-        </div>
-        <!-- Jam Kerja End -->
-    </section>
+    <?php infoComponents(); ?>
     <!-- Info End -->
 
     <!-- Footer Start -->
-    <footer class="footer">
-        <div class="foot">
-            <h1>Tentang Kami</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima repudiandae optio aliquam omnis earum expedita, blanditiis saepe sapiente numquam ipsa!</p>
-        </div>
-
-        <div class="foot">
-            <h1>Info Terbaru</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima repudiandae optio aliquam omnis earum expedita, blanditiis saepe sapiente numquam ipsa!</p>
-        </div>
-
-        <div class="foot">
-            <h1>Berita Terpopuler</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima repudiandae optio aliquam omnis earum expedita, blanditiis saepe sapiente numquam ipsa!</p>
-        </div>
-
-        <div class="foot">
-            <h1>Quick Links</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima repudiandae optio aliquam omnis earum expedita, blanditiis saepe sapiente numquam ipsa!</p>
-        </div>
-    </footer>
-
-    <!-- Copyright Start -->
-    <div class="copy">
-        <h1>Copyright &copy; 2023. All Rights Reserved.</h1>
-    </div>
-    <!-- Copyright End -->
+    <?php footerComponent(); ?>
     <!-- Footer End -->
 
     <script src="/thinkit/plugin/js/scr.js"></script>
