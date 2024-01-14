@@ -7,11 +7,13 @@
     <!-- My CSS -->
     <link rel="stylesheet" href="../../plugin/css/App.css">
     <link rel="stylesheet" href="../../plugin/css/Artikel.css">
-    <link rel="stylesheet" href="../../plugin/css/Bns.css">
+    <link rel="stylesheet" href="../../plugin/css/Bisnis.css">
     <link rel="stylesheet" href="../../plugin/css/Dashboard.css">
     <link rel="stylesheet" href="../../plugin/css/Footer.css">
     <link rel="stylesheet" href="../../plugin/css/nv.css">
     <link rel="stylesheet" href="../../plugin/css/Pro.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/Bisnis.css">
+    <link rel="stylesheet" href="../../plugin/css/responsive/View.css">
 
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="../../plugin/css/responsive/navbar.css">
