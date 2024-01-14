@@ -17,111 +17,191 @@ $stmtJamKerja->execute();
 $resultJamKerja = $stmtJamKerja->get_result();
 $rowJamKerja = $resultJamKerja->fetch_assoc();
 ?>
-
-<!-- Earnings (Monthly) Card Example -->
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-primary shadow h-100 py-2">
+<!-- Address -->
+<div class="col-xl-4 col-lg-6">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Office Address</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Dropdown Header:</div>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
+        </div>
+        <!-- Card Body -->
         <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
+            <form method="POST">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Office Address</label>
+                        <input class="form-control" type="text" name="alamat_kami" value="<?php echo htmlspecialchars($rowAlamat['keterangan']); ?>" required>
+                    </div>
                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                         Current Address : <?php echo htmlspecialchars($rowAlamat['keterangan']); ?>
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <form method="POST">
-                            <input class="form-control" type="text" name="alamat_kami" value="<?php echo htmlspecialchars($rowAlamat['keterangan']); ?>" required>
-                            <button class="btn btn-primary btn-sm ms-auto" name="simpan_alamat">Simpan Data</button>
-                        </form>
-                        <?php
-                        if (isset($_POST['simpan_alamat'])) {
-                            $id = $rowAlamat['id'];
-                            $alamat = $_POST['alamat_kami'];
-                            $stmtAlamatUpdate = $koneksi->prepare("UPDATE settings SET keterangan=? WHERE id=?");
-                            $stmtAlamatUpdate->bind_param("si", $alamat, $id);
-                            $stmtAlamatUpdate->execute();
-                            echo "<script>alert('Data Alamat Berhasil Diubah');</script>";
-                            echo "<script>location='index.php?halaman=setting';</script>";
-                        }
-                        ?>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Font Awesome Icon</label>
+                        <input class="form-control" type="text" name="fa_icon" value="<?php echo htmlspecialchars($rowAlamat['fa_icon']); ?>" required>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Current Icon <i class="<?php echo htmlspecialchars($rowAlamat['fa_icon']); ?>"></i> : <?php echo htmlspecialchars($rowAlamat['fa_icon']); ?>
                     </div>
                 </div>
-                <div class="col-auto">
-                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <br>
+                        <button class="btn btn-primary btn-sm ms-auto" name="simpan_alamat">Simpan Data</button>
+                    </div>
                 </div>
-            </div>
+            </form>
+            <?php
+            if (isset($_POST['simpan_alamat'])) {
+                $id = $rowAlamat['id'];
+                $alamat = $_POST['alamat_kami'];
+                $fa_icon = $_POST['fa_icon'];
+                $stmtAlamatUpdate = $koneksi->prepare("UPDATE settings SET keterangan=?, fa_icon=? WHERE id=?");
+                $stmtAlamatUpdate->bind_param("ssi", $alamat, $fa_icon, $id);
+                $stmtAlamatUpdate->execute();
+                echo "<div class='alert alert-info'>Data berhasil update</div>";
+                echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=setting'>";
+            }
+            ?>
         </div>
     </div>
 </div>
 
-<!-- Earnings (Monthly) Card Example -->
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-success shadow h-100 py-2">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                        Current Phone : <?php echo htmlspecialchars($rowHubungi['keterangan']); ?>
-                    </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        <form method="POST">
-                            <input class="form-control" type="text" name="hubungi_kami" value="<?php echo htmlspecialchars($rowHubungi['keterangan']); ?>" required>
-                            <button class="btn btn-primary btn-sm ms-auto" name="simpan_hubungi">Simpan Data</button>
-                        </form>
-                        <?php
-                        if (isset($_POST['simpan_hubungi'])) {
-                            $id = $rowHubungi['id'];
-                            $hubungi = $_POST['hubungi_kami'];
-                            $stmtHubungiUpdate = $koneksi->prepare("UPDATE settings SET keterangan=? WHERE id=?");
-                            $stmtHubungiUpdate->bind_param("si", $hubungi, $id);
-                            $stmtHubungiUpdate->execute();
-                            echo "<script>alert('Data Hubungi Berhasil Diubah');</script>";
-                            echo "<script>location='index.php?halaman=setting';</script>";
-                        }
-                        ?>
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+<!-- Contact Office -->
+<div class="col-xl-4 col-lg-6">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Office Contact</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Dropdown Header:</div>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+            <form method="POST">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Office Contact</label>
+                        <input class="form-control" type="text" name="hubungi_kami" value="<?php echo htmlspecialchars($rowHubungi['keterangan']); ?>" required>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Current Contact : <?php echo htmlspecialchars($rowHubungi['keterangan']); ?>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Font Awesome Icon</label>
+                        <input class="form-control" type="text" name="fa_icon" value="<?php echo htmlspecialchars($rowHubungi['fa_icon']); ?>" required>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Current Icon <i class="<?php echo htmlspecialchars($rowHubungi['fa_icon']); ?>"></i> : <?php echo htmlspecialchars($rowHubungi['fa_icon']); ?>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <br>
+                        <button class="btn btn-primary btn-sm ms-auto" name="simpan_hubungi">Simpan Data</button>
+                    </div>
+                </div>
+            </form>
+            <?php
+            if (isset($_POST['simpan_hubungi'])) {
+                $id = $rowHubungi['id'];
+                $hubungi = $_POST['hubungi_kami'];
+                $faIcon = $_POST['fa_icon'];
+                $stmtHubungiUpdate = $koneksi->prepare("UPDATE settings SET keterangan=?, fa_icon=? WHERE id=?");
+                $stmtHubungiUpdate->bind_param("ssi", $hubungi, $faIcon, $id);
+                $stmtHubungiUpdate->execute();
+                echo "<div class='alert alert-info'>Data berhasil update</div>";
+                echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=setting'>";
+            }
+            ?>
         </div>
     </div>
 </div>
 
-<!-- Earnings (Monthly) Card Example -->
-<div class="col-xl-3 col-md-6 mb-4">
-    <div class="card border-left-info shadow h-100 py-2">
-        <div class="card-body">
-            <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
-                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Jam Kerja
-                    </div>
-                    <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                <form method="POST">
-                                    <input class="form-control" type="text" name="jam_kerja" value="<?php echo htmlspecialchars($rowJamKerja['keterangan']); ?>" required>
-                                    <button class="btn btn-primary btn-sm ms-auto" name="simpan_jam">Simpan Data</button>
-                                </form>
-                                <?php
-                                if (isset($_POST['simpan_jam'])) {
-                                    $id = $rowJamKerja['id'];
-                                    $jam_kerja = $_POST['jam_kerja'];
-                                    $stmtJamKerjaUpdate = $koneksi->prepare("UPDATE settings SET keterangan=? WHERE id=?");
-                                    $stmtJamKerjaUpdate->bind_param("si", $jam_kerja, $id);
-                                    $stmtJamKerjaUpdate->execute();
-                                    echo "<script>alert('Data Jam Kerja Berhasil Diubah');</script>";
-                                    echo "<script>location='index.php?halaman=setting';</script>";
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-auto">
-                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+<!-- Jam Kerja -->
+<div class="col-xl-4 col-lg-6">
+    <div class="card shadow mb-4">
+        <!-- Card Header - Dropdown -->
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">Work Hour Office</h6>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Dropdown Header:</div>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </div>
+        </div>
+        <!-- Card Body -->
+        <div class="card-body">
+            <form method="POST">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Work Hour Office</label>
+                        <input class="form-control" type="text" name="jam_kerja" value="<?php echo htmlspecialchars($rowJamKerja['keterangan']); ?>" required>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Current Work Hour : <?php echo htmlspecialchars($rowJamKerja['keterangan']); ?>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="example-text-input" class="form-control-label">Font Awesome Icon</label>
+                        <input class="form-control" type="text" name="fa_icon" value="<?php echo htmlspecialchars($rowJamKerja['fa_icon']); ?>" required>
+                    </div>
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Current Icon <i class="<?php echo htmlspecialchars($rowJamKerja['fa_icon']); ?>"></i> : <?php echo htmlspecialchars($rowJamKerja['fa_icon']); ?>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <br>
+                        <button class="btn btn-primary btn-sm ms-auto" name="simpan_jam">Simpan Data</button>
+                    </div>
+                </div>
+            </form>
+            <?php
+            if (isset($_POST['simpan_jam'])) {
+                $id = $rowJamKerja['id'];
+                $jam_kerja = $_POST['jam_kerja'];
+                $faIcon = $_POST['fa_icon'];
+                $stmtJamKerjaUpdate = $koneksi->prepare("UPDATE settings SET keterangan=?, fa_icon=? WHERE id=?");
+                $stmtJamKerjaUpdate->bind_param("ssi", $jam_kerja, $faIcon, $id);
+                $stmtJamKerjaUpdate->execute();
+                echo "<div class='alert alert-info'>Data berhasil update</div>";
+                echo "<meta http-equiv='refresh' content='1;url=index.php?halaman=setting'>";
+            }
+            ?>
         </div>
     </div>
 </div>

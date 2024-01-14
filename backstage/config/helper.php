@@ -142,3 +142,21 @@ function topClient()
         return -1;
     }
 }
+
+// Get Setting
+function getSetting()
+{
+    global $koneksi;
+
+    $query = "SELECT * FROM settings";
+    $stmt = $koneksi->prepare($query);
+    if ($stmt) {
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $stmt->close();
+
+        return $result;
+    } else {
+        return -1;
+    }
+}
