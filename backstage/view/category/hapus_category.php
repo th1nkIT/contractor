@@ -17,8 +17,8 @@ $stmt->fetch();
 $stmt->close();
 
 // Check if file exists before attempting to unlink
-if ($foto && file_exists("assets/images/category/$foto")) {
-    unlink("assets/images/category/$foto");
+if ($foto && file_exists("view/category/images/$foto")) {
+    unlink("view/category/images/$foto");
 }
 
 // Delete category data from the database

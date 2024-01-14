@@ -8,7 +8,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Category Setting</h6>
-            <a href="index.php?halaman=tambah_category" class="btn btn-primary">Tambah Data</a>
+            <a href="/thinkit/backstage/category/add" class="btn btn-primary">Tambah Data</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -48,9 +48,9 @@
                                     <td><?php echo $nama_category ?></td>
                                     <td><?php echo $deskripsi_category ?></td>
                                     <td><?php echo $summary_category ?></td>
-                                    <td><img src="view/category/images/<?php echo $images_category ?>" alt="<?php echo $nama_category ?>" width="100px" height="100px"></td>
+                                    <td><img src="/thinkit/backstage/view/category/images/<?php echo $images_category ?>" alt="<?php echo $nama_category ?>" width="100px" height="100px"></td>
                                     <td>
-                                        <a href="index.php?halaman=update_category&id=<?php echo $uuid ?>" class="btn btn-info btn-icon-split">
+                                        <a href="/thinkit/backstage/category/<?php echo $uuid ?>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-trash"></i>
                                             </span>

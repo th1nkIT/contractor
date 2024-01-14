@@ -3,7 +3,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    showAlert("error", "ID Project tidak valid", "", "index.php?halaman=projects");
+    showAlert("error", "ID Project tidak valid", "", "/thinkit/backstage/project");
     exit();
 }
 
@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data proyek yang ditemukan
 } else {
-    showAlert("error", "Project tidak ditemukan", "", "index.php?halaman=projects");
+    showAlert("error", "Project tidak ditemukan", "", "/thinkit/backstage/project");
     exit();
 }
 ?>
@@ -125,7 +125,7 @@ if ($result->num_rows > 0) {
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Foto Project</label>
                                         <input class="form-control" type="file" name="foto_project">
-                                        <img src="view/projects/images/<?php echo $pecah['images_projects']; ?>" alt="<?php echo $pecah['nama_client'] ?>">
+                                        <img src="/thinkit/backstage/view/projects/images/<?php echo $pecah['images_projects']; ?>" alt="<?php echo $pecah['title_project'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -150,19 +150,19 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!empty($filename) && !in_array($ext, $allowed)) {
-        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=ubah_projects&id_project=$id_project");
+        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/project/$id_project");
         exit();
     }
 
     // Check if status_project is not empty
     if ($status_project === "0") {
-        showAlert("error", "Status project tidak boleh kosong", "", "index.php?halaman=ubah_projects&id_project=$id_project");
+        showAlert("error", "Status project tidak boleh kosong", "", "/thinkit/backstage/project/$id_project");
         exit();
     }
 
     // Check if nama_client is not empty
     if ($nama_client === "0") {
-        showAlert("error", "Nama client tidak boleh kosong", "", "index.php?halaman=ubah_projects&id_project=$id_project");
+        showAlert("error", "Nama client tidak boleh kosong", "", "/thinkit/backstage/project/$id_project");
         exit();
     }
 
@@ -205,16 +205,16 @@ if (isset($_POST['simpan'])) {
             $stmt->bind_param("ssssssssss", $title_project, $description_project, $slug, $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project, $id_project);
 
             if ($stmt->execute()) {
-                showAlert("success", "Data tersimpan", "", "index.php?halaman=projects");
+                showAlert("success", "Data tersimpan", "", "/thinkit/backstage/project");
                 exit();
             } else {
-                showAlert("error", "Gagal menyimpan data project", "", "index.php?halaman=ubah_projects&id_project=$id_project");
+                showAlert("error", "Gagal menyimpan data project", "", "/thinkit/backstage/project/$id_project");
                 exit();
             }
 
             $stmt->close();
         } else {
-            showAlert("error", "Gagal mengupload file", "", "index.php?halaman=ubah_projects&id_project=$id_project");
+            showAlert("error", "Gagal mengupload file", "", "/thinkit/backstage/project/$id_project");
             exit();
         }
     } else {
@@ -230,10 +230,10 @@ if (isset($_POST['simpan'])) {
         $stmt->bind_param("sssssssss", $title_project, $description_project, $slug, $nama_client, $location_project, $date_start_project, $date_end_project, $status_project, $id_project);
 
         if ($stmt->execute()) {
-            showAlert("success", "Data tersimpan", "", "index.php?halaman=projects");
+            showAlert("success", "Data tersimpan", "", "/thinkit/backstage/project");
             exit();
         } else {
-            showAlert("error", "Gagal menyimpan data project", "", "index.php?halaman=ubah_projects&id_project=$id_project");
+            showAlert("error", "Gagal menyimpan data project", "", "/thinkit/backstage/project/$id_project");
             exit();
         }
 

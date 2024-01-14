@@ -1,8 +1,56 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    # Base Url
     RewriteBase /thinkit/
-
+    # Rule for Front End
     RewriteRule ^proyek/([^/]+)$ pages/proyek/show_proyek.php?slug=$1 [L]
 
     RewriteRule ^proyek$ pages/proyek/proyek.php [L]
+
+    # Rule for Backstage
+    RewriteRule ^backstage$ backstage/index.php [L]
+    # Rule for Backstage Article
+    RewriteRule ^backstage/article$ backstage/index.php?halaman=articles [QSA,L]
+    RewriteRule ^backstage/article/add$ backstage/index.php?halaman=tambah_articles [QSA,L]
+    RewriteRule ^backstage/article/([^/]+)$ backstage/index.php?halaman=update_articles&id=$1 [QSA,L]
+
+    # Rule For Backstage Category
+    RewriteRule ^backstage/category$ backstage/index.php?halaman=category [QSA,L]
+    RewriteRule ^backstage/category/add$ backstage/index.php?halaman=tambah_category [QSA,L]
+    RewriteRule ^backstage/category/([^/]+)$ backstage/index.php?halaman=update_category&id=$1 [QSA,L]
+
+    # Rule For Backstage Client
+    RewriteRule ^backstage/client$ backstage/index.php?halaman=client [QSA,L]
+    RewriteRule ^backstage/client/add$ backstage/index.php?halaman=tambah_client [QSA,L]
+    RewriteRule ^backstage/client/([^/]+)$ backstage/index.php?halaman=update_client&id=$1 [QSA,L]
+
+    # Rule For Backstage Project
+    RewriteRule ^backstage/project$ backstage/index.php?halaman=projects [QSA,L]
+    RewriteRule ^backstage/project/add$ backstage/index.php?halaman=tambah_projects [QSA,L]
+    RewriteRule ^backstage/project/([^/]+)$ backstage/index.php?halaman=update_projects&id=$1 [QSA,L]
+
+    # Rule For Backstage User
+    RewriteRule ^backstage/user$ backstage/index.php?halaman=user [QSA,L]
+    RewriteRule ^backstage/user/add$ backstage/index.php?halaman=tambah_user [QSA,L]
+    RewriteRule ^backstage/user/([^/]+)$ backstage/index.php?halaman=update_user&id=$1 [QSA,L]
+
+    # Rule for Backstage Setting
+    RewriteRule ^backstage/setting$ backstage/index.php?halaman=setting [QSA,L]
+
+    # Rule for Backstage Profile
+    RewriteRule ^backstage/profile$ backstage/index.php?halaman=profile [QSA,L]
+
+    # Rule for Backstage Logout
+    RewriteRule ^backstage/logout$ backstage/index.php?halaman=logout [QSA,L]
+
+    # Rule for Backstage Logout Force
+    RewriteRule ^backstage/logout-force$ backstage/logout.php [QSA,L]
+
+    # Rule for Backstage Login
+    RewriteRule ^backstage/login$ backstage/login.php [QSA,L]
+
+    # Aturan untuk menyajikan file atau direktori yang ada secara langsung (tanpa RewriteRule)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [QSA,L]
 </IfModule>

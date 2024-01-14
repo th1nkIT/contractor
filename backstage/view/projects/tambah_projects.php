@@ -100,25 +100,25 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!in_array($ext, $allowed)) {
-        showAlert("error", "oto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=tambah_projects");
+        showAlert("error", "oto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/project/add");
         exit();
     }
 
     // Check if status_project is not empty
     if ($status_project === "0") {
-        showAlert("error", "Status project tidak boleh kosong", "", "index.php?halaman=tambah_projects");
+        showAlert("error", "Status project tidak boleh kosong", "", "/thinkit/backstage/project/add");
         exit();
     }
 
     // Check if nama_client is not empty
     if ($nama_client === "0") {
-        showAlert("error", "Nama client tidak boleh kosong", "", "index.php?halaman=tambah_projects");
+        showAlert("error", "Nama client tidak boleh kosong", "", "/thinkit/backstage/project/add");
         exit();
     }
 
     // Check if the file is uploaded
     if (empty($_FILES['foto_project']['name'])) {
-        showAlert("error", "Foto tidak boleh kosong", "", "index.php?halaman=tambah_projects");
+        showAlert("error", "Foto tidak boleh kosong", "", "/thinkit/backstage/project/add");
         exit();
     }
 
@@ -147,16 +147,16 @@ if (isset($_POST['simpan'])) {
         $stmt->bind_param("ssssssssss", $guid, $slug, $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project, $title_project, $description_project);
 
         if ($stmt->execute()) {
-            showAlert("success", "Data tersimpan", "", "index.php?halaman=projects");
+            showAlert("success", "Data tersimpan", "", "/thinkit/backstage/project");
             exit();
         } else {
-            showAlert("error", "Gagal menyimpan data project", "", "index.php?halaman=tambah_projects");
+            showAlert("error", "Gagal menyimpan data project", "", "/thinkit/backstage/project/add");
             exit();
         }
 
         $stmt->close();
     } else {
-        showAlert("error", "Gagal mengupload file", "", "index.php?halaman=tambah_projects");
+        showAlert("error", "Gagal mengupload file", "", "/thinkit/backstage/project/add");
         exit();
     }
 }

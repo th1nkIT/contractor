@@ -57,13 +57,13 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!in_array($ext, $allowed)) {
-        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "index.php?halaman=tambah_category");
+        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/category/add");
         exit();
     }
 
     // Check if the file is uploaded
     if (empty($_FILES['foto_category']['name'])) {
-        showAlert("error", "Foto tidak boleh kosong", "", "index.php?halaman=tambah_category");
+        showAlert("error", "Foto tidak boleh kosong", "", "/thinkit/backstage/category/add");
         exit();
     }
 
@@ -91,16 +91,16 @@ if (isset($_POST['simpan'])) {
         $stmt->bind_param("ssssss", $guid, $slug, $nama_category, $deskripsi_category, $summary_category, $nama);
 
         if ($stmt->execute()) {
-            showAlert("success", "Data Tersimpan", "", "index.php?halaman=category");
+            showAlert("success", "Data Tersimpan", "", "/thinkit/backstage/category");
             exit();
         } else {
-            showAlert("error", "Gagal menyimpan data kategori", "", "index.php?halaman=tambah_category");
+            showAlert("error", "Gagal menyimpan data kategori", "", "/thinkit/backstage/category/add");
             exit();
         }
 
         $stmt->close();
     } else {
-        showAlert("error", "Gagal mengupload file", "", "index.php?halaman=tambah_category");
+        showAlert("error", "Gagal mengupload file", "", "/thinkit/backstage/category/add");
         exit();
     }
 }

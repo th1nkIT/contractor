@@ -29,17 +29,17 @@ try {
     <title>Title nanti di sini</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/thinkit/backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/thinkit/backstage/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Backstage CSS -->
-    <link rel="stylesheet" href="css/backstage.css">
+    <link rel="stylesheet" href="/thinkit/backstage/css/backstage.css">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="/thinkit/backstage/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Link ke jQuery (dibutuhkan oleh Select2) -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -63,7 +63,7 @@ try {
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/thinkit/backstage">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -75,7 +75,7 @@ try {
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="/thinkit/backstage">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -90,28 +90,28 @@ try {
 
             <!-- Nav Item - Article -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php?halaman=articles">
+                <a class="nav-link" href="/thinkit/backstage/article">
                     <i class="fas fa-regular fa-clipboard-list"></i>
                     <span>Article</span></a>
             </li>
 
             <!-- Nav Item - Client -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php?halaman=client">
+                <a class="nav-link" href="/thinkit/backstage/client">
                     <i class="fas fa-regular fa-user-alt"></i>
                     <span>Client</span></a>
             </li>
 
             <!-- Nav Item - Category -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php?halaman=category">
+                <a class="nav-link" href="/thinkit/backstage/category">
                     <i class="fas fa-regular fa-tags"></i>
                     <span>Category</span></a>
             </li>
 
             <!-- Nav Item - Projects -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php?halaman=projects">
+                <a class="nav-link" href="/thinkit/backstage/project">
                     <i class="fas fa-regular fa-receipt"></i>
                     <span>Project</span></a>
             </li>
@@ -126,7 +126,7 @@ try {
 
             <!-- Nav Item - Register -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php?halaman=user">
+                <a class="nav-link" href="/thinkit/backstage/user">
                     <i class="fas fa-regular fa-user-plus"></i>
                     <span>User Management</span></a>
             </li>
@@ -141,7 +141,7 @@ try {
 
             <!-- Nav Item - Projects -->
             <li class="nav-item">
-                <a class="nav-link" href="index.php?halaman=setting">
+                <a class="nav-link" href="/thinkit/backstage/setting">
                     <i class="fas fa-fw fa-tools"></i>
                     <span>Setting</span></a>
             </li>
@@ -321,15 +321,15 @@ try {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $profileUser['nama_lengkap']; ?></span>
-                                <img class="img-profile rounded-circle" src="view/profile/images/<?php echo $profileUser['images_user']; ?>">
+                                <img class="img-profile rounded-circle" src="/thinkit/backstage/view/profile/images/<?php echo $profileUser['images_user']; ?>">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="index.php?halaman=profile">
+                                <a class="dropdown-item" href="/thinkit/backstage/profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="index.php?halaman=setting">
+                                <a class="dropdown-item" href="/thinkit/backstage/setting">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
@@ -338,7 +338,7 @@ try {
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="index.php?halaman=logout" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="/thinkit/backstage/logout" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -468,34 +468,34 @@ try {
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="logout.php">Logout</a>
+                        <a class="btn btn-primary" href="/thinkit/backstage/logout-force">Logout</a>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/thinkit/backstage/vendor/jquery/jquery.min.js"></script>
+        <script src="/thinkit/backstage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <script src="/thinkit/backstage/vendor/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
+        <script src="/thinkit/backstage/js/sb-admin-2.min.js"></script>
 
         <!-- Page level plugins -->
-        <script src="vendor/chart.js/Chart.min.js"></script>
-        <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-        <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="/thinkit/backstage/vendor/chart.js/Chart.min.js"></script>
+        <script src="/thinkit/backstage/vendor/datatables/jquery.dataTables.min.js"></script>
+        <script src="/thinkit/backstage/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="js/demo/chart-area-demo.js"></script>
-        <script src="js/demo/chart-pie-demo.js"></script>
+        <script src="/thinkit/backstage/js/demo/chart-area-demo.js"></script>
+        <script src="/thinkit/backstage/js/demo/chart-pie-demo.js"></script>
 
         <!-- Page level custom scripts -->
-        <script src="js/demo/datatables-demo.js"></script>
-        <script src="js/backstage.js"></script>
+        <script src="/thinkit/backstage/js/demo/datatables-demo.js"></script>
+        <script src="/thinkit/backstage/js/backstage.js"></script>
         <script>
             tinymce.init({
                 selector: 'textarea',
