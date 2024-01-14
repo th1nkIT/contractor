@@ -17,6 +17,7 @@
         object-fit: cover;
         width: auto;
         max-width: 35rem;
+        min-width: 30rem;
         height: auto;
         overflow: hidden;
         border-radius: .3rem;
