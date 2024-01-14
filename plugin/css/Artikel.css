@@ -60,11 +60,21 @@
     font-weight: 500;
 }
 
-.page .artikel-konten .cards-artikel .cards-konten .cards-konten-title h1 {
+.page .artikel-konten .cards-artikel .cards-konten .cards-konten-title .judul {
+    padding: 0;
+    display: flex;
+    align-items: start;
+    font-size: 1.1rem;
+    text-align: right;
+    max-width: 10rem;
+    min-height: 3rem;
+}
+
+/* .page .artikel-konten .cards-artikel .cards-konten .cards-konten-title h1 {
     font-size: 1.2rem;
     text-align: right;
     max-width: 15rem;
-}
+} */
 
 .page .artikel-konten .cards-artikel .cards-konten .isi-artikel {
     padding: .5rem 0 0;

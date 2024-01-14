@@ -7,18 +7,18 @@
 
     <!-- My CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/App.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Artikel.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/artikel.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Bisnis.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Dashboard.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Footer.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/nv.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Proyek.css">
-
+    
     <!-- Query Media CSS -->
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/navbar.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Dashboards.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Footer.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/navbar.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Proyek.css">
 
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">

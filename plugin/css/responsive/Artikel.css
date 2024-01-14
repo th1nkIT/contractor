@@ -1,0 +1,44 @@
+/* Artikel CSS */
+    @media (max-width: 758px) {
+        .jb-proyek {
+            min-height: 40vh;
+        }
+
+        .page .artikel-konten .cards-artikel {
+            padding: .5rem 0;
+            max-width: 13rem;
+            min-height: 20rem;
+            overflow: hidden;
+        }
+
+        .page .artikel-konten .cards-artikel .cards-foto {
+            display: flex;
+            align-items: center;
+            max-width: 100%;
+            min-height: 15rem;
+            object-fit: cover;
+        }
+
+        .page .artikel-konten .cards-artikel .cards-foto img {
+            width: 12rem;
+            height: 200px;
+            border-radius: .3rem;
+        }
+
+        .page .artikel-konten .cards-artikel .cards-konten .cards-konten-title {
+            overflow: hidden;
+        }
+        
+        .page .artikel-konten .cards-artikel .cards-konten .cards-konten-title .judul {
+            max-width: 5.5rem;
+            font-size: 1rem;
+        }
+        
+        .page .artikel-konten .cards-artikel .cards-konten .cards-konten-title .info-title p {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            font-size: .8rem;
+        }
+    }
+/* Artikel CSS */
