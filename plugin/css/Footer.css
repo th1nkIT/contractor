@@ -8,6 +8,7 @@
 }
 
 .info .konten-info {
+    min-width: 20rem;
     max-width: 20rem;
 }
 

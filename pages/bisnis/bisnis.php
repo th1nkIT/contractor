@@ -12,10 +12,10 @@ require  '../../components/info.php';
 
     <!-- My CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/App.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/artikel.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/Artikel.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Bisnis.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Dashboard.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Footer.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/footer.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/nv.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
 
@@ -25,7 +25,7 @@ require  '../../components/info.php';
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Bisnis.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Dashboards.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Footer.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/footer.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/navbar.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/View.css">
 
