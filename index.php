@@ -42,16 +42,16 @@ $stmt_category->close();
 
     <!-- My CSS -->
     <link rel="stylesheet" href="plugin/css/App.css">
-    <link rel="stylesheet" href="plugin/css/artikel.css">
+    <link rel="stylesheet" href="plugin/css/Artikel.css">
     <link rel="stylesheet" href="plugin/css/Bisnis.css">
     <link rel="stylesheet" href="plugin/css/Dashboard.css">
-    <link rel="stylesheet" href="plugin/css/Footer.css">
+    <link rel="stylesheet" href="plugin/css/footer.css">
     <link rel="stylesheet" href="plugin/css/nv.css">
 
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="plugin/css/responsive/navbar.css">
     <link rel="stylesheet" href="plugin/css/responsive/Dashboards.css">
-    <link rel="stylesheet" href="plugin/css/responsive/Footer.css">
+    <link rel="stylesheet" href="plugin/css/responsive/footer.css">
 
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">

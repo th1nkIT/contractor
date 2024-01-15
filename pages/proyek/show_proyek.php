@@ -27,17 +27,17 @@ $stmt->close();
 
     <!-- My CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/App.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/artikel.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/Artikel.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Bisnis.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Dashboard.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Footer.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/footer.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/nv.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/view.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/View.css">
 
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Dashboards.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Footer.css">
+    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/footer.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/navbar.css">
     <link rel="stylesheet" href="/thinkit/plugin/css/responsive/View.css">
 

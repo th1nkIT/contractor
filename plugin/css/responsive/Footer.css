@@ -1,7 +1,8 @@
 /* Query Media CSS */
 @media (max-width: 758px) {
     .info .konten-info {
-        max-width: 11rem;
+        max-width: 8.5rem;
+        min-width: 8.5rem;
     }
 
     .info .konten-info h1 {
