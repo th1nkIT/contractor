@@ -72,7 +72,8 @@ $rowJamKerja = $resultJamKerja->fetch_assoc();
                 $stmtAlamatUpdate = $koneksi->prepare("UPDATE settings SET keterangan=?, fa_icon=? WHERE id=?");
                 $stmtAlamatUpdate->bind_param("ssi", $alamat, $fa_icon, $id);
                 $stmtAlamatUpdate->execute();
-                showAlert("success", "Data berhasil update", "", "/thinkit/backstage/setting");
+                $redirectPath = $_ENV['ROUTE'] . 'backstage/setting';
+                showAlert("success", "Data berhasil update", "", $redirectPath);
                 exit();
             }
             ?>
@@ -135,7 +136,8 @@ $rowJamKerja = $resultJamKerja->fetch_assoc();
                 $stmtHubungiUpdate = $koneksi->prepare("UPDATE settings SET keterangan=?, fa_icon=? WHERE id=?");
                 $stmtHubungiUpdate->bind_param("ssi", $hubungi, $faIcon, $id);
                 $stmtHubungiUpdate->execute();
-                showAlert("success", "Data berhasil update", "", "/thinkit/backstage/setting");
+                $redirectPath = $_ENV['ROUTE'] . 'backstage/setting';
+                showAlert("success", "Data berhasil update", "", $redirectPath);
                 exit();
             }
             ?>
@@ -198,7 +200,8 @@ $rowJamKerja = $resultJamKerja->fetch_assoc();
                 $stmtJamKerjaUpdate = $koneksi->prepare("UPDATE settings SET keterangan=?, fa_icon=? WHERE id=?");
                 $stmtJamKerjaUpdate->bind_param("ssi", $jam_kerja, $faIcon, $id);
                 $stmtJamKerjaUpdate->execute();
-                showAlert("success", "Data berhasil update", "", "/thinkit/backstage/setting");
+                $redirectPath = $_ENV['ROUTE'] . 'backstage/setting';
+                showAlert("success", "Data berhasil update", "", $redirectPath);
                 exit();
             }
             ?>

@@ -70,7 +70,8 @@ $row = $result->fetch_assoc();
                             $roleBackstage = $_POST['role_backstage'];
 
                             if ($roleBackstage == 0) {
-                                showAlert("error", "Role tidak boleh kosong", "", "/thinkit/backstage/profile");
+                                $redirectPath = $_ENV['ROUTE'] . 'backstage/profile';
+                                showAlert("error", "Role tidak boleh kosong", "", $redirectPath);
                                 exit();
                             }
 
@@ -82,14 +83,16 @@ $row = $result->fetch_assoc();
                                 $result = $stmt->get_result();
 
                                 if ($result->num_rows > 0) {
-                                    showAlert("error", "Email sudah digunakan", "", "/thinkit/backstage/profile");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/profile';
+                                    showAlert("error", "Email sudah digunakan", "", $redirectPath);
                                     exit();
                                 }
                             }
 
                             if ($password != "" || $repeatPassword != "") {
                                 if ($password == "" || $repeatPassword == "") {
-                                    showAlert("error", "Password tidak boleh kosong", "", "/thinkit/backstage/profile");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/profile';
+                                    showAlert("error", "Password tidak boleh kosong", "", $redirectPath);
                                     exit();
                                 }
                             }
@@ -97,13 +100,15 @@ $row = $result->fetch_assoc();
                             if ($password != "" && $repeatPassword != "") {
                                 // Check Password length
                                 if (strlen($password) < 6) {
-                                    showAlert("error", "Password minimal 6 karakter", "", "/thinkit/backstage/profile");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/profile';
+                                    showAlert("error", "Password minimal 6 karakter", "", $redirectPath);
                                     exit();
                                 }
 
                                 // Check Password sama atau tidak
                                 if ($password !== $repeatPassword) {
-                                    showAlert("error", "Password tidak sama dengan Repeat Password", "", "/thinkit/backstage/profile");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/profile';
+                                    showAlert("error", "Password tidak sama dengan Repeat Password", "", $redirectPath);
                                     exit();
                                 }
 
@@ -119,7 +124,8 @@ $row = $result->fetch_assoc();
                             $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
                             if (!empty($filename) && !in_array($ext, $allowed)) {
-                                showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/profile");
+                                $redirectPath = $_ENV['ROUTE'] . 'backstage/profile';
+                                showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", $redirectPath);
                                 exit();
                             }
 
@@ -149,16 +155,19 @@ $row = $result->fetch_assoc();
                                     $stmt->bind_param("sssiss", $namaLengkap, $email, $hashedPassword, $roleBackstage, $nama, $session->uuid);
 
                                     if ($stmt->execute()) {
-                                        showAlert("success", "Update Profile Berhasil", "", "/thinkit/backstage");
+                                        $redirectPath = $_ENV['ROUTE'] . 'backstage';
+                                        showAlert("success", "Update Profile Berhasil", "",  $redirectPath);
                                         exit();
                                     } else {
-                                        showAlert("error", "Update Profile Gagal", "", "/thinkit/backstage/profile");
+                                        $redirectPath = $_ENV['ROUTE'] . 'backstage/profile';
+                                        showAlert("error", "Update Profile Gagal", "", $redirectPath);
                                         exit();
                                     }
 
                                     $stmt->close();
                                 } else {
-                                    showAlert("error", "Gagal mengupload file", "", "/thinkit/backstage/profile");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/profile';
+                                    showAlert("error", "Gagal mengupload file", "", $redirectPath);
                                     exit();
                                 }
                             } else {
@@ -167,10 +176,12 @@ $row = $result->fetch_assoc();
                                 $stmt->bind_param("sssis", $namaLengkap, $email, $hashedPassword, $roleBackstage, $session->uuid);
 
                                 if ($stmt->execute()) {
-                                    showAlert("success", "Update Profile Berhasil", "", "/thinkit/backstage");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage';
+                                    showAlert("success", "Update Profile Berhasil", "", $redirectPath);
                                     exit();
                                 } else {
-                                    showAlert("error", "Update Profile Gagal", "", "/thinkit/backstage/profile");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/profile';
+                                    showAlert("error", "Update Profile Gagal", "", $redirectPath);
                                     exit();
                                 }
 

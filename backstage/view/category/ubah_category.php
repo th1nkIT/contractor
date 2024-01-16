@@ -3,7 +3,8 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    showAlert("error", "ID Category tidak valid", "", "/thinkit/backstage/category");
+    $redirectPath = $_ENV['ROUTE'] . 'backstage/category/';
+    showAlert("error", "ID Category tidak valid", "", $redirectPath);
     exit();
 }
 
@@ -19,7 +20,8 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data kategori yang ditemukan
 } else {
-    showAlert("error", "Category tidak ditemukan", "", "/thinkit/backstage/category");
+    $redirectPath = $_ENV['ROUTE'] . 'backstage/category/';
+    showAlert("error", "Category tidak ditemukan", "",  $redirectPath);
     exit();
 }
 ?>
@@ -58,7 +60,7 @@ if ($result->num_rows > 0) {
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Foto Category</label>
                                         <input class="form-control" type="file" name="foto_category">
-                                        <img src="/thinkit/backstage/view/category/images/<?php echo $pecah['images_category']; ?>" alt="<?php echo $pecah['nama_category'] ?>">
+                                        <img src="<?php echo $_ENV['ROUTE']; ?>backstage/view/category/images/<?php echo $pecah['images_category']; ?>" alt="<?php echo $pecah['nama_category'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +90,7 @@ if (isset($_POST['simpan'])) {
         $ext = pathinfo($foto_category, PATHINFO_EXTENSION);
 
         if (!in_array($ext, $allowed)) {
-            $redirectPath = $_ENV['ROUTE'] . '/backstage/category/' . $id_category;
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/category/' . $id_category;
             showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", $redirectPath);
             exit();
         }
@@ -120,11 +122,11 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        $redirectPath = $_ENV['ROUTE'] . '/backstage/category';
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/category';
         showAlert("success", "Data tersimpan", "",  $redirectPath);
         exit();
     } else {
-        $redirectPath = $_ENV['ROUTE'] . '/backstage/category/' . $id_category;
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/category/' . $id_category;
         showAlert("error", "Gagal mengupdate data category", "",  $redirectPath);
         exit();
     }

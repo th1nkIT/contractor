@@ -3,7 +3,7 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    $redirectPath = $_ENV['ROUTE'] . '/backstage/article/';
+    $redirectPath = $_ENV['ROUTE'] . 'backstage/article/';
     showAlert("error", "ID Article tidak valid", "", $redirectPath);
     exit();
 }
@@ -20,7 +20,7 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data artikel yang ditemukan
 } else {
-    $redirectPath = $_ENV['ROUTE'] . '/backstage/article/';
+    $redirectPath = $_ENV['ROUTE'] . 'backstage/article/';
     showAlert("error", "Article tidak ditemukan", "", $redirectPath);
     exit();
 }
@@ -62,7 +62,7 @@ if ($result->num_rows > 0) {
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Foto Article</label>
                                         <input class="form-control" type="file" name="foto_article">
-                                        <img src="/thinkit/backstage/view/articles/images/<?php echo $pecah['images_article']; ?>" alt="<?php echo $pecah['title_article'] ?>">
+                                        <img src="<?php echo $_ENV['ROUTE']; ?>backstage/view/articles/images/<?php echo $pecah['images_article']; ?>" alt="<?php echo $pecah['title_article'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -89,13 +89,13 @@ if (isset($_POST['simpan'])) {
         $ext = pathinfo($nama_article, PATHINFO_EXTENSION);
 
         if (!in_array($ext, $allowed)) {
-            $redirectPath = $_ENV['ROUTE'] . '/backstage/article/' . $id_article;
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/article/' . $id_article;
             showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", $redirectPath);
             exit();
         }
 
         if (empty($_POST['isi_article'])) {
-            $redirectPath = $_ENV['ROUTE'] . '/backstage/article/' . $id_article;
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/article/' . $id_article;
             showAlert("error", "Artikel tidak boleh kosong", "", $redirectPath);
             exit();
         }
@@ -127,11 +127,11 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        $redirectPath = $_ENV['ROUTE'] . '/backstage/article';
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/article';
         showAlert("success", "Data Tersimpan", "", $redirectPath);
         exit();
     } else {
-        $redirectPath = $_ENV['ROUTE'] . '/backstage/article/' . $id_article;
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/article/' . $id_article;
         showAlert("error", "Gagal Menyimpan data Artikel", "", $redirectPath);
         exit();
     }

@@ -61,13 +61,15 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!in_array($ext, $allowed)) {
-        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/client/add");
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/client/add';
+        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", $redirectPath);
         exit();
     }
 
     // Check if the file is uploaded
     if (empty($_FILES['client_image']['name'])) {
-        showAlert("error", "Foto tidak boleh kosong", "", "/thinkit/backstage/client/add");
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/client/add';
+        showAlert("error", "Foto tidak boleh kosong", "", $redirectPath);
         exit();
     }
 
@@ -97,20 +99,24 @@ if (isset($_POST['simpan'])) {
             $stmt->bind_param("ssssss", $guid, $client_name, $client_email, $client_phone, $client_address, $nama);
 
             if ($stmt->execute()) {
-                showAlert("success", "Data tersimpan", "", "/thinkit/backstage/client");
+                $redirectPath = $_ENV['ROUTE'] . 'backstage/client';
+                showAlert("success", "Data tersimpan", "", $redirectPath);
                 exit();
             } else {
-                showAlert("error", "Gagal menyimpan data client", "", "/thinkit/backstage/client/add");
+                $redirectPath = $_ENV['ROUTE'] . 'backstage/client/add';
+                showAlert("error", "Gagal menyimpan data client", "", $redirectPath);
                 exit();
             }
 
             $stmt->close();
         } else {
-            showAlert("error", "Data client tidak boleh kosong", "", "/thinkit/backstage/client/add");
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/client/add';
+            showAlert("error", "Data client tidak boleh kosong", "",  $redirectPath);
             exit();
         }
     } else {
-        showAlert("error", "Gagal mengupload file", "", "/thinkit/backstage/client/add");
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/client/add';
+        showAlert("error", "Gagal mengupload file", "",  $redirectPath);
         exit();
     }
 }
