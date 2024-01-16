@@ -369,7 +369,7 @@ $stmt_category->close();
 
     <?php footerComponent(); ?>
 
-    <script src="<?php $_ENV['ROUTE']; ?>plugin/js/scr.js"></script>
+    <script src="plugin/js/scr.js"></script>
 </body>
 
 </html>

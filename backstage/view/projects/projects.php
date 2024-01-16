@@ -8,7 +8,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Projects Page</h6>
-            <a href="/thinkit/backstage/project/add" class="btn btn-primary">Tambah Data</a>
+            <a href="<?php echo $_ENV['ROUTE']; ?>backstage/project/add" class="btn btn-primary">Tambah Data</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -64,10 +64,10 @@
                                     <td><?php echo htmlspecialchars($pecah['client_name']) ?></td>
                                     <td><?php echo htmlspecialchars($pecah['lokasi_projects']) ?></td>
                                     <td><?php echo date('d-m-Y', strtotime($pecah['tanggal_projects_start'])) ?> - <?php echo date('d-m-Y', strtotime($pecah['tanggal_projects_end'])) ?></td>
-                                    <td><img src="view/projects/images/<?php echo htmlspecialchars($pecah['images_projects']) ?>" alt="<?php echo htmlspecialchars($pecah['nama_client']) ?>" width="100px" height="100px"></td>
+                                    <td><img src="<?php echo $_ENV['ROUTE']; ?>backstage/view/projects/images/<?php echo htmlspecialchars($pecah['images_projects']) ?>" alt="<?php echo htmlspecialchars($pecah['nama_client']) ?>" width="100px" height="100px"></td>
                                     <td><?php echo htmlspecialchars(StatusProject($pecah['status_projects'])) ?></td>
                                     <td>
-                                        <a href="/thinkit/backstage/project/<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
+                                        <a href="<?php echo $_ENV['ROUTE']; ?>backstage/project/<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-edit"></i>
                                             </span>

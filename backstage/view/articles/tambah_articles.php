@@ -53,14 +53,14 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!in_array($ext, $allowed)) {
-        $redirectPath = $_ENV['ROUTE'] . '/backstage/article/add';
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/article/add';
         showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", $redirectPath);
         exit();
     }
 
     // Check if the file is uploaded
     if (empty($_FILES['foto_article']['name'])) {
-        $redirectPath = $_ENV['ROUTE'] . '/backstage/article/add';
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/article/add';
         showAlert("error", "Foto tidak boleh kosong", "", $redirectPath);
         exit();
     }
@@ -94,22 +94,22 @@ if (isset($_POST['simpan'])) {
 
             if ($stmt->execute()) {
                 // Update redirect paths to use $_ENV['ROUTE']
-                $redirectPath = $_ENV['ROUTE'] . '/backstage/article';
-                showAlert("success", "Data Tersimpan", "", $redirectPath);
+                $redirectPath = $_ENV['ROUTE'] . 'backstage/article';
+                showAlert("success", "Data tersimpan", "", $redirectPath);
                 exit();
             } else {
-                $redirectPath = $_ENV['ROUTE'] . '/backstage/article/add';
+                $redirectPath = $_ENV['ROUTE'] . 'backstage/article/add';
                 showAlert("error", "Gagal Menyimpan Artikel", "", $redirectPath);
             }
 
             $stmt->close();
         } else {
-            $redirectPath = $_ENV['ROUTE'] . '/backstage/article/add';
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/article/add';
             showAlert("error", "Artikel tidak boleh kosong", "", $redirectPath);
             exit();
         }
     } else {
-        $redirectPath = $_ENV['ROUTE'] . '/backstage/article/add';
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/article/add';
         showAlert("error", "Gagal menyimpan file", "", $redirectPath);
         exit();
     }

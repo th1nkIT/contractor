@@ -100,25 +100,29 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!in_array($ext, $allowed)) {
-        showAlert("error", "oto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/project/add");
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/project/add';
+        showAlert("error", "foto harus berformat jpeg, jpg, atau png", "",  $redirectPath);
         exit();
     }
 
     // Check if status_project is not empty
     if ($status_project === "0") {
-        showAlert("error", "Status project tidak boleh kosong", "", "/thinkit/backstage/project/add");
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/project/add';
+        showAlert("error", "Status project tidak boleh kosong", "", $redirectPath);
         exit();
     }
 
     // Check if nama_client is not empty
     if ($nama_client === "0") {
-        showAlert("error", "Nama client tidak boleh kosong", "", "/thinkit/backstage/project/add");
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/project/add';
+        showAlert("error", "Nama client tidak boleh kosong", "", $redirectPath);
         exit();
     }
 
     // Check if the file is uploaded
     if (empty($_FILES['foto_project']['name'])) {
-        showAlert("error", "Foto tidak boleh kosong", "", "/thinkit/backstage/project/add");
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/project/add';
+        showAlert("error", "Foto tidak boleh kosong", "", $redirectPath);
         exit();
     }
 
@@ -147,16 +151,19 @@ if (isset($_POST['simpan'])) {
         $stmt->bind_param("ssssssssss", $guid, $slug, $nama_client, $location_project, $date_start_project, $date_end_project, $nama, $status_project, $title_project, $description_project);
 
         if ($stmt->execute()) {
-            showAlert("success", "Data tersimpan", "", "/thinkit/backstage/project");
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/project';
+            showAlert("success", "Data tersimpan", "", $redirectPath);
             exit();
         } else {
-            showAlert("error", "Gagal menyimpan data project", "", "/thinkit/backstage/project/add");
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/project/add';
+            showAlert("error", "Gagal menyimpan data project", "", $redirectPath);
             exit();
         }
 
         $stmt->close();
     } else {
-        showAlert("error", "Gagal mengupload file", "", "/thinkit/backstage/project/add");
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/project/add';
+        showAlert("error", "Gagal mengupload file", "", $redirectPath);
         exit();
     }
 }

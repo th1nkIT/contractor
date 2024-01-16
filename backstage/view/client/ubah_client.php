@@ -3,7 +3,8 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    showAlert("error", "ID Client tidak valid", "", "/thinkit/backstage/client");
+    $redirectPath = $_ENV['ROUTE'] . 'backstage/client';
+    showAlert("error", "ID Client tidak valid", "",  $redirectPath);
     exit();
 }
 
@@ -19,7 +20,8 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data client yang ditemukan
 } else {
-    showAlert("error", "Client tidak ditemukan", "", "/thinkit/backstage/client");
+    $redirectPath = $_ENV['ROUTE'] . 'backstage/client';
+    showAlert("error", "Client tidak ditemukan", "",  $redirectPath);
     exit();
 }
 ?>
@@ -68,7 +70,7 @@ if ($result->num_rows > 0) {
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Client Image</label>
                                         <input class="form-control" type="file" name="client_image">
-                                        <img src="/thinkit/backstage/view/client/images/<?php echo $pecah['client_images']; ?>" alt="<?php echo $pecah['client_name'] ?>">
+                                        <img src="<?php echo $_ENV['ROUTE']; ?>backstage/view/client/images/<?php echo $pecah['client_images']; ?>" alt="<?php echo $pecah['client_name'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -90,13 +92,14 @@ if (isset($_POST['simpan'])) {
         $ext = pathinfo($nama_foto_client, PATHINFO_EXTENSION);
 
         if (!in_array($ext, $allowed)) {
-            echo "<div class='alert alert-danger'>Foto harus berformat jpeg, jpg, atau png</div>";
-            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/client/$id_client");
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/client' . $id_client;
+            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "",  $redirectPath);
             exit();
         }
 
         if (empty($_POST['client_name']) && empty($_POST['client_email']) && empty($_POST['client_phone']) && empty($_POST['client_address'])) {
-            showAlert("error", "Data client tidak boleh kosong", "", "/thinkit/backstage/client/$id_client");
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/client' . $id_client;
+            showAlert("error", "Data client tidak boleh kosong", "", $redirectPath);
             exit();
         }
 
@@ -127,10 +130,12 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        showAlert("success", "Data tersimpan", "", "/thinkit/backstage/client");
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/client' . $id_client;
+        showAlert("success", "Data tersimpan", "", $redirectPath);
         exit();
     } else {
-        showAlert("error", "Gagal menyimpan data client", "", "/thinkit/backstage/client/$id_client");
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/client' . $id_client;
+        showAlert("error", "Gagal menyimpan data client", "",  $redirectPath);
         exit();
     }
 

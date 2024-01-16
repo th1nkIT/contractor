@@ -39,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <link href="<?php echo $_ENV['ROUTE']; ?>backstage/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Sweet Alert -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
@@ -60,6 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
+                                        <img src="<?php echo $_ENV['ROUTE']; ?>/backstage/img/logo_backstage_warna.png" width="35px" alt="Logo Yuri Borneo">
+                                        <br>
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     <form class="user" method="POST">

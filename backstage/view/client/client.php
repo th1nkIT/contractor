@@ -8,7 +8,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Client Page</h6>
-            <a href="/thinkit/backstage/client/add" class="btn btn-primary">Tambah Data</a>
+            <a href="<?php echo $_ENV['ROUTE']; ?>backstage/client/add" class="btn btn-primary">Tambah Data</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -49,9 +49,9 @@
                                     <td><?php echo htmlspecialchars($pecah['client_email']) ?></td>
                                     <td><?php echo htmlspecialchars($pecah['client_phone']) ?></td>
                                     <td><?php echo htmlspecialchars($pecah['client_address']) ?></td>
-                                    <td><img src="/thinkit/backstage/view/client/images/<?php echo htmlspecialchars($pecah['client_images']) ?>" alt="<?php echo htmlspecialchars($pecah['title_article']) ?>" width="100px" height="100px"></td>
+                                    <td><img src="<?php echo $_ENV['ROUTE']; ?>backstage/view/client/images/<?php echo htmlspecialchars($pecah['client_images']) ?>" alt="<?php echo htmlspecialchars($pecah['title_article']) ?>" width="100px" height="100px"></td>
                                     <td>
-                                        <a href="/thinkit/backstage/client/<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
+                                        <a href="<?php echo $_ENV['ROUTE']; ?>backstage/client/<?php echo $pecah['uuid'] ?>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-edit"></i>
                                             </span>
