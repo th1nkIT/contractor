@@ -53,13 +53,15 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!in_array($ext, $allowed)) {
-        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/article/add");
+        $redirectPath = $_ENV['ROUTE'] . '/backstage/article/add';
+        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", $redirectPath);
         exit();
     }
 
     // Check if the file is uploaded
     if (empty($_FILES['foto_article']['name'])) {
-        showAlert("error", "Foto tidak boleh kosong", "", "/thinkit/backstage/article/add");
+        $redirectPath = $_ENV['ROUTE'] . '/backstage/article/add';
+        showAlert("error", "Foto tidak boleh kosong", "", $redirectPath);
         exit();
     }
 
@@ -91,19 +93,24 @@ if (isset($_POST['simpan'])) {
             $stmt->bind_param("ssssss", $guid, $slug, $title_article, $deskripsi_article, $isi_article, $nama);
 
             if ($stmt->execute()) {
-                showAlert("success", "Data Tersimpan", "", "/thinkit/backstage/article");
+                // Update redirect paths to use $_ENV['ROUTE']
+                $redirectPath = $_ENV['ROUTE'] . '/backstage/article';
+                showAlert("success", "Data Tersimpan", "", $redirectPath);
                 exit();
             } else {
-                showAlert("error", "Gagal Menyimpan Artikel", "", "/thinkit/backstage/article/add");
+                $redirectPath = $_ENV['ROUTE'] . '/backstage/article/add';
+                showAlert("error", "Gagal Menyimpan Artikel", "", $redirectPath);
             }
 
             $stmt->close();
         } else {
-            showAlert("error", "Artikel tidak boleh kosong", "", "/thinkit/backstage/article/add");
+            $redirectPath = $_ENV['ROUTE'] . '/backstage/article/add';
+            showAlert("error", "Artikel tidak boleh kosong", "", $redirectPath);
             exit();
         }
     } else {
-        showAlert("error", "Gagal menyimpan file", "", "/thinkit/backstage/article/add");
+        $redirectPath = $_ENV['ROUTE'] . '/backstage/article/add';
+        showAlert("error", "Gagal menyimpan file", "", $redirectPath);
         exit();
     }
 }

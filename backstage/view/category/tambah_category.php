@@ -57,13 +57,15 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
     if (!in_array($ext, $allowed)) {
-        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/category/add");
+        $redirectPath = $_ENV['ROUTE'] . '/backstage/category/add';
+        showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", $redirectPath);
         exit();
     }
 
     // Check if the file is uploaded
     if (empty($_FILES['foto_category']['name'])) {
-        showAlert("error", "Foto tidak boleh kosong", "", "/thinkit/backstage/category/add");
+        $redirectPath = $_ENV['ROUTE'] . '/backstage/category/add';
+        showAlert("error", "Foto tidak boleh kosong", "",  $redirectPath);
         exit();
     }
 
@@ -91,16 +93,19 @@ if (isset($_POST['simpan'])) {
         $stmt->bind_param("ssssss", $guid, $slug, $nama_category, $deskripsi_category, $summary_category, $nama);
 
         if ($stmt->execute()) {
-            showAlert("success", "Data Tersimpan", "", "/thinkit/backstage/category");
+            $redirectPath = $_ENV['ROUTE'] . '/backstage/category';
+            showAlert("success", "Data Tersimpan", "", $redirectPath);
             exit();
         } else {
-            showAlert("error", "Gagal menyimpan data kategori", "", "/thinkit/backstage/category/add");
+            $redirectPath = $_ENV['ROUTE'] . '/backstage/category/add';
+            showAlert("error", "Gagal menyimpan data kategori", "", $redirectPath);
             exit();
         }
 
         $stmt->close();
     } else {
-        showAlert("error", "Gagal mengupload file", "", "/thinkit/backstage/category/add");
+        $redirectPath = $_ENV['ROUTE'] . '/backstage/category/add';
+        showAlert("error", "Gagal mengupload file", "", $redirectPath);
         exit();
     }
 }

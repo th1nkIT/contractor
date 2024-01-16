@@ -88,7 +88,8 @@ if (isset($_POST['simpan'])) {
         $ext = pathinfo($foto_category, PATHINFO_EXTENSION);
 
         if (!in_array($ext, $allowed)) {
-            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/category/$id_category");
+            $redirectPath = $_ENV['ROUTE'] . '/backstage/category/' . $id_category;
+            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", $redirectPath);
             exit();
         }
 
@@ -119,10 +120,12 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        showAlert("success", "Data tersimpan", "", "/thinkit/backstage/category");
+        $redirectPath = $_ENV['ROUTE'] . '/backstage/category';
+        showAlert("success", "Data tersimpan", "",  $redirectPath);
         exit();
     } else {
-        showAlert("error", "Gagal mengupdate data category", "", "/thinkit/backstage/category/$id_category");
+        $redirectPath = $_ENV['ROUTE'] . '/backstage/category/' . $id_category;
+        showAlert("error", "Gagal mengupdate data category", "",  $redirectPath);
         exit();
     }
 

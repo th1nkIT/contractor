@@ -38,7 +38,7 @@ $stmt_category->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Custom fonts for this template-->
-    <link href="/thinkit/backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php $_ENV['ROUTE']; ?>backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- My CSS -->
     <link rel="stylesheet" href="plugin/css/App.css">
@@ -160,7 +160,7 @@ $stmt_category->close();
                 <div class="title-page">
                     <div>
                         <h1>Bisnis</h1>
-                        <a href="pages/bisnis/bisnis.php">Arsip <i class="bi-chevron-right"></i></a>
+                        <a href="/bisnis">Arsip <i class="bi-chevron-right"></i></a>
                     </div>
                 </div>
                 <!-- Title Page End -->
@@ -176,7 +176,7 @@ $stmt_category->close();
                             <h1 class="ttl"><?php echo $category['nama_category'] ?></h1>
                             <p class='isi-artikel'><?php echo $category['deskripsi_category'] ?></p>
                             <div class="cards-button">
-                                <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                                <a href="/bisnis/<?php echo $category['slug']; ?>">Selengkapnya <i class="bi-arrow-right"></i></a>
                             </div>
                         </div>
                     <?php endwhile; ?>
@@ -294,7 +294,7 @@ $stmt_category->close();
                 <div class="title-page">
                     <div>
                         <h1>Artikel</h1>
-                        <a href="pages/artikel/artikel.php">Arsip <i class="bi-chevron-right"></i></a>
+                        <a href="/article">Arsip <i class="bi-chevron-right"></i></a>
                     </div>
                 </div>
                 <!-- Title Page End -->
@@ -312,7 +312,15 @@ $stmt_category->close();
                                     <h1>Admin</h1>
                                     <p class="date"><?php echo date('d-m-Y', strtotime($article['created_at'])); ?></p>
                                 </div>
-                                <h1 class="ttl"><?php echo $article['title_article']; ?></h1>
+                                <h1 class="ttl">
+                                    <?php
+                                    // Memotong isi_article menjadi maksimal 100 kata
+                                    $title_article = $article['title_article'];
+                                    $wordsArticle = explode(" ", $title_article);
+                                    $trimmed_contentArticle = implode(" ", array_slice($wordsArticle, 0, 5));
+                                    echo $trimmed_contentArticle . (count($wordsArticle) > 5 ? "..." : "");
+                                    ?>
+                                </h1>
                                 <p class='isi-artikel'>
                                     <?php
                                     // Memotong isi_article menjadi maksimal 100 kata
@@ -323,7 +331,7 @@ $stmt_category->close();
                                     ?>
                                 </p>
                                 <div class="cards-button">
-                                    <a href="#">Selengkapnya <i class="bi-arrow-right"></i></a>
+                                    <a href="/article/<?php echo $article['slug']; ?>">Selengkapnya <i class="bi-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -361,7 +369,7 @@ $stmt_category->close();
 
     <?php footerComponent(); ?>
 
-    <script src="/thinkit/plugin/js/scr.js"></script>
+    <script src="<?php $_ENV['ROUTE']; ?>plugin/js/scr.js"></script>
 </body>
 
 </html>
