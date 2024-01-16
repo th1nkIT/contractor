@@ -3,7 +3,8 @@ $id = isset($_GET['id']) ? $_GET['id'] : 0;
 
 // Validasi ID
 if (!isValidUuid($id)) {
-    showAlert("error", "ID Article tidak valid", "", "/thinkit/backstage/article");
+    $redirectPath = $_ENV['ROUTE'] . '/backstage/article/';
+    showAlert("error", "ID Article tidak valid", "", $redirectPath);
     exit();
 }
 
@@ -19,7 +20,8 @@ if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
     // Lakukan operasi dengan data artikel yang ditemukan
 } else {
-    showAlert("error", "Article tidak ditemukan", "", "/thinkit/backstage/article");
+    $redirectPath = $_ENV['ROUTE'] . '/backstage/article/';
+    showAlert("error", "Article tidak ditemukan", "", $redirectPath);
     exit();
 }
 ?>
@@ -87,12 +89,14 @@ if (isset($_POST['simpan'])) {
         $ext = pathinfo($nama_article, PATHINFO_EXTENSION);
 
         if (!in_array($ext, $allowed)) {
-            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/article/$id_article");
+            $redirectPath = $_ENV['ROUTE'] . '/backstage/article/' . $id_article;
+            showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", $redirectPath);
             exit();
         }
 
         if (empty($_POST['isi_article'])) {
-            showAlert("error", "Artikel tidak boleh kosong", "", "/thinkit/backstage/article/$id_article");
+            $redirectPath = $_ENV['ROUTE'] . '/backstage/article/' . $id_article;
+            showAlert("error", "Artikel tidak boleh kosong", "", $redirectPath);
             exit();
         }
 
@@ -123,10 +127,12 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        showAlert("success", "Data Tersimpan", "", "/thinkit/backstage/article");
+        $redirectPath = $_ENV['ROUTE'] . '/backstage/article';
+        showAlert("success", "Data Tersimpan", "", $redirectPath);
         exit();
     } else {
-        showAlert("error", "Gagal Menyimpan data Artikel", "", "/thinkit/backstage/article/$id_article");
+        $redirectPath = $_ENV['ROUTE'] . '/backstage/article/' . $id_article;
+        showAlert("error", "Gagal Menyimpan data Artikel", "", $redirectPath);
         exit();
     }
 

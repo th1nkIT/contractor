@@ -5,6 +5,16 @@ require_once __DIR__ . '/config/jwt.php';
 require 'config/koneksi.php';
 include 'config/seeding.php';
 include 'config/helper.php';
+$status = true;
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST['login'])) {
+        if (SessionManager::login($_POST['email'], $_POST['password'])) {
+            $status = true;
+        } else {
+            $status = false;
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,15 +27,16 @@ include 'config/helper.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="<?php echo $_ENV['ROUTE']; ?>backstage/img/favicon/favicon.ico" sizes="16x16">
 
-    <title>Nanti titlenya di sini ya</title>
+    <title>Yuri Borneo - Login Backstage</title>
 
     <!-- Custom fonts for this template-->
-    <link href="/thinkit/backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo $_ENV['ROUTE']; ?>backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="/thinkit/backstage/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?php echo $_ENV['ROUTE']; ?>backstage/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Sweet Alert -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
@@ -71,9 +82,9 @@ include 'config/helper.php';
                                         <hr>
                                     </form>
                                     <?php
-                                    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-                                        if (SessionManager::login($_POST['email'], $_POST['password'])) {
-                                            showAlert("success", "Login Berhasil", "", "/thinkit/backstage/");
+                                    if (isset($_POST['login'])) {
+                                        if ($status = true) {
+                                            showAlert("success", "Login Berhasil", "", "/backstage/");
                                         } else {
                                             showAlert("error", "Login Gagal", "Email atau Password Salah");
                                         }
@@ -91,14 +102,14 @@ include 'config/helper.php';
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="/thinkit/backstage/vendor/jquery/jquery.min.js"></script>
-    <script src="/thinkit/backstage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?php echo $_ENV['ROUTE']; ?>backstage/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo $_ENV['ROUTE']; ?>backstage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="/thinkit/backstage/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?php echo $_ENV['ROUTE']; ?>backstage/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="/thinkit/backstage/js/sb-admin-2.min.js"></script>
+    <script src="<?php echo $_ENV['ROUTE']; ?>backstage/js/sb-admin-2.min.js"></script>
 
 </body>
 
