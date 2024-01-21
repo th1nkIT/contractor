@@ -11,3 +11,4 @@ view/projects/images/*
 view/profile/images/*
 !view/profile/images/.gitkeep
 !view/profile/images/undraw_profile.svg
+backup/*

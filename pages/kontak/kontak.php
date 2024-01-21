@@ -20,10 +20,9 @@ require  '../../components/info.php';
     <link rel="stylesheet" href="plugin/css/Kontak.css">
     <link rel="stylesheet" href="plugin/css/nv.css">
     <link rel="stylesheet" href="plugin/css/Pro.css">
-
-    <!-- Custom fonts for this template-->
+    
+     <!-- Custom fonts for this template-->
     <link href="../../backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-
 
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="plugin/css/responsive/Dashboards.css">
