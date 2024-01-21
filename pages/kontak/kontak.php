@@ -3,6 +3,38 @@ require '../../backstage/config/koneksi.php';
 require '../../components/navbar.php';
 require  '../../components/footer.php';
 require  '../../components/info.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+
+if (isset($_POST['send_email'])) {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $subject = $_POST["subject"];
+    $message = $_POST["message"];
+
+    $mail = new PHPMailer(true);
+
+    $mail->isSMTP();
+    $mail->SMTPAuth = true;
+
+    $mail->Host = $_ENV['MAIL_HOST'];
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = $_ENV['MAIL_PORT'];
+
+    $mail->Username = $_ENV['MAIL_USERNAME'];
+    $mail->Password = $_ENV['MAIL_PASSWORD'];
+
+    $mail->setFrom($email, $name);
+    $mail->addAddress($_ENV['MAIL_USERNAME'], "Yuri Borneo");
+
+    $mail->Subject = $subject;
+    $mail->Body = $message;
+
+    $mail->send();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,6 +102,26 @@ require  '../../components/info.php';
             <a href="#"><i class="bi-facebook"></i></a>
             <a href="#"><i class="bi-twitter-x"></i></a>
         </div>
+
+        <div class="judul">
+            <h1>Contact Form</h1>
+        </div>
+
+        <form method="POST">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">email</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" id="subject" required>
+
+            <label for="message">Message</label>
+            <textarea name="message" id="message" required></textarea>
+            <br>
+            <button name="send_email">Send</button>
+        </form>
 
         <div class="judul">
             <h1>MAPS LOKASI</h1>
