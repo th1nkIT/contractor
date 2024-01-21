@@ -26,20 +26,20 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="plugin/css/App.css">
-    <link rel="stylesheet" href="plugin/css/Artikel.css">
-    <link rel="stylesheet" href="plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="plugin/css/Dashboard.css">
-    <link rel="stylesheet" href="plugin/css/Footer.css">
-    <link rel="stylesheet" href="plugin/css/nv.css">
-    <link rel="stylesheet" href="plugin/css/Pro.css">
-    <link rel="stylesheet" href="plugin/css/View.css">
+    <link rel="stylesheet" href="/plugin/css/App.css">
+    <link rel="stylesheet" href="/plugin/css/Artikel.css">
+    <link rel="stylesheet" href="/plugin/css/Bisnis.css">
+    <link rel="stylesheet" href="/plugin/css/Dashboard.css">
+    <link rel="stylesheet" href="/plugin/css/Footer.css">
+    <link rel="stylesheet" href="/plugin/css/nv.css">
+    <link rel="stylesheet" href="/plugin/css/Pro.css">
+    <link rel="stylesheet" href="/plugin/css/View.css">
 
     <!-- Query Media CSS -->
-    <link rel="stylesheet" href="plugin/css/responsive/Dashboards.css">
-    <link rel="stylesheet" href="plugin/css/responsive/footer.css">
-    <link rel="stylesheet" href="plugin/css/responsive/navbar.css">
-    <link rel="stylesheet" href="plugin/css/responsive/View.css">
+    <link rel="stylesheet" href="/plugin/css/responsive/Dashboards.css">
+    <link rel="stylesheet" href="/plugin/css/responsive/footer.css">
+    <link rel="stylesheet" href="/plugin/css/responsive/navbar.css">
+    <link rel="stylesheet" href="/plugin/css/responsive/View.css">
 
     <!-- Custom fonts for this template-->
     <link href="../../backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -126,7 +126,7 @@ $stmt->close();
     <?php footerComponent(); ?>
     <!-- Footer End -->
 
-    <script src="plugin/js/scr.js"></script>
+    <script src="/plugin/js/scr.js"></script>
 </body>
 
 </html>

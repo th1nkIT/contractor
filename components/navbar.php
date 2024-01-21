@@ -51,7 +51,7 @@ function navbarComponent()
         <div class="navbars-konten">
             <!-- Logo Start -->
             <div class="navbars-logo">
-                <a href="/"><img src="backstage/img/logo_backstage_warna.png" width="35px" alt="Logo Backstage Yuri Borneo"></a>
+                <a href="/"><img src="/backstage/img/logo_backstage_warna.png" width="35px" alt="Logo Backstage Yuri Borneo"></a>
             </div>
             <!-- Logo End -->
 
