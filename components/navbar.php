@@ -3,18 +3,28 @@
 function navbarComponent()
 {
     $currentUrl = $_SERVER['REQUEST_URI'];
+    $ROUTE = $_ENV['ROUTE'];
 
     // Beranda
-    $berandaClass = ($currentUrl === '/thinkit/' || $currentUrl === '/thinkit') ? 'aktif' : '';
+    $berandaClass = ($currentUrl ===  $ROUTE || $currentUrl ===  $ROUTE) ? 'aktif' : '';
 
     // Proyek
-    $proyekClass = (strpos($currentUrl, '/thinkit/proyek') === 0) ? 'aktif' : '';
+    $proyekClass = (strpos($currentUrl,  $ROUTE . 'proyek') === 0) ? 'aktif' : '';
 
     // Bisnis
-    $bisnisClass = (strpos($currentUrl, '/thinkit/bisnis') === 0) ? 'aktif' : '';
+    $bisnisClass = (strpos($currentUrl,  $ROUTE . 'bisnis') === 0) ? 'aktif' : '';
 
     // Artikel
-    $articleClass = (strpos($currentUrl, '/thinkit/article') === 0) ? 'aktif' : '';
+    $articleClass = (strpos($currentUrl,  $ROUTE . 'article') === 0) ? 'aktif' : '';
+
+    // Kontak
+    $kontakClass = (strpos($currentUrl,  $ROUTE . 'kontak') === 0) ? 'aktif' : '';
+
+    // Tentang Kami
+    $tentangKamiClass = (strpos($currentUrl,  $ROUTE . 'tentang-kami') === 0) ? 'aktif' : '';
+
+    // Galeri
+    $galeriClass = (strpos($currentUrl,  $ROUTE . 'galeri') === 0) ? 'aktif' : '';
 
     echo '
     <section class="navbars">
@@ -41,7 +51,7 @@ function navbarComponent()
         <div class="navbars-konten">
             <!-- Logo Start -->
             <div class="navbars-logo">
-                <a href="/thinkit">logo</a>
+                <a href="/">logo</a>
             </div>
             <!-- Logo End -->
 
@@ -50,18 +60,18 @@ function navbarComponent()
                 <button type="button" id="hamburger-menu"><i class="bi-list"></i></button>
             </div>
             <div class="navbars-nav">
-                <a class="' . $berandaClass . '" href="/thinkit">BERANDA</a>
+                <a class="' . $berandaClass . '" href="/">BERANDA</a>
                 <div class="drop">
                     <button type="button">TENTANG KAMI <i class="bi-chevron-down"></i></button>
                     <ul>
-                        <li><a href="pages/tentang/tentang-kami.php">TENTANG KAMI</a></li>
-                        <li><a href="pages/tentang/galeri.php">GALERI</a></li>
+                        <li><a class="' . $tentangKamiClass . '" href="/tentang-kami">TENTANG KAMI</a></li>
+                        <li><a class="' . $galeriClass . '" href="/galeri">GALERI</a></li>
                     </ul>
                 </div>
-                <a class="' . $proyekClass . '" href="/thinkit/proyek">PROYEK</a>
-                <a class="' . $bisnisClass . '" href="/thinkit/bisnis">BISNIS KAMI</a>
-                <a class="' . $articleClass . '" href="/thinkit/article">ARTIKEL</a>
-                <a href="pages/kontak/kontak.php">KONTAK</a>
+                <a class="' . $proyekClass . '" href="/proyek">PROYEK</a>
+                <a class="' . $bisnisClass . '" href="/bisnis">BISNIS KAMI</a>
+                <a class="' . $articleClass . '" href="/article">ARTIKEL</a>
+                <a class="' . $kontakClass . '" href="/kontak">KONTAK</a>
             </div>
             <!-- Nav End -->
         </div>
