@@ -32,8 +32,8 @@ function navbarComponent()
         <div class="navbars-sosmed">
             <!-- Sosmed Link Kiri Start -->
             <div class="sosmed-kiri">
-                <a href="#"><i class="bi-envelope"></i> info@gmail.com</a>
-                <a href="#"><i class="bi-telephone"></i> +6221 4288 4257</a>
+                <a href="#"><i class="bi-envelope"></i> admin@yuriborneo.com</a>
+                <a href="#"><i class="bi-telephone"></i> +6282255665512</a>
             </div>
             <!-- Sosmed Link Kiri End -->
 
@@ -51,7 +51,7 @@ function navbarComponent()
         <div class="navbars-konten">
             <!-- Logo Start -->
             <div class="navbars-logo">
-                <a href="/">logo</a>
+                <a href="/"><img src="backstage/img/logo_backstage_warna.png" width="35px" alt="Logo Backstage Yuri Borneo"></a>
             </div>
             <!-- Logo End -->
 
