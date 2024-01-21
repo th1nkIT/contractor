@@ -30,23 +30,23 @@ $stmtAllCategory->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="/thinkit/plugin/css/App.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Artikel.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Dashboard.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/footer.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/nv.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/View.css">
+    <link rel="stylesheet" href="/plugin/css/App.css">
+    <link rel="stylesheet" href="/plugin/css/Artikel.css">
+    <link rel="stylesheet" href="/plugin/css/Bisnis.css">
+    <link rel="stylesheet" href="/plugin/css/Dashboard.css">
+    <link rel="stylesheet" href="/plugin/css/Footer.css">
+    <link rel="stylesheet" href="/plugin/css/nv.css">
+    <link rel="stylesheet" href="/plugin/css/Pro.css">
+    <link rel="stylesheet" href="/plugin/css/View.css">
 
     <!-- Query Media CSS -->
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Dashboards.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/footer.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/navbar.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/View.css">
+    <link rel="stylesheet" href="/plugin/css/responsive/Dashboards.css">
+    <link rel="stylesheet" href="/plugin/css/responsive/footer.css">
+    <link rel="stylesheet" href="/plugin/css/responsive/navbar.css">
+    <link rel="stylesheet" href="/plugin/css/responsive/View.css">
 
     <!-- Custom fonts for this template-->
-    <link href="/thinkit/backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -84,7 +84,7 @@ $stmtAllCategory->close();
         <!-- Content Show Start -->
         <div class="ct">
             <div class="ct-img">
-                <img src="/thinkit/backstage/view/category/images/<?php echo $row['images_category']; ?>" alt="">
+                <img src="../../backstage/view/category/images/<?php echo $row['images_category']; ?>" alt="">
             </div>
 
             <div class="ct-main">
@@ -100,7 +100,7 @@ $stmtAllCategory->close();
             <?php
             while ($categoryData = $category->fetch_assoc()) :
             ?>
-                <a href="/thinkit/bisnis/<?php echo $categoryData['slug']; ?>"><?php echo $categoryData['nama_category']; ?></a>
+                <a href="../../bisnis/<?php echo $categoryData['slug']; ?>"><?php echo $categoryData['nama_category']; ?></a>
             <?php endwhile ?>
         </div>
         <!-- Button End -->
@@ -116,7 +116,7 @@ $stmtAllCategory->close();
     <?php footerComponent(); ?>
     <!-- Footer End -->
 
-    <script src="/thinkit/plugin/js/scr.js"></script>
+    <script src="/plugin/js/scr.js"></script>
 </body>
 
 </html>

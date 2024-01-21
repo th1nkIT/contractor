@@ -11,22 +11,22 @@ require  '../../components/info.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="/thinkit/plugin/css/App.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Artikel.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Dashboard.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/footer.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/nv.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/Pro.css">
+    <link rel="stylesheet" href="plugin/css/App.css">
+    <link rel="stylesheet" href="plugin/css/Artikel.css">
+    <link rel="stylesheet" href="plugin/css/Bisnis.css">
+    <link rel="stylesheet" href="plugin/css/Dashboard.css">
+    <link rel="stylesheet" href="plugin/css/Footer.css">
+    <link rel="stylesheet" href="plugin/css/nv.css">
+    <link rel="stylesheet" href="plugin/css/Pro.css">
 
     <!-- Query Media CSS -->
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Dashboards.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/footer.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/navbar.css">
-    <link rel="stylesheet" href="/thinkit/plugin/css/responsive/Proyek.css">
+    <link rel="stylesheet" href="plugin/css/responsive/Dashboards.css">
+    <link rel="stylesheet" href="plugin/css/responsive/footer.css">
+    <link rel="stylesheet" href="plugin/css/responsive/navbar.css">
+    <link rel="stylesheet" href="plugin/css/responsive/Proyek.css">
 
     <!-- Custom fonts for this template-->
-    <link href="/thinkit/backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -99,7 +99,7 @@ require  '../../components/info.php';
                 <div class="cards-proyek">
                     <!-- Img Cards Start -->
                     <div class="img-cards">
-                        <img height="350px" src="/thinkit/backstage/view/projects/images/<?php echo $row['images_projects']; ?>" alt="" />
+                        <img height="350px" src="../../backstage/view/projects/images/<?php echo $row['images_projects']; ?>" alt="" />
                     </div>
                     <!-- Img Cards End -->
 
@@ -117,7 +117,7 @@ require  '../../components/info.php';
                             ?>
                         </p>
                         <div class="btn-cards">
-                            <a href="/thinkit/proyek/<?php echo $row['slug']; ?>">Selengkapnya <i class="bi-arrow-right"></i></a>
+                            <a href="proyek/<?php echo $row['slug']; ?>">Selengkapnya <i class="bi-arrow-right"></i></a>
                         </div>
                     </div>
                     <!-- Konten Cards End -->
@@ -162,7 +162,7 @@ require  '../../components/info.php';
     <?php footerComponent(); ?>
     <!-- Footer End -->
 
-    <script src="/thinkit/plugin/js/scr.js"></script>
+    <script src="plugin/js/scr.js"></script>
 </body>
 
 </html>

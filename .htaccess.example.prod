@@ -14,6 +14,15 @@
     # Rule For Front End Artikel
     RewriteRule ^article$ pages/artikel/artikel.php [L]
     RewriteRule ^article/([^/]+)$ pages/artikel/show_artikel.php?slug=$1 [L]
+    
+    # Rule for Front End Kontak
+    RewriteRule ^kontak$ pages/kontak/kontak.php [L]
+
+    # Rule for Front End Tentang Kami
+    RewriteRule ^tentang-kami$ pages/tentang/tentang-kami.php [L]
+
+    # Rule for Front End Galeri
+    RewriteRule ^galeri$ pages/tentang/galeri.php [L]
 
     # Rule for Backstage
     RewriteRule ^backstage$ backstage/index.php [L]
