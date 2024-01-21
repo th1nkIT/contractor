@@ -20,9 +20,10 @@ require  '../../components/info.php';
     <link rel="stylesheet" href="plugin/css/Kontak.css">
     <link rel="stylesheet" href="plugin/css/nv.css">
     <link rel="stylesheet" href="plugin/css/Pro.css">
-    
-     <!-- Custom fonts for this template-->
+
+    <!-- Custom fonts for this template-->
     <link href="../../backstage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="<?php echo $_ENV['ROUTE']; ?>backstage/img/favicon/favicon.ico" sizes="16x16">
 
     <!-- Query Media CSS -->
     <link rel="stylesheet" href="plugin/css/responsive/Dashboards.css">
