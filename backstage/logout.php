@@ -1,4 +1,4 @@
 <?php
 setcookie('X-T1T-SESSION', 'LOGOUT');
-
-header('Location: /thinkit/backstage/login');
+$path = $_ENV['ROUTE'] . 'login';
+header('Location: ' . $path);

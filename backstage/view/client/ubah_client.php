@@ -92,13 +92,13 @@ if (isset($_POST['simpan'])) {
         $ext = pathinfo($nama_foto_client, PATHINFO_EXTENSION);
 
         if (!in_array($ext, $allowed)) {
-            $redirectPath = $_ENV['ROUTE'] . 'backstage/client' . $id_client;
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/client/' . $id_client;
             showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "",  $redirectPath);
             exit();
         }
 
         if (empty($_POST['client_name']) && empty($_POST['client_email']) && empty($_POST['client_phone']) && empty($_POST['client_address'])) {
-            $redirectPath = $_ENV['ROUTE'] . 'backstage/client' . $id_client;
+            $redirectPath = $_ENV['ROUTE'] . 'backstage/client/' . $id_client;
             showAlert("error", "Data client tidak boleh kosong", "", $redirectPath);
             exit();
         }
@@ -130,11 +130,11 @@ if (isset($_POST['simpan'])) {
     }
 
     if ($stmt->execute()) {
-        $redirectPath = $_ENV['ROUTE'] . 'backstage/client' . $id_client;
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/client';
         showAlert("success", "Data tersimpan", "", $redirectPath);
         exit();
     } else {
-        $redirectPath = $_ENV['ROUTE'] . 'backstage/client' . $id_client;
+        $redirectPath = $_ENV['ROUTE'] . 'backstage/client/' . $id_client;
         showAlert("error", "Gagal menyimpan data client", "",  $redirectPath);
         exit();
     }
