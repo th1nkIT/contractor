@@ -11,7 +11,8 @@ try {
     $session = SessionManager::getCurrentSession();
     $profileUser = SessionManager::getCurrentBackstageUser($session);
 } catch (Exception $e) {
-    header("Location: /thinkit/backstage/login");
+    $path = $_ENV['ROUTE'] . 'backstage/login';
+    header('Location: ' . $path);
 }
 ?>
 

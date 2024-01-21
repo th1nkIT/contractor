@@ -2,7 +2,8 @@
 $id_user = $_GET['id'];
 
 if (!isValidUuid($id_user)) {
-    showAlert("error", "ID User tidak valid", "", "/thinkit/backstage/user");
+    $redirectPath = $_ENV['ROUTE'] . 'backstage/user';
+    showAlert("error", "ID User tidak valid", "",  $redirectPath);
     exit();
 }
 
@@ -16,7 +17,8 @@ $row = $result->fetch_assoc();
 if ($result->num_rows > 0) {
     $pecah = $result->fetch_assoc();
 } else {
-    showAlert("error", "User tidak ditemukan", "", "/thinkit/backstage/user");
+    $redirectPath = $_ENV['ROUTE'] . 'backstage/user';
+    showAlert("error", "User tidak ditemukan", "",  $redirectPath);
     exit();
 }
 ?>
@@ -28,7 +30,7 @@ if ($result->num_rows > 0) {
             <div class="row">
                 <div class="col-lg-5 d-none d-lg-block">
                     <div class="bg-profile-images-container">
-                        <img class="bg-profile-images" src="view/profile/images/<?php echo $row['images_user']; ?>" alt="<?php echo $row['nama_lengkap']; ?>">
+                        <img class="bg-profile-images" src="<?php echo $_ENV['ROUTE'] ?>backstage/view/profile/images/<?php echo $row['images_user']; ?>" alt="<?php echo $row['nama_lengkap']; ?>">
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -84,7 +86,8 @@ if ($result->num_rows > 0) {
                             $roleBackstage = $_POST['role_backstage'];
 
                             if ($roleBackstage == 0) {
-                                showAlert("error", "Role tidak boleh kosong", "", "/thinkit/backstage/user/$id_user");
+                                $redirectPath = $_ENV['ROUTE'] . 'backstage/user/' . $id_user;
+                                showAlert("error", "Role tidak boleh kosong", "",  $redirectPath);
                                 exit();
                             }
 
@@ -96,14 +99,16 @@ if ($result->num_rows > 0) {
                                 $result = $stmt->get_result();
 
                                 if ($result->num_rows > 0) {
-                                    showAlert("error", "Email sudah digunakan", "", "/thinkit/backstage/user/$id_user");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/user/' . $id_user;
+                                    showAlert("error", "Email sudah digunakan", "",  $redirectPath);
                                     exit();
                                 }
                             }
 
                             if ($password != "" || $repeatPassword != "") {
                                 if ($password == "" || $repeatPassword == "") {
-                                    showAlert("error", "Password tidak boleh kosong", "", "/thinkit/backstage/user/$id_user");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/user/' . $id_user;
+                                    showAlert("error", "Password tidak boleh kosong", "",  $redirectPath);
                                     exit();
                                 }
                             }
@@ -111,13 +116,15 @@ if ($result->num_rows > 0) {
                             if ($password != "" && $repeatPassword != "") {
                                 // Check Password length
                                 if (strlen($password) < 6) {
-                                    showAlert("error", "Password minimal 6 karakter", "", "/thinkit/backstage/user/$id_user");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/user/' . $id_user;
+                                    showAlert("error", "Password minimal 6 karakter", "",  $redirectPath);
                                     exit();
                                 }
 
                                 // Check Password sama atau tidak
                                 if ($password !== $repeatPassword) {
-                                    showAlert("error", "Password tidak sama dengan Repeat Password", "", "/thinkit/backstage/user/$id_user");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/user/' . $id_user;
+                                    showAlert("error", "Password tidak sama dengan Repeat Password", "",  $redirectPath);
                                     exit();
                                 }
 
@@ -133,7 +140,8 @@ if ($result->num_rows > 0) {
                             $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
                             if (!empty($filename) && !in_array($ext, $allowed)) {
-                                showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "", "/thinkit/backstage/user/$id_user");
+                                $redirectPath = $_ENV['ROUTE'] . 'backstage/user/' . $id_user;
+                                showAlert("error", "Foto harus berformat jpeg, jpg, atau png", "",  $redirectPath);
                                 exit();
                             }
 
@@ -163,16 +171,19 @@ if ($result->num_rows > 0) {
                                     $stmt->bind_param("sssiss", $namaLengkap, $email, $hashedPassword, $roleBackstage, $nama, $id_user);
 
                                     if ($stmt->execute()) {
-                                        showAlert("success", "Update User Berhasil", "", "/thinkit/backstage/user");
+                                        $redirectPath = $_ENV['ROUTE'] . 'backstage/user';
+                                        showAlert("success", "Update User Berhasil", "",  $redirectPath);
                                         exit();
                                     } else {
-                                        showAlert("error", "Gagal menyimpan data user", "", "/thinkit/backstage/user/$id_user");
+                                        $redirectPath = $_ENV['ROUTE'] . 'backstage/user/' . $id_user;
+                                        showAlert("error", "Gagal menyimpan data user", "",  $redirectPath);
                                         exit();
                                     }
 
                                     $stmt->close();
                                 } else {
-                                    showAlert("error", "Gagal mengupload file", "", "/thinkit/backstage/user/$id_user");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/user/' . $id_user;
+                                    showAlert("error", "Gagal mengupload file", "",  $redirectPath);
                                     exit();
                                 }
                             } else {
@@ -181,10 +192,12 @@ if ($result->num_rows > 0) {
                                 $stmt->bind_param("sssis", $namaLengkap, $email, $hashedPassword, $roleBackstage, $id_user);
 
                                 if ($stmt->execute()) {
-                                    showAlert("success", "Update User Berhasil", "", "/thinkit/backstage/user");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/user/' . $id_user;
+                                    showAlert("success", "Update User Berhasil", "",  $redirectPath);
                                     exit();
                                 } else {
-                                    showAlert("error", "Update User Gagal", "", "/thinkit/backstage/user/$id_user");
+                                    $redirectPath = $_ENV['ROUTE'] . 'backstage/user/' . $id_user;
+                                    showAlert("error", "Update User Gagal", "",  $redirectPath);
                                     exit();
                                 }
 
