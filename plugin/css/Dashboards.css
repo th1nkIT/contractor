@@ -36,6 +36,7 @@
     padding: 12rem 0 0;
     display: flex;
     justify-content: space-between;
+    width: 100%;
 }
 
 .jb .jb-konten .jb-kiri,
@@ -182,6 +183,7 @@
 .pertanyaan .tanya {
     padding: 0 0 0 5%;
     display: flex;
+    align-items: center;
 }
 
 .pertanyaan .tanya .pertanyaan-img {
@@ -197,6 +199,7 @@
 
 .pertanyaan .tanya .pertanyaan-konten {
     padding: 0 5%;
+    width: 100%;
 }
 
 .pertanyaan .tanya .pertanyaan-konten .question {
@@ -207,7 +210,6 @@
 .pertanyaan .tanya .pertanyaan-konten .question .pertanyaannya {
     margin: 1rem 0 0;
     padding: .5rem 1.5rem;
-    width: 45rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
