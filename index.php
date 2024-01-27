@@ -45,7 +45,7 @@ $stmt_category->close();
     <link rel="stylesheet" href="plugin/css/App.css">
     <link rel="stylesheet" href="plugin/css/Artikel.css">
     <link rel="stylesheet" href="plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="plugin/css/Dashboard.css">
+    <link rel="stylesheet" href="plugin/css/Dashboards.css">
     <link rel="stylesheet" href="plugin/css/Footer.css">
     <link rel="stylesheet" href="plugin/css/nv.css">
 
