@@ -3,7 +3,7 @@
     padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
-    background-color: var(--primary);
+    background-color: rgb(216, 241, 255);
     text-align: center;
 }
 
@@ -28,8 +28,8 @@
     padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
-    background-color: var(--secondary);
-    color: #ffffff;
+    background-color: rgb(179, 227, 255);
+    color: var(--font-color);
 }
 
 .footer .foot {
@@ -45,7 +45,7 @@
 
 .copy {
     padding: .7rem 0;
-    background-color: var(--tridary);
+    background-color: var(--secondary);
     color: #ffffff;
 }
 
