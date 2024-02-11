@@ -11,18 +11,18 @@ require  '../../components/info.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="plugin/css/App.css">
+    <link rel="stylesheet" href="plugin/css/apps.css">
     <link rel="stylesheet" href="plugin/css/Artikel.css">
     <link rel="stylesheet" href="plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="plugin/css/Dashboards.css">
-    <link rel="stylesheet" href="plugin/css/Footer.css">
-    <link rel="stylesheet" href="plugin/css/nv.css">
+    <link rel="stylesheet" href="plugin/css/Dashboard.css">
+    <link rel="stylesheet" href="plugin/css/Footers.css">
+    <link rel="stylesheet" href="plugin/css/Navbar.css">
     <link rel="stylesheet" href="plugin/css/Pro.css">
 
     <!-- Query Media CSS -->
-    <link rel="stylesheet" href="plugin/css/responsive/Dashboards.css">
+    <link rel="stylesheet" href="plugin/css/responsive/Dashboard.css">
     <link rel="stylesheet" href="plugin/css/responsive/footer.css">
-    <link rel="stylesheet" href="plugin/css/responsive/navbar.css">
+    <link rel="stylesheet" href="plugin/css/responsive/Navbars.css">
     <link rel="stylesheet" href="plugin/css/responsive/Proyek.css">
 
     <!-- Custom fonts for this template-->

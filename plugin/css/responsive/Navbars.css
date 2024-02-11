@@ -9,7 +9,7 @@
     }
 
     .navbars .navbars-konten .navbars-logo a:hover {
-        color: var(--primary);
+        color: aqua;
     }
     
     .navbars .navbars-konten .navbars-ex button {
@@ -17,11 +17,11 @@
         background: none;
         border: none;
         font-size: 2rem;
-        color: white;
+        color: #535353;
     }
 
     .navbars .navbars-konten .navbars-ex button:hover {
-        color: var(--primary);
+        color: aqua;
     }
     
     .navbars .navbars-konten .navbars-nav {
@@ -29,8 +29,8 @@
         display: block;
         top: 100%;
         right: -100%;
-        background-color: rgba(0, 51, 122, .8);
-        box-shadow: 0 0 5px .1px black;
+        background-color: rgba(216, 241, 255, 0.8);
+        box-shadow: 0 5px 5px .1px black;
         width: 20rem;
         height: 100vh;
         transition: 0.3s;
@@ -44,9 +44,8 @@
         margin: 1.5rem;
         padding: 0.5rem;
         display: block;
-        color: var(--bg);
+        color: #535353;
         font-size: 1.4rem;
-        text-shadow: 0 0 3px var(--tridary);
     }
 
     .navbars .navbars-konten .navbars-nav .drop {
@@ -57,7 +56,6 @@
         padding: 0 0 0 .8rem;
         font-size: 1.4rem;
         text-align: left;
-        text-shadow: 0 0 3px var(--tridary);
     }
 
     .navbars .navbars-konten .navbars-nav .drop ul {

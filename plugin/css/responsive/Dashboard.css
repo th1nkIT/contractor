@@ -45,6 +45,10 @@
         padding: .5rem;
     }
 
+    .pertanyaan .tanya .pertanyaan-konten {
+        width: auto;
+    }
+    
     .pertanyaan .tanya .pertanyaan-konten .question .jawaban, .pertanyaan-konten .question .jawaban2, .pertanyaan-konten .question .jawaban3, .pertanyaan-konten .question .jawaban4, .pertanyaan-konten .question .jawaban5 {
         width: 31.7rem;
         text-align: justify;

@@ -44,13 +44,13 @@ if (isset($_POST['send_email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- My CSS -->
-    <link rel="stylesheet" href="plugin/css/App.css">
+    <link rel="stylesheet" href="plugin/css/apps.css">
     <link rel="stylesheet" href="plugin/css/Artikel.css">
     <link rel="stylesheet" href="plugin/css/Bisnis.css">
-    <link rel="stylesheet" href="plugin/css/Dashboards.css">
-    <link rel="stylesheet" href="plugin/css/Footer.css">
+    <link rel="stylesheet" href="plugin/css/Dashboard.css">
+    <link rel="stylesheet" href="plugin/css/Footers.css">
     <link rel="stylesheet" href="plugin/css/Kontak.css">
-    <link rel="stylesheet" href="plugin/css/nv.css">
+    <link rel="stylesheet" href="plugin/css/Navbar.css">
     <link rel="stylesheet" href="plugin/css/Pro.css">
 
     <!-- Custom fonts for this template-->
@@ -58,9 +58,9 @@ if (isset($_POST['send_email'])) {
     <link rel="icon" href="<?php echo $_ENV['ROUTE']; ?>backstage/img/favicon/favicon.ico" sizes="16x16">
 
     <!-- Query Media CSS -->
-    <link rel="stylesheet" href="plugin/css/responsive/Dashboards.css">
+    <link rel="stylesheet" href="plugin/css/responsive/Dashboard.css">
     <link rel="stylesheet" href="plugin/css/responsive/footer.css">
-    <link rel="stylesheet" href="plugin/css/responsive/navbar.css">
+    <link rel="stylesheet" href="plugin/css/responsive/Navbars.css">
 
     <!-- My Icon Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">

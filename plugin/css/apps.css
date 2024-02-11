@@ -1,11 +1,11 @@
 :root {
-    --primary: #03C988;
-    --secondary: #00337C;
-    --tridary: #13005A;
-    --fourth: #1C82AD;
-    --fifth: #FC9918;
+    --primary: #cfcfcf;
+    --secondary: #0081C9;
+    --tridary: #205295;
+    --fourth: #86E5FF;
+    --fifth: #FFC93C;
     --hover-fifth: #F14A16;
-    --bg: #DAF5FF;
+    --bg: #ffffff;
     --font-color: black;
 }
 

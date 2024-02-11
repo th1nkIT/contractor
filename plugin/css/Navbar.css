@@ -5,7 +5,7 @@
     right: 0;
     left: 0;
     top: 0;
-    background-color: rgba(0, 51, 122, .8)
+    background-color: rgba(216, 241, 255, 0.8);
 }
 
 .navbars .navbars-sosmed {
@@ -13,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--tridary);
+    background-color: var(--secondary);
 }
 
 .navbars .navbars-sosmed .sosmed-kiri a,
@@ -33,7 +33,7 @@
 }
 
 .navbars .navbars-konten {
-    padding: 2rem 5%;
+    padding: 1rem 5%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -48,8 +48,9 @@
 }
 
 .navbars .navbars-konten .navbars-logo a {
-    color: #ffffff;
+    color: #535353;
     font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .navbars .navbars-konten .navbars-nav {
@@ -58,19 +59,19 @@
 }
 
 .navbars .navbars-konten .navbars-nav .aktif {
-    color: aqua;
-    text-shadow: 0 0 3px var(--tridary);
+    color: var(--secondary);
+    text-shadow: 0 0 1px var(--tridary);
 }
 
 .navbars .navbars-konten .navbars-nav a {
     margin: 0 .5rem;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #535353;
 }
 
 .navbars .navbars-konten .navbars-nav a:hover {
-    color: var(--primary);
+    color: aqua;
     text-shadow: 0 0 3px var(--tridary);
 }
 
@@ -84,13 +85,13 @@
 .navbars .navbars-konten .navbars-nav .drop button {
     background: none;
     border: none;
-    color: white;
+    color: #535353;
     font-size: 1.1rem;
     font-weight: 600;
 }
 
 .navbars .navbars-konten .navbars-nav .drop button:hover {
-    color: var(--primary);
+    color: aqua;
     text-shadow: 0 0 3px var(--tridary);
 }
 
@@ -106,7 +107,7 @@
     visibility: hidden;
     list-style-type: none;
     border-radius: .2rem;
-    background-color: rgba(28, 130, 173, .7);
+    background-color: rgba(216, 241, 255, 0.8);
 }
 
 .navbars .navbars-konten .navbars-nav .drop:hover {
@@ -115,12 +116,13 @@
 }
 
 .navbars .navbars-konten .navbars-nav .drop:hover>a {
-    color: var(--primary);
+    color: aqua;
 }
 
 .navbars .navbars-konten .navbars-nav .drop:hover>button {
-    color: var(--primary);
+    color: aqua;
     font-weight: 600;
+    text-shadow: 0 0 3px var(--tridary);
 }
 
 .navbars .navbars-konten .navbars-nav .drop:hover>ul {
@@ -140,14 +142,14 @@
 }
 
 .navbars .navbars-konten .navbars-nav .drop ul li:hover>a {
-    color: var(--primary);
+    color: aqua;
     text-shadow: 0 0 3px var(--tridary);
 }
 
 .navbars .navbars-konten .navbars-nav .drop ul li a {
     margin: 0;
     padding: 0;
-    color: white;
+    color: #535353;
 }
 
 .navbars .navbars-konten .navbars-nav .drop ul li .aktif {

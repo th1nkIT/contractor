@@ -60,7 +60,7 @@
 
 .jb .jb-konten .jb-kiri button:hover,
 .jb-kanan button:hover {
-    color: var(--fourth);
+    color: aqua;
     cursor: pointer;
 }
 
@@ -92,23 +92,23 @@
     margin: 6rem 1.3rem 0;
     padding: .8rem 1.3rem;
     font-weight: 600;
-    background-color: rgba(0, 51, 122, .8);
+    background-color: rgba(32, 82, 149, .8);
     border-radius: .3rem;
     color: #ffffff;
 }
 
 .jb .jb-konten .jb-main .jb-main-btn a:hover {
-    background-color: rgba(20, 0, 92, .8);
+    background-color: rgba(23, 57, 102, .8);
 }
 
 .jb .jb-konten .jb-main .jb-main-btn .tentang-kami-btn {
-    background-color: rgba(255, 255, 0, .8);
+    background-color: rgba(255, 201, 60, .9);
     border-radius: .3rem;
     color: black;
 }
 
 .jb .jb-konten .jb-main .jb-main-btn .tentang-kami-btn:hover {
-    background-color: rgba(255, 140, 0, .8);
+    background-color: rgba(190, 150, 47, .9);
 }
 
 /* Jumbotron End */
@@ -142,7 +142,7 @@
 }
 
 .alasan .konten-alasan .main-konten {
-    background-color: rgba(0, 51, 122, .75);
+    background-color: rgba(0, 129, 201, .8);
     max-width: 50%;
     min-height: auto;
     color: #ffffff;
